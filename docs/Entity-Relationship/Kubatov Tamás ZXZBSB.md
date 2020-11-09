@@ -234,6 +234,7 @@ LIMIT 10;
 | American Kickers  | American Stingers     | 3-0     | 3            | 2020-10-21 18:36:39 |
 | Czech Legends     | Czech Wasps           | 4-1     | 3            | 2020-12-30 22:33:04 |
 |-------------------|-----------------------|---------|--------------|---------------------|
+*/
 
 /* 4. 1 CSAPAT JATEKOSAINAK LEKÉRDEZÉSE */
 SELECT P.name as PLAYER_NAME

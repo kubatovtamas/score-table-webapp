@@ -1,9 +1,9 @@
 package com.csapatsportok.application.repository;
 
-import com.csapatsportok.application.domain.Team;
+import com.csapatsportok.application.domain.Goal;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TeamRepository extends CrudRepository<Team, Long> {
+public interface GoalRepository extends CrudRepository<Goal, Long> {
 }
