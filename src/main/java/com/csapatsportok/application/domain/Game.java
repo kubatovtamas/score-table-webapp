@@ -14,8 +14,10 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long homeTeamId;
-    private Long awayTeamId;
+    @OneToOne
+    private Team homeTeam;
+    @OneToOne
+    private Team awayTeam;
     private int numHomeGoals;
     private int numAwayGoals;
     private LocalDateTime date;

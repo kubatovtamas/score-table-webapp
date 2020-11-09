@@ -244,7 +244,8 @@ LEFT JOIN TEAM AS T
 where T.name = 'American Geckos';
 
 /* 4. TOP 10 LEGNAGYOBB ARANYU GYOZELEM INFO */
-SELECT 
+SELECT
+    L.NAME, 
     HOME.NAME AS HOME_TEAM,
     AWAY.NAME AS AWAY_TEAM,
     CONCAT(G.NUM_HOME_GOALS, '-', G.NUM_AWAY_GOALS) AS SCORE,
@@ -255,6 +256,8 @@ LEFT JOIN TEAM AS AWAY
     ON away.id = G.away_team_id
 LEFT JOIN team AS HOME
     ON home.id = G.home_team_id
+LEFT JOIN LEAGUE AS L
+     ON home.league_id = L.id
 ORDER BY DIFFERENCE DESC
 LIMIT 10;
 

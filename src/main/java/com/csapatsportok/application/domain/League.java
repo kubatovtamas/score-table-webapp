@@ -1,5 +1,6 @@
 package com.csapatsportok.application.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,8 +16,14 @@ public class League {
     private String name;
 
     @ManyToOne
+    @JsonIgnoreProperties("leagues")
     private Country country;
 
     @OneToMany(mappedBy = "league")
+    @JsonIgnoreProperties("league")
     private List<Team> teams;
+
+    public String toString() {
+        return "League(id=" + this.getId() + ", name=" + this.getName() + ")";
+    }
 }

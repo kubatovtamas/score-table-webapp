@@ -1,9 +1,11 @@
 package com.csapatsportok.application.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Data
@@ -15,13 +17,10 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country")
+    @JsonIgnoreProperties("country")
     private List<League> leagues;
 
-    public Country() {
-
-    }
-
-    public Country(String name) {
-        this.name = name;
+    public String toString() {
+        return "Country(id=" + this.getId() + ", name=" + this.getName() + ")";
     }
 }

@@ -1,9 +1,9 @@
 package com.csapatsportok.application.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -15,5 +15,10 @@ public class Player {
     private String name;
 
     @ManyToOne
+    @JsonIgnoreProperties("players")
     private Team team;
+
+    public String toString() {
+        return "Player(id=" + this.getId() + ", name=" + this.getName() + ")";
+    }
 }
