@@ -1,1351 +1,1830 @@
-/* COUNTRY */
-insert into country (id, name) values (1, 'Hungary');
-insert into country (id, name) values (2, 'United States');
-insert into country (id, name) values (3, 'China');
-insert into country (id, name) values (4, 'Sweden');
-insert into country (id, name) values (5, 'Indonesia');
-insert into country (id, name) values (6, 'Tanzania');
-insert into country (id, name) values (7, 'Brazil');
-insert into country (id, name) values (8, 'France');
-insert into country (id, name) values (9, 'Czech Republic');
-insert into country (id, name) values (10, 'Russia');
+INSERT INTO COUNTRY VALUES
+(1, 'Hungary'),
+(2, 'United States'),
+(3, 'China'),
+(4, 'Sweden'),
+(5, 'Indonesia'),
+(6, 'Tanzania'),
+(7, 'Brazil'),
+(8, 'France'),
+(9, 'Czech Republic'),
+(10, 'Russia');
 
 
 
-/* LEAGUE */
-insert into league (id, name, country_id) values (1, 'Brazilian League 1', 7);
-insert into league (id, name, country_id) values (2, 'Brazilian League 2', 7);
-insert into league (id, name, country_id) values (3, 'Tanzanian League 1', 6);
-insert into league (id, name, country_id) values (4, 'Czech League 1', 9);
-insert into league (id, name, country_id) values (5, 'Major League Soccer', 2);
-insert into league (id, name, country_id) values (6, 'Indonesian Premier League', 5);
-insert into league (id, name, country_id) values (7, 'Chinese League 1', 3);
-insert into league (id, name, country_id) values (8, 'Russian 1st Division', 10);
-insert into league (id, name, country_id) values (9, 'Nemzeti Bajnokság 1', 1);
-insert into league (id, name, country_id) values (10, 'Ligue 1', 8);
+INSERT INTO LEAGUE VALUES
+(1, 'Brazilian League 1', 7),
+(2, 'Brazilian League 2', 7),
+(3, 'Tanzanian League 1', 6),
+(4, 'Czech League 1', 9),
+(5, 'Major League Soccer', 2),
+(6, 'Indonesian Premier League', 5),
+(7, 'Chinese League 1', 3),
+(8, 'Russian 1st Division', 10),
+(9, STRINGDECODE('Nemzeti Bajnoks\u00e1g 1'), 1),
+(10, 'Ligue 1', 8);
 
 
 
-/* TEAM */
-insert into team (id, name, league_id) values (1, 'Brazilian Mavericks', 1);
-insert into team (id, name, league_id) values (2, 'Brazilian Ninjas', 1);
-insert into team (id, name, league_id) values (3, 'Brazilian Legends', 1);
-insert into team (id, name, league_id) values (4, 'Brazilian Falcons', 1);
-insert into team (id, name, league_id) values (5, 'Brazilian Tigers II', 2);
-insert into team (id, name, league_id) values (6, 'Brazilian Sonics II', 2);
-insert into team (id, name, league_id) values (7, 'Brazilian Blockers II', 2);
-insert into team (id, name, league_id) values (8, 'Brazilian Xpress II', 2);
-insert into team (id, name, league_id) values (9, 'Tanzanian Cheetahs', 3);
-insert into team (id, name, league_id) values (10, 'Tanzanian Widows', 3);
-insert into team (id, name, league_id) values (11, 'Tanzanian Rockets', 3);
-insert into team (id, name, league_id) values (12, 'Tanzanian Bombers', 3);
-insert into team (id, name, league_id) values (13, 'Tanzanian Tornadoes', 3);
-insert into team (id, name, league_id) values (14, 'Czech Wasps', 4);
-insert into team (id, name, league_id) values (15, 'Czech Flying', 4);
-insert into team (id, name, league_id) values (16, 'Czech Busters', 4);
-insert into team (id, name, league_id) values (17, 'Czech Sharks', 4);
-insert into team (id, name, league_id) values (18, 'Czech Kickers', 4);
-insert into team (id, name, league_id) values (19, 'Czech Hurricanes', 4);
-insert into team (id, name, league_id) values (20, 'Czech Sonics', 4);
-insert into team (id, name, league_id) values (21, 'Czech Legends', 4);
-insert into team (id, name, league_id) values (22, 'American Kickers', 5);
-insert into team (id, name, league_id) values (23, 'American Rockets', 5);
-insert into team (id, name, league_id) values (24, 'American Stingers', 5);
-insert into team (id, name, league_id) values (25, 'American United', 5);
-insert into team (id, name, league_id) values (26, 'American Chuckers', 5);
-insert into team (id, name, league_id) values (27, 'American Ninjas', 5);
-insert into team (id, name, league_id) values (28, 'American Geckos', 5);
-insert into team (id, name, league_id) values (29, 'American Fighters', 5);
-insert into team (id, name, league_id) values (30, 'Indonesian Falcons', 6);
-insert into team (id, name, league_id) values (31, 'Indonesian Spiders', 6);
-insert into team (id, name, league_id) values (32, 'Indonesian Hurricanes', 6);
-insert into team (id, name, league_id) values (33, 'Indonesian Stingers', 6);
-insert into team (id, name, league_id) values (34, 'Chinese Fighters', 7);
-insert into team (id, name, league_id) values (35, 'Chinese Hawks', 7);
-insert into team (id, name, league_id) values (36, 'Russian Miners', 8);
-insert into team (id, name, league_id) values (37, 'Russian Warriors', 8);
-insert into team (id, name, league_id) values (38, 'Russian Tigers', 8);
-insert into team (id, name, league_id) values (39, 'Russian Flying', 8);
-insert into team (id, name, league_id) values (40, 'Russian Sharpshooters', 8);
-insert into team (id, name, league_id) values (41, 'Russian Fireballs', 8);
-insert into team (id, name, league_id) values (42, 'Hungarian Bullets', 9);
-insert into team (id, name, league_id) values (43, 'Hungarian Racers', 9);
-insert into team (id, name, league_id) values (44, 'French Blazers', 10);
-insert into team (id, name, league_id) values (45, 'French Chasers', 10);
-insert into team (id, name, league_id) values (46, 'French Crushers', 10);
-insert into team (id, name, league_id) values (47, 'French Racoons', 10);
-insert into team (id, name, league_id) values (48, 'French Crunchers', 10);
-insert into team (id, name, league_id) values (49, 'French Piledrivers', 10);
-insert into team (id, name, league_id) values (50, 'French Bandits', 10);
+INSERT INTO TEAM VALUES
+(1, 'Brazilian Mavericks', 1),
+(2, 'Brazilian Ninjas', 1),
+(3, 'Brazilian Legends', 1),
+(4, 'Brazilian Falcons', 1),
+(5, 'Brazilian Tigers II', 2),
+(6, 'Brazilian Sonics II', 2),
+(7, 'Brazilian Blockers II', 2),
+(8, 'Brazilian Xpress II', 2),
+(9, 'Tanzanian Cheetahs', 3),
+(10, 'Tanzanian Widows', 3),
+(11, 'Tanzanian Rockets', 3),
+(12, 'Tanzanian Bombers', 3),
+(13, 'Tanzanian Tornadoes', 3),
+(14, 'Czech Wasps', 4),
+(15, 'Czech Flying', 4),
+(16, 'Czech Busters', 4),
+(17, 'Czech Sharks', 4),
+(18, 'Czech Kickers', 4),
+(19, 'Czech Hurricanes', 4),
+(20, 'Czech Sonics', 4),
+(21, 'Czech Legends', 4),
+(22, 'American Kickers', 5),
+(23, 'American Rockets', 5),
+(24, 'American Stingers', 5),
+(25, 'American United', 5),
+(26, 'American Chuckers', 5),
+(27, 'American Ninjas', 5),
+(28, 'American Geckos', 5),
+(29, 'American Fighters', 5),
+(30, 'Indonesian Falcons', 6),
+(31, 'Indonesian Spiders', 6),
+(32, 'Indonesian Hurricanes', 6),
+(33, 'Indonesian Stingers', 6),
+(34, 'Chinese Fighters', 7),
+(35, 'Chinese Hawks', 7),
+(36, 'Russian Miners', 8),
+(37, 'Russian Warriors', 8),
+(38, 'Russian Tigers', 8),
+(39, 'Russian Flying', 8),
+(40, 'Russian Sharpshooters', 8),
+(41, 'Russian Fireballs', 8),
+(42, 'Hungarian Bullets', 9),
+(43, 'Hungarian Racers', 9),
+(44, 'French Blazers', 10),
+(45, 'French Chasers', 10),
+(46, 'French Crushers', 10),
+(47, 'French Racoons', 10),
+(48, 'French Crunchers', 10),
+(49, 'French Piledrivers', 10),
+(50, 'French Bandits', 10);
 
 
 
-/* GAME */
-/* Brazil 1; 1-4 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (1, 1, 2, 0, 2, '2020-10-20 16:17:02');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (2, 1, 3, 1, 1, '2020-09-16 09:23:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (3, 1, 4, 0, 0, '2020-10-20 18:03:13');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (4, 2, 1, 2, 0, '2020-09-24 23:41:04');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (5, 2, 3, 0, 0, '2020-10-25 18:35:59');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (6, 2, 4, 0, 3, '2020-09-11 06:56:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (7, 3, 1, 3, 1, '2020-12-10 18:33:00');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (8, 3, 2, 3, 0, '2020-09-12 16:17:49');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (9, 3, 4, 2, 2, '2020-11-21 01:03:58');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (10, 4, 1, 2, 3, '2020-11-09 13:14:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (11, 4, 2, 1, 1, '2020-10-16 12:41:48');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (12, 4, 3, 2, 2, '2020-09-25 19:27:31');
-
-/* Brazil 2; 5-8 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (13, 5, 6, 0, 0, '2020-11-02 21:44:59');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (14, 5, 7, 1, 0, '2020-11-20 23:36:42');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (15, 5, 8, 2, 1, '2020-10-01 01:14:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (16, 6, 5, 1, 2, '2020-10-14 03:04:40');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (17, 6, 7, 1, 0, '2020-09-19 13:07:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (18, 6, 8, 0, 1, '2020-09-19 23:25:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (19, 7, 5, 1, 1, '2020-12-12 08:39:36');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (20, 7, 6, 1, 1, '2020-09-13 10:32:01');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (21, 7, 8, 2, 0, '2020-12-30 18:24:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (22, 8, 5, 1, 1, '2020-10-05 18:36:13');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (23, 8, 6, 1, 0, '2020-08-30 08:25:49');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (24, 8, 7, 2, 3, '2020-09-06 08:31:21');
-
-/* Tanzanian; 9-13 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (25, 9, 10, 1, 0, '2020-10-02 20:54:07');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (26, 9, 11, 0, 1, '2020-12-16 05:20:29');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (27, 9, 12, 0, 0, '2020-08-31 08:55:04');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (28, 9, 13, 1, 3, '2020-12-18 09:28:50');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (29, 10, 9, 0, 2, '2020-08-20 18:10:30');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (30, 10, 11, 1, 0, '2020-12-07 04:39:38');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (31, 10, 12, 1, 0, '2020-10-01 09:55:37');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (32, 10, 13, 1, 2, '2020-08-24 02:55:43');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (33, 11, 9, 0, 1, '2020-10-30 11:14:27');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (34, 11, 10, 1, 0, '2020-10-08 02:41:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (35, 11, 12, 2, 1, '2020-09-17 10:28:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (36, 11, 13, 0, 0, '2020-08-26 20:45:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (37, 12, 9, 1, 1, '2020-11-24 23:04:37');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (38, 12, 10, 2, 0, '2020-12-12 23:30:31');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (39, 12, 11, 1, 1, '2020-09-07 20:32:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (40, 12, 13, 4, 0, '2020-12-08 00:39:08');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (41, 13, 9, 3, 3, '2020-12-06 01:03:33');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (42, 13, 10, 1, 1, '2020-11-29 15:22:04');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (43, 13, 11, 0, 0, '2020-10-16 17:12:59');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (44, 13, 12, 1, 2, '2020-10-07 22:47:39');
-
-/* Czech; 14-21 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (45, 14, 15, 0, 1, '2020-10-13 06:06:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (46, 14, 16, 0, 1, '2020-08-29 21:31:10');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (47, 14, 17, 0, 0, '2020-11-10 09:54:14');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (48, 14, 18, 2, 1, '2020-08-20 13:34:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (49, 14, 19, 1, 0, '2020-09-18 11:44:37');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (50, 14, 20, 1, 1, '2020-12-08 06:21:44');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (51, 14, 21, 2, 0, '2020-08-20 03:52:29');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (52, 15, 14, 1, 0, '2020-12-20 13:53:49');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (53, 15, 16, 1, 3, '2020-11-23 17:53:21');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (54, 15, 17, 1, 1, '2020-12-26 16:40:23');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (55, 15, 18, 0, 2, '2020-08-22 21:56:58');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (56, 15, 19, 0, 1, '2020-12-26 13:48:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (57, 15, 20, 1, 2, '2020-08-22 02:58:36');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (58, 15, 21, 0, 3, '2020-08-27 11:47:14');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (59, 16, 14, 1, 1, '2020-12-24 23:41:46');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (60, 16, 15, 0, 2, '2020-09-11 08:11:41');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (61, 16, 17, 1, 1, '2020-11-14 10:46:23');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (62, 16, 18, 0, 0, '2020-08-23 00:48:14');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (63, 16, 19, 0, 2, '2020-12-29 18:40:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (64, 16, 20, 0, 2, '2020-08-25 11:35:21');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (65, 16, 21, 5, 0, '2020-12-06 11:22:11');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (66, 17, 14, 1, 0, '2020-09-24 22:38:10');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (67, 17, 15, 2, 3, '2020-12-20 11:46:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (68, 17, 16, 0, 1, '2020-10-27 13:08:42');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (69, 17, 18, 0, 2, '2020-10-23 19:16:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (70, 17, 19, 1, 2, '2020-11-27 11:55:18');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (71, 17, 20, 4, 1, '2020-12-14 16:06:08');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (72, 17, 21, 1, 2, '2020-09-25 16:55:23');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (73, 18, 14, 0, 1, '2020-11-26 09:41:47');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (74, 18, 15, 0, 2, '2020-10-26 23:47:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (75, 18, 16, 1, 0, '2020-09-14 06:49:23');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (76, 18, 17, 0, 2, '2020-11-09 10:12:41');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (77, 18, 19, 0, 0, '2020-09-22 00:25:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (78, 18, 20, 1, 1, '2020-09-03 14:21:38');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (79, 18, 21, 0, 1, '2020-10-20 02:34:08');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (80, 19, 14, 0, 2, '2020-09-08 21:23:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (81, 19, 15, 0, 0, '2020-09-15 20:41:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (82, 19, 16, 0, 2, '2020-09-26 13:40:40');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (83, 19, 17, 1, 0, '2020-12-19 21:44:29');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (84, 19, 18, 2, 2, '2020-10-01 03:12:08');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (85, 19, 20, 3, 2, '2020-11-29 14:57:28');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (86, 19, 21, 1, 0, '2020-12-13 10:31:17');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (87, 20, 14, 0, 2, '2020-09-09 03:19:06');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (88, 20, 15, 0, 1, '2020-09-03 14:39:00');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (89, 20, 16, 0, 1, '2020-09-30 15:28:43');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (90, 20, 17, 0, 1, '2020-11-04 22:06:00');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (91, 20, 18, 0, 0, '2020-08-29 04:55:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (92, 20, 19, 2, 0, '2020-12-28 11:56:30');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (93, 20, 21, 1, 1, '2020-09-24 10:35:48');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (94, 21, 14, 4, 1, '2020-12-30 22:33:04');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (95, 21, 15, 2, 0, '2020-11-06 14:38:11');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (96, 21, 16, 0, 0, '2020-12-09 21:14:11');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (97, 21, 17, 1, 0, '2020-09-22 01:32:29');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (98, 21, 18, 2, 2, '2020-11-27 23:15:55');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (99, 21, 19, 1, 0, '2020-09-16 13:56:47');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (100, 21, 20, 0, 0, '2020-10-13 13:54:54');
-
-/* American; 22-29 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (101, 22, 23, 3, 1, '2020-09-08 07:31:47');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (102, 22, 24, 3, 0, '2020-10-21 18:36:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (103, 22, 25, 3, 0, '2020-11-21 16:00:49');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (104, 22, 26, 0, 2, '2020-08-24 13:52:37');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (105, 22, 27, 0, 1, '2020-09-13 02:25:12');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (106, 22, 28, 1, 1, '2020-12-25 08:26:00');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (107, 22, 29, 0, 0, '2020-12-08 21:02:07');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (108, 23, 22, 0, 1, '2020-10-18 08:07:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (109, 23, 24, 0, 2, '2020-09-09 23:56:03');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (110, 23, 25, 0, 0, '2020-12-08 08:01:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (111, 23, 26, 2, 2, '2020-12-29 21:22:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (112, 23, 27, 1, 1, '2020-12-17 11:14:14');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (113, 23, 28, 3, 0, '2020-09-02 17:39:31');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (114, 23, 29, 1, 1, '2020-09-01 22:31:44');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (115, 24, 22, 1, 0, '2020-10-16 18:08:14');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (116, 24, 23, 1, 1, '2020-12-26 03:27:17');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (117, 24, 25, 2, 2, '2020-09-25 12:39:26');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (118, 24, 26, 1, 0, '2020-11-13 00:11:34');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (119, 24, 27, 1, 0, '2020-09-14 15:57:50');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (120, 24, 28, 4, 0, '2020-11-10 14:41:44');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (121, 24, 29, 2, 2, '2020-12-05 01:57:11');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (122, 25, 22, 0, 0, '2020-09-15 23:27:40');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (123, 25, 23, 2, 1, '2020-09-16 09:21:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (124, 25, 24, 0, 1, '2020-11-25 07:05:53');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (125, 25, 26, 0, 3, '2020-09-16 05:26:48');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (126, 25, 27, 2, 2, '2020-10-11 04:07:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (127, 25, 28, 0, 0, '2020-11-07 06:55:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (128, 25, 29, 1, 0, '2020-10-26 09:16:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (129, 26, 22, 1, 1, '2020-12-16 06:44:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (130, 26, 23, 0, 1, '2020-09-04 13:53:42');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (131, 26, 24, 2, 0, '2020-09-15 16:45:25');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (132, 26, 25, 1, 3, '2020-12-21 16:00:06');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (133, 26, 27, 2, 0, '2020-11-15 21:48:17');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (134, 26, 28, 1, 0, '2020-12-07 19:22:13');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (135, 26, 29, 2, 2, '2020-11-16 15:15:16');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (136, 27, 22, 1, 1, '2020-10-24 12:34:22');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (137, 27, 23, 1, 2, '2020-11-04 06:01:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (138, 27, 24, 1, 1, '2020-08-24 11:01:46');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (139, 27, 25, 2, 3, '2020-10-17 05:18:25');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (140, 27, 26, 1, 0, '2020-09-13 22:33:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (141, 27, 28, 1, 0, '2020-11-09 06:57:57');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (142, 27, 29, 0, 0, '2020-11-01 23:11:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (143, 28, 22, 0, 0, '2020-12-27 03:05:04');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (144, 28, 23, 1, 1, '2020-08-21 19:56:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (145, 28, 24, 1, 1, '2020-12-18 19:15:10');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (146, 28, 25, 2, 0, '2020-08-26 07:04:22');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (147, 28, 26, 0, 1, '2020-10-27 03:25:41');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (148, 28, 27, 1, 0, '2020-09-05 07:04:32');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (149, 28, 29, 1, 1, '2020-12-17 16:24:06');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (150, 29, 22, 1, 0, '2020-10-18 00:17:36');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (151, 29, 23, 3, 0, '2020-09-22 05:49:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (152, 29, 24, 0, 3, '2020-11-09 01:39:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (153, 29, 25, 2, 0, '2020-10-20 15:19:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (154, 29, 26, 2, 2, '2020-12-03 13:12:23');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (155, 29, 27, 0, 1, '2020-08-31 20:24:03');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (156, 29, 28, 0, 1, '2020-08-21 20:37:48');
-
-/* Indonesian; 30-33 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (157, 30, 31, 1, 2, '2020-08-25 00:03:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (158, 30, 32, 0, 1, '2020-09-12 01:19:46');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (159, 30, 33, 2, 1, '2020-09-11 08:23:06');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (160, 31, 30, 1, 0, '2020-08-27 10:46:25');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (161, 31, 32, 3, 1, '2020-12-10 07:40:30');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (162, 31, 33, 0, 0, '2020-09-19 02:47:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (163, 32, 30, 1, 0, '2020-10-25 18:42:07');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (164, 32, 31, 1, 1, '2020-09-12 18:09:48');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (165, 32, 33, 2, 0, '2020-10-18 04:09:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (166, 33, 30, 0, 0, '2020-09-12 12:07:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (167, 33, 31, 0, 1, '2020-09-19 05:35:53');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (168, 33, 32, 1, 1, '2020-09-26 23:18:44');
-
-/* Chinese; 34-35 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (169, 34, 35, 0, 1, '2020-09-25 06:16:01');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (170, 35, 34, 2, 1, '2020-11-07 03:11:00');
-
-/* Russian; 36-41 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (171, 36, 37, 0, 2, '2020-11-21 04:07:08');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (172, 36, 38, 1, 1, '2020-08-29 05:24:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (173, 36, 39, 3, 1, '2020-09-03 08:51:03');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (174, 36, 40, 0, 0, '2020-12-24 18:43:32');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (175, 36, 41, 0, 1, '2020-08-20 10:02:15');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (176, 37, 36, 1, 0, '2020-12-02 15:52:16');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (177, 37, 38, 1, 3, '2020-11-28 09:26:45');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (178, 37, 39, 1, 2, '2020-12-06 09:37:49');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (179, 37, 40, 1, 1, '2020-10-03 01:19:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (180, 37, 41, 2, 0, '2020-09-03 12:24:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (181, 38, 36, 0, 0, '2020-09-06 09:52:42');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (182, 38, 37, 0, 1, '2020-09-10 05:48:28');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (183, 38, 39, 1, 0, '2020-12-28 12:47:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (184, 38, 40, 1, 1, '2020-10-25 00:18:40');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (185, 38, 41, 1, 0, '2020-12-04 21:16:38');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (186, 39, 36, 0, 0, '2020-12-17 17:27:42');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (187, 39, 37, 1, 0, '2020-10-26 23:10:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (188, 39, 38, 0, 1, '2020-12-30 05:48:36');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (189, 39, 40, 3, 0, '2020-12-15 16:52:01');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (190, 39, 41, 4, 3, '2020-09-03 14:44:19');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (191, 40, 36, 1, 2, '2020-10-30 09:54:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (192, 40, 37, 1, 1, '2020-12-11 02:24:01');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (193, 40, 38, 4, 2, '2020-11-10 23:28:06');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (194, 40, 39, 1, 0, '2020-12-22 04:19:50');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (195, 40, 41, 1, 0, '2020-10-23 07:24:41');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (196, 41, 36, 1, 1, '2020-11-10 08:21:18');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (197, 41, 37, 1, 0, '2020-10-15 05:30:41');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (198, 41, 38, 0, 1, '2020-09-15 18:34:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (199, 41, 39, 3, 1, '2020-08-21 15:47:52');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (200, 41, 40, 2, 3, '2020-10-21 22:31:55');
-
-/* Hungarian; 42-43 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (201, 42, 43, 1, 0, '2020-08-21 03:14:27');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (202, 43, 42, 3, 1, '2020-11-25 17:39:05');
-
-/* French; 44-50 */
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (203, 44, 45, 2, 3, '2020-12-28 18:10:53');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (204, 44, 46, 0, 2, '2020-11-29 13:27:18');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (205, 44, 47, 0, 2, '2020-12-29 04:37:30');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (206, 44, 48, 0, 1, '2020-10-30 23:02:31');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (207, 44, 49, 2, 2, '2020-09-02 13:57:01');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (208, 44, 50, 4, 2, '2020-11-12 05:08:34');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (209, 45, 44, 1, 0, '2020-10-05 13:40:20');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (210, 45, 46, 0, 3, '2020-09-23 20:47:09');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (211, 45, 47, 1, 1, '2020-10-22 18:24:53');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (212, 45, 48, 2, 2, '2020-11-20 01:05:05');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (213, 45, 49, 1, 3, '2020-08-21 16:53:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (214, 45, 50, 0, 0, '2020-12-25 17:08:37');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (215, 46, 44, 0, 0, '2020-11-08 20:02:58');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (216, 46, 45, 0, 2, '2020-10-29 13:41:54');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (217, 46, 47, 1, 2, '2020-11-03 06:05:20');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (218, 46, 48, 3, 1, '2020-09-01 20:43:51');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (219, 46, 49, 0, 0, '2020-09-22 20:13:36');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (220, 46, 50, 1, 1, '2020-10-26 21:40:58');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (221, 47, 44, 1, 0, '2020-10-22 04:51:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (222, 47, 45, 1, 1, '2020-11-17 00:28:30');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (223, 47, 46, 2, 1, '2020-11-14 08:16:05');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (224, 47, 48, 3, 1, '2020-09-11 20:55:45');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (225, 47, 49, 0, 0, '2020-10-14 12:59:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (226, 47, 50, 0, 0, '2020-10-16 07:41:18');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (227, 48, 44, 3, 0, '2020-10-09 15:29:22');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (228, 48, 45, 1, 2, '2020-09-01 10:44:25');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (229, 48, 46, 1, 1, '2020-09-01 09:05:39');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (230, 48, 47, 0, 1, '2020-10-16 01:24:22');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (231, 48, 49, 1, 0, '2020-10-18 08:28:05');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (232, 48, 50, 1, 3, '2020-10-19 05:03:50');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (233, 49, 44, 0, 1, '2020-12-07 12:42:07');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (234, 49, 45, 1, 0, '2020-10-21 00:29:17');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (235, 49, 46, 0, 0, '2020-08-22 13:20:56');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (236, 49, 47, 0, 1, '2020-11-18 21:09:35');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (237, 49, 48, 1, 1, '2020-09-17 03:42:55');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (238, 49, 50, 1, 1, '2020-12-11 03:29:24');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (239, 50, 44, 0, 0, '2020-08-26 15:46:20');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (240, 50, 45, 2, 0, '2020-12-07 16:28:21');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (241, 50, 46, 1, 0, '2020-08-20 15:52:27');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (242, 50, 47, 2, 1, '2020-10-27 21:09:57');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (243, 50, 48, 0, 1, '2020-09-18 08:34:11');
-insert into game (id, home_team_id, away_team_id, num_home_goals, num_away_goals, date) values (244, 50, 49, 2, 1, '2020-11-28 17:05:32');
+INSERT INTO GAME VALUES
+(1, TIMESTAMP '2020-10-20 16:17:02', 2, 0, 2, 1),
+(2, TIMESTAMP '2020-09-16 09:23:19', 1, 1, 3, 1),
+(3, TIMESTAMP '2020-10-20 18:03:13', 0, 0, 4, 1),
+(4, TIMESTAMP '2020-09-24 23:41:04', 0, 2, 1, 2),
+(5, TIMESTAMP '2020-10-25 18:35:59', 0, 0, 3, 2),
+(6, TIMESTAMP '2020-09-11 06:56:56', 3, 0, 4, 2),
+(7, TIMESTAMP '2020-12-10 18:33:00', 1, 3, 1, 3),
+(8, TIMESTAMP '2020-09-12 16:17:49', 0, 3, 2, 3),
+(9, TIMESTAMP '2020-11-21 01:03:58', 2, 2, 4, 3),
+(10, TIMESTAMP '2020-11-09 13:14:19', 3, 2, 1, 4),
+(11, TIMESTAMP '2020-10-16 12:41:48', 1, 1, 2, 4),
+(12, TIMESTAMP '2020-09-25 19:27:31', 2, 2, 3, 4),
+(13, TIMESTAMP '2020-11-02 21:44:59', 0, 0, 6, 5),
+(14, TIMESTAMP '2020-11-20 23:36:42', 0, 1, 7, 5),
+(15, TIMESTAMP '2020-10-01 01:14:15', 1, 2, 8, 5),
+(16, TIMESTAMP '2020-10-14 03:04:40', 2, 1, 5, 6),
+(17, TIMESTAMP '2020-09-19 13:07:24', 0, 1, 7, 6),
+(18, TIMESTAMP '2020-09-19 23:25:56', 1, 0, 8, 6),
+(19, TIMESTAMP '2020-12-12 08:39:36', 1, 1, 5, 7),
+(20, TIMESTAMP '2020-09-13 10:32:01', 1, 1, 6, 7),
+(21, TIMESTAMP '2020-12-30 18:24:15', 0, 2, 8, 7),
+(22, TIMESTAMP '2020-10-05 18:36:13', 1, 1, 5, 8),
+(23, TIMESTAMP '2020-08-30 08:25:49', 0, 1, 6, 8),
+(24, TIMESTAMP '2020-09-06 08:31:21', 3, 2, 7, 8),
+(25, TIMESTAMP '2020-10-02 20:54:07', 0, 1, 10, 9),
+(26, TIMESTAMP '2020-12-16 05:20:29', 1, 0, 11, 9),
+(27, TIMESTAMP '2020-08-31 08:55:04', 0, 0, 12, 9),
+(28, TIMESTAMP '2020-12-18 09:28:50', 3, 1, 13, 9),
+(29, TIMESTAMP '2020-08-20 18:10:30', 2, 0, 9, 10),
+(30, TIMESTAMP '2020-12-07 04:39:38', 0, 1, 11, 10),
+(31, TIMESTAMP '2020-10-01 09:55:37', 0, 1, 12, 10),
+(32, TIMESTAMP '2020-08-24 02:55:43', 2, 1, 13, 10),
+(33, TIMESTAMP '2020-10-30 11:14:27', 1, 0, 9, 11),
+(34, TIMESTAMP '2020-10-08 02:41:24', 0, 1, 10, 11),
+(35, TIMESTAMP '2020-09-17 10:28:19', 1, 2, 12, 11),
+(36, TIMESTAMP '2020-08-26 20:45:52', 0, 0, 13, 11),
+(37, TIMESTAMP '2020-11-24 23:04:37', 1, 1, 9, 12),
+(38, TIMESTAMP '2020-12-12 23:30:31', 0, 2, 10, 12),
+(39, TIMESTAMP '2020-09-07 20:32:52', 1, 1, 11, 12),
+(40, TIMESTAMP '2020-12-08 00:39:08', 0, 4, 13, 12),
+(41, TIMESTAMP '2020-12-06 01:03:33', 3, 3, 9, 13),
+(42, TIMESTAMP '2020-11-29 15:22:04', 1, 1, 10, 13),
+(43, TIMESTAMP '2020-10-16 17:12:59', 0, 0, 11, 13),
+(44, TIMESTAMP '2020-10-07 22:47:39', 2, 1, 12, 13),
+(45, TIMESTAMP '2020-10-13 06:06:15', 1, 0, 15, 14),
+(46, TIMESTAMP '2020-08-29 21:31:10', 1, 0, 16, 14),
+(47, TIMESTAMP '2020-11-10 09:54:14', 0, 0, 17, 14),
+(48, TIMESTAMP '2020-08-20 13:34:35', 1, 2, 18, 14),
+(49, TIMESTAMP '2020-09-18 11:44:37', 0, 1, 19, 14),
+(50, TIMESTAMP '2020-12-08 06:21:44', 1, 1, 20, 14),
+(51, TIMESTAMP '2020-08-20 03:52:29', 0, 2, 21, 14),
+(52, TIMESTAMP '2020-12-20 13:53:49', 0, 1, 14, 15),
+(53, TIMESTAMP '2020-11-23 17:53:21', 3, 1, 16, 15),
+(54, TIMESTAMP '2020-12-26 16:40:23', 1, 1, 17, 15),
+(55, TIMESTAMP '2020-08-22 21:56:58', 2, 0, 18, 15),
+(56, TIMESTAMP '2020-12-26 13:48:51', 1, 0, 19, 15),
+(57, TIMESTAMP '2020-08-22 02:58:36', 2, 1, 20, 15),
+(58, TIMESTAMP '2020-08-27 11:47:14', 3, 0, 21, 15),
+(59, TIMESTAMP '2020-12-24 23:41:46', 1, 1, 14, 16),
+(60, TIMESTAMP '2020-09-11 08:11:41', 2, 0, 15, 16),
+(61, TIMESTAMP '2020-11-14 10:46:23', 1, 1, 17, 16),
+(62, TIMESTAMP '2020-08-23 00:48:14', 0, 0, 18, 16),
+(63, TIMESTAMP '2020-12-29 18:40:24', 2, 0, 19, 16),
+(64, TIMESTAMP '2020-08-25 11:35:21', 2, 0, 20, 16),
+(65, TIMESTAMP '2020-12-06 11:22:11', 0, 5, 21, 16),
+(66, TIMESTAMP '2020-09-24 22:38:10', 0, 1, 14, 17),
+(67, TIMESTAMP '2020-12-20 11:46:15', 3, 2, 15, 17),
+(68, TIMESTAMP '2020-10-27 13:08:42', 1, 0, 16, 17),
+(69, TIMESTAMP '2020-10-23 19:16:15', 2, 0, 18, 17),
+(70, TIMESTAMP '2020-11-27 11:55:18', 2, 1, 19, 17),
+(71, TIMESTAMP '2020-12-14 16:06:08', 1, 4, 20, 17),
+(72, TIMESTAMP '2020-09-25 16:55:23', 2, 1, 21, 17),
+(73, TIMESTAMP '2020-11-26 09:41:47', 1, 0, 14, 18),
+(74, TIMESTAMP '2020-10-26 23:47:51', 2, 0, 15, 18),
+(75, TIMESTAMP '2020-09-14 06:49:23', 0, 1, 16, 18),
+(76, TIMESTAMP '2020-11-09 10:12:41', 2, 0, 17, 18),
+(77, TIMESTAMP '2020-09-22 00:25:19', 0, 0, 19, 18),
+(78, TIMESTAMP '2020-09-03 14:21:38', 1, 1, 20, 18),
+(79, TIMESTAMP '2020-10-20 02:34:08', 1, 0, 21, 18),
+(80, TIMESTAMP '2020-09-08 21:23:54', 2, 0, 14, 19),
+(81, TIMESTAMP '2020-09-15 20:41:51', 0, 0, 15, 19),
+(82, TIMESTAMP '2020-09-26 13:40:40', 2, 0, 16, 19),
+(83, TIMESTAMP '2020-12-19 21:44:29', 0, 1, 17, 19),
+(84, TIMESTAMP '2020-10-01 03:12:08', 2, 2, 18, 19),
+(85, TIMESTAMP '2020-11-29 14:57:28', 2, 3, 20, 19),
+(86, TIMESTAMP '2020-12-13 10:31:17', 0, 1, 21, 19),
+(87, TIMESTAMP '2020-09-09 03:19:06', 2, 0, 14, 20),
+(88, TIMESTAMP '2020-09-03 14:39:00', 1, 0, 15, 20),
+(89, TIMESTAMP '2020-09-30 15:28:43', 1, 0, 16, 20),
+(90, TIMESTAMP '2020-11-04 22:06:00', 1, 0, 17, 20),
+(91, TIMESTAMP '2020-08-29 04:55:54', 0, 0, 18, 20),
+(92, TIMESTAMP '2020-12-28 11:56:30', 0, 2, 19, 20),
+(93, TIMESTAMP '2020-09-24 10:35:48', 1, 1, 21, 20),
+(94, TIMESTAMP '2020-12-30 22:33:04', 1, 4, 14, 21),
+(95, TIMESTAMP '2020-11-06 14:38:11', 0, 2, 15, 21),
+(96, TIMESTAMP '2020-12-09 21:14:11', 0, 0, 16, 21),
+(97, TIMESTAMP '2020-09-22 01:32:29', 0, 1, 17, 21),
+(98, TIMESTAMP '2020-11-27 23:15:55', 2, 2, 18, 21),
+(99, TIMESTAMP '2020-09-16 13:56:47', 0, 1, 19, 21),
+(100, TIMESTAMP '2020-10-13 13:54:54', 0, 0, 20, 21),
+(101, TIMESTAMP '2020-09-08 07:31:47', 1, 3, 23, 22),
+(102, TIMESTAMP '2020-10-21 18:36:39', 0, 3, 24, 22),
+(103, TIMESTAMP '2020-11-21 16:00:49', 0, 3, 25, 22),
+(104, TIMESTAMP '2020-08-24 13:52:37', 2, 0, 26, 22),
+(105, TIMESTAMP '2020-09-13 02:25:12', 1, 0, 27, 22),
+(106, TIMESTAMP '2020-12-25 08:26:00', 1, 1, 28, 22),
+(107, TIMESTAMP '2020-12-08 21:02:07', 0, 0, 29, 22),
+(108, TIMESTAMP '2020-10-18 08:07:52', 1, 0, 22, 23),
+(109, TIMESTAMP '2020-09-09 23:56:03', 2, 0, 24, 23),
+(110, TIMESTAMP '2020-12-08 08:01:52', 0, 0, 25, 23),
+(111, TIMESTAMP '2020-12-29 21:22:19', 2, 2, 26, 23),
+(112, TIMESTAMP '2020-12-17 11:14:14', 1, 1, 27, 23),
+(113, TIMESTAMP '2020-09-02 17:39:31', 0, 3, 28, 23),
+(114, TIMESTAMP '2020-09-01 22:31:44', 1, 1, 29, 23),
+(115, TIMESTAMP '2020-10-16 18:08:14', 0, 1, 22, 24),
+(116, TIMESTAMP '2020-12-26 03:27:17', 1, 1, 23, 24),
+(117, TIMESTAMP '2020-09-25 12:39:26', 2, 2, 25, 24),
+(118, TIMESTAMP '2020-11-13 00:11:34', 0, 1, 26, 24),
+(119, TIMESTAMP '2020-09-14 15:57:50', 0, 1, 27, 24),
+(120, TIMESTAMP '2020-11-10 14:41:44', 0, 4, 28, 24),
+(121, TIMESTAMP '2020-12-05 01:57:11', 2, 2, 29, 24),
+(122, TIMESTAMP '2020-09-15 23:27:40', 0, 0, 22, 25),
+(123, TIMESTAMP '2020-09-16 09:21:54', 1, 2, 23, 25),
+(124, TIMESTAMP '2020-11-25 07:05:53', 1, 0, 24, 25),
+(125, TIMESTAMP '2020-09-16 05:26:48', 3, 0, 26, 25),
+(126, TIMESTAMP '2020-10-11 04:07:24', 2, 2, 27, 25),
+(127, TIMESTAMP '2020-11-07 06:55:51', 0, 0, 28, 25),
+(128, TIMESTAMP '2020-10-26 09:16:54', 0, 1, 29, 25),
+(129, TIMESTAMP '2020-12-16 06:44:39', 1, 1, 22, 26),
+(130, TIMESTAMP '2020-09-04 13:53:42', 1, 0, 23, 26),
+(131, TIMESTAMP '2020-09-15 16:45:25', 0, 2, 24, 26),
+(132, TIMESTAMP '2020-12-21 16:00:06', 3, 1, 25, 26),
+(133, TIMESTAMP '2020-11-15 21:48:17', 0, 2, 27, 26),
+(134, TIMESTAMP '2020-12-07 19:22:13', 0, 1, 28, 26),
+(135, TIMESTAMP '2020-11-16 15:15:16', 2, 2, 29, 26),
+(136, TIMESTAMP '2020-10-24 12:34:22', 1, 1, 22, 27),
+(137, TIMESTAMP '2020-11-04 06:01:56', 2, 1, 23, 27),
+(138, TIMESTAMP '2020-08-24 11:01:46', 1, 1, 24, 27),
+(139, TIMESTAMP '2020-10-17 05:18:25', 3, 2, 25, 27),
+(140, TIMESTAMP '2020-09-13 22:33:51', 0, 1, 26, 27),
+(141, TIMESTAMP '2020-11-09 06:57:57', 0, 1, 28, 27),
+(142, TIMESTAMP '2020-11-01 23:11:35', 0, 0, 29, 27),
+(143, TIMESTAMP '2020-12-27 03:05:04', 0, 0, 22, 28),
+(144, TIMESTAMP '2020-08-21 19:56:52', 1, 1, 23, 28),
+(145, TIMESTAMP '2020-12-18 19:15:10', 1, 1, 24, 28),
+(146, TIMESTAMP '2020-08-26 07:04:22', 0, 2, 25, 28),
+(147, TIMESTAMP '2020-10-27 03:25:41', 1, 0, 26, 28),
+(148, TIMESTAMP '2020-09-05 07:04:32', 0, 1, 27, 28),
+(149, TIMESTAMP '2020-12-17 16:24:06', 1, 1, 29, 28),
+(150, TIMESTAMP '2020-10-18 00:17:36', 0, 1, 22, 29),
+(151, TIMESTAMP '2020-09-22 05:49:56', 0, 3, 23, 29),
+(152, TIMESTAMP '2020-11-09 01:39:56', 3, 0, 24, 29),
+(153, TIMESTAMP '2020-10-20 15:19:35', 0, 2, 25, 29),
+(154, TIMESTAMP '2020-12-03 13:12:23', 2, 2, 26, 29),
+(155, TIMESTAMP '2020-08-31 20:24:03', 1, 0, 27, 29),
+(156, TIMESTAMP '2020-08-21 20:37:48', 1, 0, 28, 29),
+(157, TIMESTAMP '2020-08-25 00:03:39', 2, 1, 31, 30),
+(158, TIMESTAMP '2020-09-12 01:19:46', 1, 0, 32, 30),
+(159, TIMESTAMP '2020-09-11 08:23:06', 1, 2, 33, 30),
+(160, TIMESTAMP '2020-08-27 10:46:25', 0, 1, 30, 31),
+(161, TIMESTAMP '2020-12-10 07:40:30', 1, 3, 32, 31),
+(162, TIMESTAMP '2020-09-19 02:47:35', 0, 0, 33, 31),
+(163, TIMESTAMP '2020-10-25 18:42:07', 0, 1, 30, 32),
+(164, TIMESTAMP '2020-09-12 18:09:48', 1, 1, 31, 32),
+(165, TIMESTAMP '2020-10-18 04:09:24', 0, 2, 33, 32),
+(166, TIMESTAMP '2020-09-12 12:07:52', 0, 0, 30, 33),
+(167, TIMESTAMP '2020-09-19 05:35:53', 1, 0, 31, 33),
+(168, TIMESTAMP '2020-09-26 23:18:44', 1, 1, 32, 33),
+(169, TIMESTAMP '2020-09-25 06:16:01', 1, 0, 35, 34),
+(170, TIMESTAMP '2020-11-07 03:11:00', 1, 2, 34, 35),
+(171, TIMESTAMP '2020-11-21 04:07:08', 2, 0, 37, 36),
+(172, TIMESTAMP '2020-08-29 05:24:39', 1, 1, 38, 36),
+(173, TIMESTAMP '2020-09-03 08:51:03', 1, 3, 39, 36),
+(174, TIMESTAMP '2020-12-24 18:43:32', 0, 0, 40, 36),
+(175, TIMESTAMP '2020-08-20 10:02:15', 1, 0, 41, 36),
+(176, TIMESTAMP '2020-12-02 15:52:16', 0, 1, 36, 37),
+(177, TIMESTAMP '2020-11-28 09:26:45', 3, 1, 38, 37),
+(178, TIMESTAMP '2020-12-06 09:37:49', 2, 1, 39, 37),
+(179, TIMESTAMP '2020-10-03 01:19:51', 1, 1, 40, 37),
+(180, TIMESTAMP '2020-09-03 12:24:35', 0, 2, 41, 37),
+(181, TIMESTAMP '2020-09-06 09:52:42', 0, 0, 36, 38),
+(182, TIMESTAMP '2020-09-10 05:48:28', 1, 0, 37, 38),
+(183, TIMESTAMP '2020-12-28 12:47:54', 0, 1, 39, 38),
+(184, TIMESTAMP '2020-10-25 00:18:40', 1, 1, 40, 38),
+(185, TIMESTAMP '2020-12-04 21:16:38', 0, 1, 41, 38),
+(186, TIMESTAMP '2020-12-17 17:27:42', 0, 0, 36, 39),
+(187, TIMESTAMP '2020-10-26 23:10:19', 0, 1, 37, 39),
+(188, TIMESTAMP '2020-12-30 05:48:36', 1, 0, 38, 39),
+(189, TIMESTAMP '2020-12-15 16:52:01', 0, 3, 40, 39),
+(190, TIMESTAMP '2020-09-03 14:44:19', 3, 4, 41, 39),
+(191, TIMESTAMP '2020-10-30 09:54:24', 2, 1, 36, 40),
+(192, TIMESTAMP '2020-12-11 02:24:01', 1, 1, 37, 40),
+(193, TIMESTAMP '2020-11-10 23:28:06', 2, 4, 38, 40),
+(194, TIMESTAMP '2020-12-22 04:19:50', 0, 1, 39, 40),
+(195, TIMESTAMP '2020-10-23 07:24:41', 0, 1, 41, 40),
+(196, TIMESTAMP '2020-11-10 08:21:18', 1, 1, 36, 41),
+(197, TIMESTAMP '2020-10-15 05:30:41', 0, 1, 37, 41),
+(198, TIMESTAMP '2020-09-15 18:34:54', 1, 0, 38, 41),
+(199, TIMESTAMP '2020-08-21 15:47:52', 1, 3, 39, 41),
+(200, TIMESTAMP '2020-10-21 22:31:55', 3, 2, 40, 41),
+(201, TIMESTAMP '2020-08-21 03:14:27', 0, 1, 43, 42),
+(202, TIMESTAMP '2020-11-25 17:39:05', 1, 3, 42, 43),
+(203, TIMESTAMP '2020-12-28 18:10:53', 3, 2, 45, 44),
+(204, TIMESTAMP '2020-11-29 13:27:18', 2, 0, 46, 44),
+(205, TIMESTAMP '2020-12-29 04:37:30', 2, 0, 47, 44),
+(206, TIMESTAMP '2020-10-30 23:02:31', 1, 0, 48, 44),
+(207, TIMESTAMP '2020-09-02 13:57:01', 2, 2, 49, 44),
+(208, TIMESTAMP '2020-11-12 05:08:34', 2, 4, 50, 44),
+(209, TIMESTAMP '2020-10-05 13:40:20', 0, 1, 44, 45),
+(210, TIMESTAMP '2020-09-23 20:47:09', 3, 0, 46, 45),
+(211, TIMESTAMP '2020-10-22 18:24:53', 1, 1, 47, 45),
+(212, TIMESTAMP '2020-11-20 01:05:05', 2, 2, 48, 45),
+(213, TIMESTAMP '2020-08-21 16:53:51', 3, 1, 49, 45),
+(214, TIMESTAMP '2020-12-25 17:08:37', 0, 0, 50, 45),
+(215, TIMESTAMP '2020-11-08 20:02:58', 0, 0, 44, 46),
+(216, TIMESTAMP '2020-10-29 13:41:54', 2, 0, 45, 46),
+(217, TIMESTAMP '2020-11-03 06:05:20', 2, 1, 47, 46),
+(218, TIMESTAMP '2020-09-01 20:43:51', 1, 3, 48, 46),
+(219, TIMESTAMP '2020-09-22 20:13:36', 0, 0, 49, 46),
+(220, TIMESTAMP '2020-10-26 21:40:58', 1, 1, 50, 46),
+(221, TIMESTAMP '2020-10-22 04:51:35', 0, 1, 44, 47),
+(222, TIMESTAMP '2020-11-17 00:28:30', 1, 1, 45, 47),
+(223, TIMESTAMP '2020-11-14 08:16:05', 1, 2, 46, 47),
+(224, TIMESTAMP '2020-09-11 20:55:45', 1, 3, 48, 47),
+(225, TIMESTAMP '2020-10-14 12:59:39', 0, 0, 49, 47),
+(226, TIMESTAMP '2020-10-16 07:41:18', 0, 0, 50, 47),
+(227, TIMESTAMP '2020-10-09 15:29:22', 0, 3, 44, 48),
+(228, TIMESTAMP '2020-09-01 10:44:25', 2, 1, 45, 48),
+(229, TIMESTAMP '2020-09-01 09:05:39', 1, 1, 46, 48),
+(230, TIMESTAMP '2020-10-16 01:24:22', 1, 0, 47, 48),
+(231, TIMESTAMP '2020-10-18 08:28:05', 0, 1, 49, 48),
+(232, TIMESTAMP '2020-10-19 05:03:50', 3, 1, 50, 48),
+(233, TIMESTAMP '2020-12-07 12:42:07', 1, 0, 44, 49),
+(234, TIMESTAMP '2020-10-21 00:29:17', 0, 1, 45, 49),
+(235, TIMESTAMP '2020-08-22 13:20:56', 0, 0, 46, 49),
+(236, TIMESTAMP '2020-11-18 21:09:35', 1, 0, 47, 49),
+(237, TIMESTAMP '2020-09-17 03:42:55', 1, 1, 48, 49),
+(238, TIMESTAMP '2020-12-11 03:29:24', 1, 1, 50, 49),
+(239, TIMESTAMP '2020-08-26 15:46:20', 0, 0, 44, 50),
+(240, TIMESTAMP '2020-12-07 16:28:21', 0, 2, 45, 50),
+(241, TIMESTAMP '2020-08-20 15:52:27', 0, 1, 46, 50),
+(242, TIMESTAMP '2020-10-27 21:09:57', 1, 2, 47, 50),
+(243, TIMESTAMP '2020-09-18 08:34:11', 1, 0, 48, 50),
+(244, TIMESTAMP '2020-11-28 17:05:32', 1, 2, 49, 50);
 
 
 
-/* PLAYER */
-insert into player (id, name, team_id) values (1, 'Frank Stutely', 16);
-insert into player (id, name, team_id) values (2, 'Nanete Bulger', 2);
-insert into player (id, name, team_id) values (3, 'Lindi Ayliffe', 10);
-insert into player (id, name, team_id) values (4, 'Aylmar Piche', 14);
-insert into player (id, name, team_id) values (5, 'Miltie Basterfield', 43);
-insert into player (id, name, team_id) values (6, 'Con Bly', 49);
-insert into player (id, name, team_id) values (7, 'Franny Hannabuss', 8);
-insert into player (id, name, team_id) values (8, 'Torre Leeburn', 34);
-insert into player (id, name, team_id) values (9, 'Jocko Kruszelnicki', 1);
-insert into player (id, name, team_id) values (10, 'Shawnee Deveraux', 26);
-insert into player (id, name, team_id) values (11, 'Zuzana Cooley', 25);
-insert into player (id, name, team_id) values (12, 'Annabel Boteman', 15);
-insert into player (id, name, team_id) values (13, 'Quinn de Mendoza', 45);
-insert into player (id, name, team_id) values (14, 'Muriel Slucock', 49);
-insert into player (id, name, team_id) values (15, 'Jilli Pletts', 49);
-insert into player (id, name, team_id) values (16, 'Barde Rawlcliffe', 29);
-insert into player (id, name, team_id) values (17, 'Karena Harroway', 10);
-insert into player (id, name, team_id) values (18, 'Ad Attfield', 36);
-insert into player (id, name, team_id) values (19, 'Bobbi McFade', 14);
-insert into player (id, name, team_id) values (20, 'Ilsa Biddleston', 13);
-insert into player (id, name, team_id) values (21, 'Samuele Monkeman', 10);
-insert into player (id, name, team_id) values (22, 'Mandy Inglesfield', 47);
-insert into player (id, name, team_id) values (23, 'Mandie Jimenez', 13);
-insert into player (id, name, team_id) values (24, 'Sylvester Woolcocks', 13);
-insert into player (id, name, team_id) values (25, 'Meridith Stone Fewings', 23);
-insert into player (id, name, team_id) values (26, 'Gianni Mackneis', 29);
-insert into player (id, name, team_id) values (27, 'Kermit Gobeaux', 11);
-insert into player (id, name, team_id) values (28, 'Ada Swinley', 14);
-insert into player (id, name, team_id) values (29, 'Ariadne Prestland', 23);
-insert into player (id, name, team_id) values (30, 'Waverly Berrick', 22);
-insert into player (id, name, team_id) values (31, 'Rori Vannikov', 20);
-insert into player (id, name, team_id) values (32, 'Annetta Glasper', 32);
-insert into player (id, name, team_id) values (33, 'Allegra Runcieman', 2);
-insert into player (id, name, team_id) values (34, 'Forrest Chard', 48);
-insert into player (id, name, team_id) values (35, 'Dulce Broggelli', 3);
-insert into player (id, name, team_id) values (36, 'Durante Wattinham', 50);
-insert into player (id, name, team_id) values (37, 'Drusy Bartholat', 26);
-insert into player (id, name, team_id) values (38, 'Bard Cure', 11);
-insert into player (id, name, team_id) values (39, 'Marve Stocking', 24);
-insert into player (id, name, team_id) values (40, 'Skylar MacFie', 42);
-insert into player (id, name, team_id) values (41, 'Garland Clee', 33);
-insert into player (id, name, team_id) values (42, 'Winn Creffield', 16);
-insert into player (id, name, team_id) values (43, 'Alisun Strewther', 17);
-insert into player (id, name, team_id) values (44, 'Juliann Guerin', 6);
-insert into player (id, name, team_id) values (45, 'Farrel Robbert', 27);
-insert into player (id, name, team_id) values (46, 'Lilllie Cornborough', 49);
-insert into player (id, name, team_id) values (47, 'Shaun Ghelardoni', 48);
-insert into player (id, name, team_id) values (48, 'Clementius Sloper', 41);
-insert into player (id, name, team_id) values (49, 'Harriot Halse', 4);
-insert into player (id, name, team_id) values (50, 'Gaylord Fendlow', 10);
-insert into player (id, name, team_id) values (51, 'Towney Mesias', 39);
-insert into player (id, name, team_id) values (52, 'Zachery Duke', 20);
-insert into player (id, name, team_id) values (53, 'Britt Meers', 38);
-insert into player (id, name, team_id) values (54, 'Garrot Witter', 16);
-insert into player (id, name, team_id) values (55, 'Tommi Mewburn', 8);
-insert into player (id, name, team_id) values (56, 'Jermain Mourant', 31);
-insert into player (id, name, team_id) values (57, 'Opaline Moehler', 28);
-insert into player (id, name, team_id) values (58, 'Codie Ceillier', 40);
-insert into player (id, name, team_id) values (59, 'Aland Clemson', 18);
-insert into player (id, name, team_id) values (60, 'Chastity Liggett', 9);
-insert into player (id, name, team_id) values (61, 'Glennis Ducrow', 6);
-insert into player (id, name, team_id) values (62, 'Jehu Dowse', 33);
-insert into player (id, name, team_id) values (63, 'Giacinta Boshier', 24);
-insert into player (id, name, team_id) values (64, 'Gerry Goldby', 46);
-insert into player (id, name, team_id) values (65, 'Sharon Willshear', 35);
-insert into player (id, name, team_id) values (66, 'Nada Jewel', 41);
-insert into player (id, name, team_id) values (67, 'Randall Longman', 2);
-insert into player (id, name, team_id) values (68, 'Lillis Doby', 30);
-insert into player (id, name, team_id) values (69, 'Olva McKea', 49);
-insert into player (id, name, team_id) values (70, 'Prentiss Pawelec', 40);
-insert into player (id, name, team_id) values (71, 'Izaak Vasyunkin', 8);
-insert into player (id, name, team_id) values (72, 'Even Richard', 13);
-insert into player (id, name, team_id) values (73, 'Celle Jenson', 37);
-insert into player (id, name, team_id) values (74, 'Aurie Soles', 49);
-insert into player (id, name, team_id) values (75, 'Olin Dearell', 38);
-insert into player (id, name, team_id) values (76, 'Hall Cancott', 48);
-insert into player (id, name, team_id) values (77, 'Nollie Biglin', 50);
-insert into player (id, name, team_id) values (78, 'Martyn Scandwright', 37);
-insert into player (id, name, team_id) values (79, 'Finlay Haley', 34);
-insert into player (id, name, team_id) values (80, 'Arney Mehaffey', 4);
-insert into player (id, name, team_id) values (81, 'Reinhold Senogles', 48);
-insert into player (id, name, team_id) values (82, 'Curr St. Louis', 16);
-insert into player (id, name, team_id) values (83, 'Bathsheba Spino', 8);
-insert into player (id, name, team_id) values (84, 'Paul Cossey', 16);
-insert into player (id, name, team_id) values (85, 'Faulkner Handford', 1);
-insert into player (id, name, team_id) values (86, 'Cross Tanslie', 36);
-insert into player (id, name, team_id) values (87, 'Robyn Sauvage', 41);
-insert into player (id, name, team_id) values (88, 'Alix Bysouth', 50);
-insert into player (id, name, team_id) values (89, 'Averil Platt', 17);
-insert into player (id, name, team_id) values (90, 'Nissie Shakle', 2);
-insert into player (id, name, team_id) values (91, 'Sigfrid Dreher', 7);
-insert into player (id, name, team_id) values (92, 'Gizela Autrie', 16);
-insert into player (id, name, team_id) values (93, 'Morgan Cello', 38);
-insert into player (id, name, team_id) values (94, 'Ive Pauli', 29);
-insert into player (id, name, team_id) values (95, 'Leeland Stredwick', 14);
-insert into player (id, name, team_id) values (96, 'Vince Stinton', 20);
-insert into player (id, name, team_id) values (97, 'Patrica Dunbabin', 14);
-insert into player (id, name, team_id) values (98, 'Gusti Fowell', 40);
-insert into player (id, name, team_id) values (99, 'Shandy Memory', 27);
-insert into player (id, name, team_id) values (100, 'Velma Sandever', 26);
-insert into player (id, name, team_id) values (101, 'Davita Muldrew', 20);
-insert into player (id, name, team_id) values (102, 'Orland Carlos', 21);
-insert into player (id, name, team_id) values (103, 'Benson Ketteman', 16);
-insert into player (id, name, team_id) values (104, 'Berny Jorgesen', 32);
-insert into player (id, name, team_id) values (105, 'Jermain Cockrill', 9);
-insert into player (id, name, team_id) values (106, 'Byron Water', 38);
-insert into player (id, name, team_id) values (107, 'Row O''Doherty', 12);
-insert into player (id, name, team_id) values (108, 'Gordan Carlo', 26);
-insert into player (id, name, team_id) values (109, 'Stella Alliker', 27);
-insert into player (id, name, team_id) values (110, 'Nathanial Sandes', 46);
-insert into player (id, name, team_id) values (111, 'Faunie Bartrop', 41);
-insert into player (id, name, team_id) values (112, 'Danni Dysart', 50);
-insert into player (id, name, team_id) values (113, 'Kalvin Bugg', 12);
-insert into player (id, name, team_id) values (114, 'Philis Taree', 45);
-insert into player (id, name, team_id) values (115, 'Thacher Gerdes', 40);
-insert into player (id, name, team_id) values (116, 'Brent Dominighi', 50);
-insert into player (id, name, team_id) values (117, 'Edie Merton', 19);
-insert into player (id, name, team_id) values (118, 'Devonna Hartly', 22);
-insert into player (id, name, team_id) values (119, 'Wang Carnilian', 50);
-insert into player (id, name, team_id) values (120, 'Zsa zsa Faulconer', 29);
-insert into player (id, name, team_id) values (121, 'Dale Aronin', 18);
-insert into player (id, name, team_id) values (122, 'Ambrose Fairbrass', 32);
-insert into player (id, name, team_id) values (123, 'Milt Povlsen', 4);
-insert into player (id, name, team_id) values (124, 'Fawnia Sawrey', 35);
-insert into player (id, name, team_id) values (125, 'Dalli Illiston', 17);
-insert into player (id, name, team_id) values (126, 'Caldwell Dudman', 11);
-insert into player (id, name, team_id) values (127, 'Devlin Moon', 29);
-insert into player (id, name, team_id) values (128, 'Dona Zoppie', 17);
-insert into player (id, name, team_id) values (129, 'Marius Harmer', 33);
-insert into player (id, name, team_id) values (130, 'Jo-anne Standage', 27);
-insert into player (id, name, team_id) values (131, 'Maureene Brock', 23);
-insert into player (id, name, team_id) values (132, 'Erl Traice', 49);
-insert into player (id, name, team_id) values (133, 'Enrichetta Van Salzberger', 28);
-insert into player (id, name, team_id) values (134, 'Petunia Sandeford', 46);
-insert into player (id, name, team_id) values (135, 'Noak Reboulet', 23);
-insert into player (id, name, team_id) values (136, 'Dore Boffey', 23);
-insert into player (id, name, team_id) values (137, 'Irwin Artharg', 20);
-insert into player (id, name, team_id) values (138, 'Yul Konke', 33);
-insert into player (id, name, team_id) values (139, 'Lindi Slack', 2);
-insert into player (id, name, team_id) values (140, 'Ardis Oldale', 28);
-insert into player (id, name, team_id) values (141, 'Friedrich O''Loinn', 3);
-insert into player (id, name, team_id) values (142, 'Klaus Ainsbury', 20);
-insert into player (id, name, team_id) values (143, 'Laurie Lounds', 3);
-insert into player (id, name, team_id) values (144, 'Cornelia Yearsley', 20);
-insert into player (id, name, team_id) values (145, 'Desiri Week', 43);
-insert into player (id, name, team_id) values (146, 'Myrah Lagen', 22);
-insert into player (id, name, team_id) values (147, 'Tabbatha Ornils', 31);
-insert into player (id, name, team_id) values (148, 'Gregory Rehor', 4);
-insert into player (id, name, team_id) values (149, 'Efrem Roderham', 27);
-insert into player (id, name, team_id) values (150, 'Vaughan Pearde', 22);
-insert into player (id, name, team_id) values (151, 'Heida Jinks', 50);
-insert into player (id, name, team_id) values (152, 'Rayna Klawi', 36);
-insert into player (id, name, team_id) values (153, 'Kip Salmon', 21);
-insert into player (id, name, team_id) values (154, 'Nelle Choat', 38);
-insert into player (id, name, team_id) values (155, 'Melinde Biggen', 28);
-insert into player (id, name, team_id) values (156, 'Archambault O''Dulchonta', 32);
-insert into player (id, name, team_id) values (157, 'Sybille Barlace', 29);
-insert into player (id, name, team_id) values (158, 'Winn Seagrove', 36);
-insert into player (id, name, team_id) values (159, 'Ferdy Towsey', 16);
-insert into player (id, name, team_id) values (160, 'Bernadine Finnie', 1);
-insert into player (id, name, team_id) values (161, 'Linnet Pietri', 47);
-insert into player (id, name, team_id) values (162, 'Marve Laughlin', 41);
-insert into player (id, name, team_id) values (163, 'Hayyim Gordon-Giles', 11);
-insert into player (id, name, team_id) values (164, 'Laurette Wadhams', 22);
-insert into player (id, name, team_id) values (165, 'Lynnette Essery', 5);
-insert into player (id, name, team_id) values (166, 'Adara Quince', 49);
-insert into player (id, name, team_id) values (167, 'Bram Bockler', 3);
-insert into player (id, name, team_id) values (168, 'Krysta Levings', 29);
-insert into player (id, name, team_id) values (169, 'Kimmie Pembery', 34);
-insert into player (id, name, team_id) values (170, 'Willi Beachem', 26);
-insert into player (id, name, team_id) values (171, 'Trever McAdam', 29);
-insert into player (id, name, team_id) values (172, 'Roseanna Kinzett', 42);
-insert into player (id, name, team_id) values (173, 'Murry O''Hogertie', 13);
-insert into player (id, name, team_id) values (174, 'Silvester Cobson', 28);
-insert into player (id, name, team_id) values (175, 'Mattie Navein', 42);
-insert into player (id, name, team_id) values (176, 'Shantee Hugin', 29);
-insert into player (id, name, team_id) values (177, 'Cory Burt', 21);
-insert into player (id, name, team_id) values (178, 'Sara-ann Olivari', 4);
-insert into player (id, name, team_id) values (179, 'Clea Picford', 3);
-insert into player (id, name, team_id) values (180, 'Lucio Raincin', 18);
-insert into player (id, name, team_id) values (181, 'Kerby Meece', 38);
-insert into player (id, name, team_id) values (182, 'Kassia Leisk', 23);
-insert into player (id, name, team_id) values (183, 'Thalia Ditchburn', 48);
-insert into player (id, name, team_id) values (184, 'Corrie Sergean', 35);
-insert into player (id, name, team_id) values (185, 'Paul Ebbett', 35);
-insert into player (id, name, team_id) values (186, 'Pavel Stockbridge', 3);
-insert into player (id, name, team_id) values (187, 'Sandy Callen', 33);
-insert into player (id, name, team_id) values (188, 'Jami Demcik', 18);
-insert into player (id, name, team_id) values (189, 'Estelle Burridge', 37);
-insert into player (id, name, team_id) values (190, 'Hasheem Lesley', 12);
-insert into player (id, name, team_id) values (191, 'Ailsun Morgon', 20);
-insert into player (id, name, team_id) values (192, 'Hedi Andrioletti', 37);
-insert into player (id, name, team_id) values (193, 'Fern Hilldrup', 11);
-insert into player (id, name, team_id) values (194, 'Ethelbert Hartlebury', 11);
-insert into player (id, name, team_id) values (195, 'Fanny Kock', 22);
-insert into player (id, name, team_id) values (196, 'Daisi Caspell', 44);
-insert into player (id, name, team_id) values (197, 'Karoline Cattemull', 48);
-insert into player (id, name, team_id) values (198, 'Eachelle Edgcombe', 33);
-insert into player (id, name, team_id) values (199, 'Neville Sant', 38);
-insert into player (id, name, team_id) values (200, 'Euell Muller', 10);
-insert into player (id, name, team_id) values (201, 'Francoise Iashvili', 26);
-insert into player (id, name, team_id) values (202, 'Uri Falks', 49);
-insert into player (id, name, team_id) values (203, 'Troy Tuley', 2);
-insert into player (id, name, team_id) values (204, 'Garland Windebank', 10);
-insert into player (id, name, team_id) values (205, 'Hadrian Vittel', 11);
-insert into player (id, name, team_id) values (206, 'Randy Duckerin', 30);
-insert into player (id, name, team_id) values (207, 'Alverta Goor', 19);
-insert into player (id, name, team_id) values (208, 'Fernanda Pulley', 31);
-insert into player (id, name, team_id) values (209, 'Zacharia Rusbridge', 26);
-insert into player (id, name, team_id) values (210, 'Sylvia Cosgry', 27);
-insert into player (id, name, team_id) values (211, 'Wendie Carde', 11);
-insert into player (id, name, team_id) values (212, 'Rosemarie Carnegie', 37);
-insert into player (id, name, team_id) values (213, 'Mikael Colmore', 40);
-insert into player (id, name, team_id) values (214, 'Juana Giacobelli', 20);
-insert into player (id, name, team_id) values (215, 'Augie Faccini', 10);
-insert into player (id, name, team_id) values (216, 'Clarita Kobisch', 3);
-insert into player (id, name, team_id) values (217, 'Brittaney Cramphorn', 17);
-insert into player (id, name, team_id) values (218, 'Elinor Cokely', 47);
-insert into player (id, name, team_id) values (219, 'Janine O''Lunny', 5);
-insert into player (id, name, team_id) values (220, 'Annemarie Openshaw', 42);
-insert into player (id, name, team_id) values (221, 'Clarabelle Stollberger', 32);
-insert into player (id, name, team_id) values (222, 'Demetris Malmar', 32);
-insert into player (id, name, team_id) values (223, 'Guy Kinsman', 9);
-insert into player (id, name, team_id) values (224, 'Katrina Porker', 41);
-insert into player (id, name, team_id) values (225, 'Edmund Houndson', 35);
-insert into player (id, name, team_id) values (226, 'Kirsteni Brame', 6);
-insert into player (id, name, team_id) values (227, 'Yolanthe Sange', 17);
-insert into player (id, name, team_id) values (228, 'Dasya Gasken', 24);
-insert into player (id, name, team_id) values (229, 'Eldon Howat', 26);
-insert into player (id, name, team_id) values (230, 'Sarajane Sallans', 18);
-insert into player (id, name, team_id) values (231, 'Biddy Capponer', 9);
-insert into player (id, name, team_id) values (232, 'Estrellita Spratley', 36);
-insert into player (id, name, team_id) values (233, 'Grenville Ord', 5);
-insert into player (id, name, team_id) values (234, 'Babb Matevushev', 27);
-insert into player (id, name, team_id) values (235, 'Kinsley Kleingrub', 50);
-insert into player (id, name, team_id) values (236, 'Bertha Spragg', 12);
-insert into player (id, name, team_id) values (237, 'Berton Jenman', 11);
-insert into player (id, name, team_id) values (238, 'Nikos Arnout', 6);
-insert into player (id, name, team_id) values (239, 'Reinaldos Comino', 42);
-insert into player (id, name, team_id) values (240, 'Netta Lillegard', 38);
-insert into player (id, name, team_id) values (241, 'Alicia Nestoruk', 49);
-insert into player (id, name, team_id) values (242, 'Hilly Penylton', 13);
-insert into player (id, name, team_id) values (243, 'Bee Ledgerton', 24);
-insert into player (id, name, team_id) values (244, 'Lynnet Imason', 42);
-insert into player (id, name, team_id) values (245, 'Darlleen Oaten', 49);
-insert into player (id, name, team_id) values (246, 'Jeffie Iskower', 8);
-insert into player (id, name, team_id) values (247, 'Caspar Gowry', 28);
-insert into player (id, name, team_id) values (248, 'Kaye Schaben', 35);
-insert into player (id, name, team_id) values (249, 'Hazel Frye', 47);
-insert into player (id, name, team_id) values (250, 'Rhodia Verity', 28);
-insert into player (id, name, team_id) values (251, 'Caye Cadden', 13);
-insert into player (id, name, team_id) values (252, 'Henrik Allone', 19);
-insert into player (id, name, team_id) values (253, 'Teresa Itschakov', 12);
-insert into player (id, name, team_id) values (254, 'Cari MacRonald', 47);
-insert into player (id, name, team_id) values (255, 'Erina Cundict', 29);
-insert into player (id, name, team_id) values (256, 'Normie Beals', 50);
-insert into player (id, name, team_id) values (257, 'Ondrea Carleman', 43);
-insert into player (id, name, team_id) values (258, 'Alissa Ranson', 30);
-insert into player (id, name, team_id) values (259, 'Gertruda Nowlan', 40);
-insert into player (id, name, team_id) values (260, 'Tiphanie Kimbrough', 21);
-insert into player (id, name, team_id) values (261, 'Amabel Matthensen', 24);
-insert into player (id, name, team_id) values (262, 'Annadiane Del Castello', 24);
-insert into player (id, name, team_id) values (263, 'Cirstoforo Georgelin', 29);
-insert into player (id, name, team_id) values (264, 'Brit Shipton', 3);
-insert into player (id, name, team_id) values (265, 'Desi Getty', 39);
-insert into player (id, name, team_id) values (266, 'Luz Hearne', 18);
-insert into player (id, name, team_id) values (267, 'Sofie Midghall', 48);
-insert into player (id, name, team_id) values (268, 'Maurene Pougher', 15);
-insert into player (id, name, team_id) values (269, 'Deni Blandamere', 34);
-insert into player (id, name, team_id) values (270, 'Arne Gives', 16);
-insert into player (id, name, team_id) values (271, 'Brande Bricklebank', 10);
-insert into player (id, name, team_id) values (272, 'Barn Rainville', 20);
-insert into player (id, name, team_id) values (273, 'Thorn Orriss', 1);
-insert into player (id, name, team_id) values (274, 'Catharine Guterson', 35);
-insert into player (id, name, team_id) values (275, 'Oran Torrie', 37);
-insert into player (id, name, team_id) values (276, 'Valeda Crowhurst', 42);
-insert into player (id, name, team_id) values (277, 'Georgeanne Anderson', 14);
-insert into player (id, name, team_id) values (278, 'Cristian Naisbitt', 42);
-insert into player (id, name, team_id) values (279, 'Delano Bullock', 7);
-insert into player (id, name, team_id) values (280, 'Efrem Coopman', 50);
-insert into player (id, name, team_id) values (281, 'Edwin Cottingham', 9);
-insert into player (id, name, team_id) values (282, 'Herminia Balhatchet', 3);
-insert into player (id, name, team_id) values (283, 'Trula Grichukhanov', 19);
-insert into player (id, name, team_id) values (284, 'Lynda Cregg', 46);
-insert into player (id, name, team_id) values (285, 'Libbey Rusbridge', 23);
-insert into player (id, name, team_id) values (286, 'Melanie Philo', 8);
-insert into player (id, name, team_id) values (287, 'Willa Stratford', 12);
-insert into player (id, name, team_id) values (288, 'Culver Ingilson', 6);
-insert into player (id, name, team_id) values (289, 'Iggie Inge', 29);
-insert into player (id, name, team_id) values (290, 'Alleen Flynn', 21);
-insert into player (id, name, team_id) values (291, 'Cosette Cockell', 50);
-insert into player (id, name, team_id) values (292, 'Lisabeth Craigmile', 7);
-insert into player (id, name, team_id) values (293, 'Stanislaw Jatczak', 34);
-insert into player (id, name, team_id) values (294, 'Codie Dowtry', 26);
-insert into player (id, name, team_id) values (295, 'Korrie Mioni', 44);
-insert into player (id, name, team_id) values (296, 'Orlan Ashurst', 43);
-insert into player (id, name, team_id) values (297, 'Claudia Gruszczak', 3);
-insert into player (id, name, team_id) values (298, 'Hamlin Dikels', 7);
-insert into player (id, name, team_id) values (299, 'Crosby Tomaszek', 43);
-insert into player (id, name, team_id) values (300, 'Giulia Double', 35);
-insert into player (id, name, team_id) values (301, 'Clifford Hammersley', 36);
-insert into player (id, name, team_id) values (302, 'Noe Ruddoch', 28);
-insert into player (id, name, team_id) values (303, 'Louis Guido', 18);
-insert into player (id, name, team_id) values (304, 'Dal Dargavel', 22);
-insert into player (id, name, team_id) values (305, 'Essie Gresser', 47);
-insert into player (id, name, team_id) values (306, 'Corliss Broadis', 10);
-insert into player (id, name, team_id) values (307, 'Zacharie Piperley', 9);
-insert into player (id, name, team_id) values (308, 'Ignatius Maleck', 9);
-insert into player (id, name, team_id) values (309, 'Michail Jordanson', 22);
-insert into player (id, name, team_id) values (310, 'Terrance Brassington', 6);
-insert into player (id, name, team_id) values (311, 'Ashley Thompsett', 46);
-insert into player (id, name, team_id) values (312, 'Wake Tourot', 23);
-insert into player (id, name, team_id) values (313, 'Jock Cleeves', 32);
-insert into player (id, name, team_id) values (314, 'Norah Muff', 17);
-insert into player (id, name, team_id) values (315, 'Lila Gawkroge', 43);
-insert into player (id, name, team_id) values (316, 'Celinda Sprowell', 50);
-insert into player (id, name, team_id) values (317, 'Missie Huge', 28);
-insert into player (id, name, team_id) values (318, 'Lena Elix', 19);
-insert into player (id, name, team_id) values (319, 'Corabelle Balaizot', 23);
-insert into player (id, name, team_id) values (320, 'Krystle Yakunchikov', 6);
-insert into player (id, name, team_id) values (321, 'Bill Gallety', 17);
-insert into player (id, name, team_id) values (322, 'Darrin Ramsdell', 22);
-insert into player (id, name, team_id) values (323, 'Pavla Painter', 14);
-insert into player (id, name, team_id) values (324, 'Dirk Konke', 13);
-insert into player (id, name, team_id) values (325, 'Sallie Borgne', 29);
-insert into player (id, name, team_id) values (326, 'Sonja Gearing', 37);
-insert into player (id, name, team_id) values (327, 'Isidore Fesby', 43);
-insert into player (id, name, team_id) values (328, 'Bruis McGonigal', 47);
-insert into player (id, name, team_id) values (329, 'Maurise De Matteis', 50);
-insert into player (id, name, team_id) values (330, 'Boris Akess', 17);
-insert into player (id, name, team_id) values (331, 'Guthry McLorinan', 38);
-insert into player (id, name, team_id) values (332, 'Yanaton Bruce', 49);
-insert into player (id, name, team_id) values (333, 'Clari Logue', 4);
-insert into player (id, name, team_id) values (334, 'Roderigo Brotherhood', 33);
-insert into player (id, name, team_id) values (335, 'Dalston Barhims', 29);
-insert into player (id, name, team_id) values (336, 'Pattie Tong', 9);
-insert into player (id, name, team_id) values (337, 'Abraham Sharland', 38);
-insert into player (id, name, team_id) values (338, 'Tony Coneybeer', 37);
-insert into player (id, name, team_id) values (339, 'Sheffield Dunsmuir', 46);
-insert into player (id, name, team_id) values (340, 'Kendre Mitchiner', 34);
-insert into player (id, name, team_id) values (341, 'Ede Kevis', 37);
-insert into player (id, name, team_id) values (342, 'Fara Thyng', 25);
-insert into player (id, name, team_id) values (343, 'Griffith Pennicott', 45);
-insert into player (id, name, team_id) values (344, 'Marisa Pasterfield', 4);
-insert into player (id, name, team_id) values (345, 'Goran Dank', 50);
-insert into player (id, name, team_id) values (346, 'Fredric McGrowther', 42);
-insert into player (id, name, team_id) values (347, 'Donall Bandey', 44);
-insert into player (id, name, team_id) values (348, 'Lynn Cohr', 9);
-insert into player (id, name, team_id) values (349, 'Orion Wilcott', 40);
-insert into player (id, name, team_id) values (350, 'Violante Fairfoot', 26);
-insert into player (id, name, team_id) values (351, 'Tilly Demougeot', 49);
-insert into player (id, name, team_id) values (352, 'Brandtr Obern', 28);
-insert into player (id, name, team_id) values (353, 'Vanya Zealey', 5);
-insert into player (id, name, team_id) values (354, 'Gard Kervin', 1);
-insert into player (id, name, team_id) values (355, 'Coriss Merriment', 10);
-insert into player (id, name, team_id) values (356, 'Brent Basilotta', 45);
-insert into player (id, name, team_id) values (357, 'Tiffie Gottelier', 1);
-insert into player (id, name, team_id) values (358, 'Curcio Stirley', 27);
-insert into player (id, name, team_id) values (359, 'Danny Creeboe', 21);
-insert into player (id, name, team_id) values (360, 'Mellisa Maeer', 5);
-insert into player (id, name, team_id) values (361, 'Reed Farherty', 36);
-insert into player (id, name, team_id) values (362, 'Leontyne Rudsdell', 50);
-insert into player (id, name, team_id) values (363, 'Mellisa Greener', 21);
-insert into player (id, name, team_id) values (364, 'Marnia Stratley', 20);
-insert into player (id, name, team_id) values (365, 'Orion Peppin', 12);
-insert into player (id, name, team_id) values (366, 'Myrilla Clow', 4);
-insert into player (id, name, team_id) values (367, 'Selig Hanlin', 38);
-insert into player (id, name, team_id) values (368, 'Enoch Dunseath', 30);
-insert into player (id, name, team_id) values (369, 'Donnie Jedryka', 3);
-insert into player (id, name, team_id) values (370, 'Fernanda Henningham', 26);
-insert into player (id, name, team_id) values (371, 'Barry Robatham', 8);
-insert into player (id, name, team_id) values (372, 'Rees Habergham', 10);
-insert into player (id, name, team_id) values (373, 'Angeline Melland', 23);
-insert into player (id, name, team_id) values (374, 'Thaxter Everwin', 3);
-insert into player (id, name, team_id) values (375, 'Russ Cottrell', 21);
-insert into player (id, name, team_id) values (376, 'Giustina Donaway', 5);
-insert into player (id, name, team_id) values (377, 'Sayer Povey', 23);
-insert into player (id, name, team_id) values (378, 'Fay Dono', 46);
-insert into player (id, name, team_id) values (379, 'Phyllida Jorio', 2);
-insert into player (id, name, team_id) values (380, 'Clarine Hawney', 29);
-insert into player (id, name, team_id) values (381, 'Park Suddell', 38);
-insert into player (id, name, team_id) values (382, 'Duky Davy', 2);
-insert into player (id, name, team_id) values (383, 'Chance Leads', 49);
-insert into player (id, name, team_id) values (384, 'Lotti Adelsberg', 1);
-insert into player (id, name, team_id) values (385, 'Tomas Jurisic', 35);
-insert into player (id, name, team_id) values (386, 'Barbi Rowdell', 32);
-insert into player (id, name, team_id) values (387, 'Tremain Hansley', 22);
-insert into player (id, name, team_id) values (388, 'Gallagher Sheringham', 6);
-insert into player (id, name, team_id) values (389, 'Gabriella Sussems', 4);
-insert into player (id, name, team_id) values (390, 'Essa Janeczek', 6);
-insert into player (id, name, team_id) values (391, 'Catriona Andreas', 37);
-insert into player (id, name, team_id) values (392, 'Godart Wegner', 27);
-insert into player (id, name, team_id) values (393, 'Annetta Jurisch', 24);
-insert into player (id, name, team_id) values (394, 'Faber Moen', 8);
-insert into player (id, name, team_id) values (395, 'Debbi Nisot', 48);
-insert into player (id, name, team_id) values (396, 'Perry Whorall', 48);
-insert into player (id, name, team_id) values (397, 'Laura Seelbach', 8);
-insert into player (id, name, team_id) values (398, 'Cy Buck', 2);
-insert into player (id, name, team_id) values (399, 'Alexina Arthurs', 11);
-insert into player (id, name, team_id) values (400, 'Dory Riches', 6);
-insert into player (id, name, team_id) values (401, 'Pia Leivesley', 22);
-insert into player (id, name, team_id) values (402, 'Rivkah Leynton', 16);
-insert into player (id, name, team_id) values (403, 'Viv Clawsley', 36);
-insert into player (id, name, team_id) values (404, 'Paige Dunphy', 9);
-insert into player (id, name, team_id) values (405, 'Percy Cammish', 14);
-insert into player (id, name, team_id) values (406, 'Gauthier Borges', 35);
-insert into player (id, name, team_id) values (407, 'Josey Hillum', 17);
-insert into player (id, name, team_id) values (408, 'Meara Syne', 7);
-insert into player (id, name, team_id) values (409, 'Naomi O''Kuddyhy', 40);
-insert into player (id, name, team_id) values (410, 'Barris Tibbits', 10);
-insert into player (id, name, team_id) values (411, 'Georgi Dancy', 49);
-insert into player (id, name, team_id) values (412, 'Seana Le Houx', 44);
-insert into player (id, name, team_id) values (413, 'Sheba Braithwait', 43);
-insert into player (id, name, team_id) values (414, 'Kamillah Prettejohns', 14);
-insert into player (id, name, team_id) values (415, 'Stanley Vargas', 46);
-insert into player (id, name, team_id) values (416, 'Idalia Crebott', 9);
-insert into player (id, name, team_id) values (417, 'Janice Lambirth', 21);
-insert into player (id, name, team_id) values (418, 'Barb Ham', 6);
-insert into player (id, name, team_id) values (419, 'Cozmo Sherlaw', 10);
-insert into player (id, name, team_id) values (420, 'Vinnie Sebring', 49);
-insert into player (id, name, team_id) values (421, 'Kendall Glennon', 2);
-insert into player (id, name, team_id) values (422, 'Alanah Horsley', 50);
-insert into player (id, name, team_id) values (423, 'Bat Coltherd', 34);
-insert into player (id, name, team_id) values (424, 'Elaina Wyke', 14);
-insert into player (id, name, team_id) values (425, 'Whittaker Ucchino', 12);
-insert into player (id, name, team_id) values (426, 'Judye Caldecourt', 36);
-insert into player (id, name, team_id) values (427, 'Torie Muir', 15);
-insert into player (id, name, team_id) values (428, 'Daron Mettericke', 47);
-insert into player (id, name, team_id) values (429, 'Sydelle Mitrikhin', 6);
-insert into player (id, name, team_id) values (430, 'Aurea Deschelle', 10);
-insert into player (id, name, team_id) values (431, 'Cortie Becket', 50);
-insert into player (id, name, team_id) values (432, 'Ashlen Soonhouse', 1);
-insert into player (id, name, team_id) values (433, 'Amber Alleburton', 36);
-insert into player (id, name, team_id) values (434, 'Amil Clemas', 1);
-insert into player (id, name, team_id) values (435, 'Analiese Hail', 46);
-insert into player (id, name, team_id) values (436, 'Jemmy Pendered', 37);
-insert into player (id, name, team_id) values (437, 'Mayer Leipnik', 43);
-insert into player (id, name, team_id) values (438, 'Victoir Garie', 19);
-insert into player (id, name, team_id) values (439, 'Brooke Baxendale', 16);
-insert into player (id, name, team_id) values (440, 'Corny Gamett', 46);
-insert into player (id, name, team_id) values (441, 'Blinny Golsworthy', 12);
-insert into player (id, name, team_id) values (442, 'Addy Girardet', 4);
-insert into player (id, name, team_id) values (443, 'Templeton Ginnety', 4);
-insert into player (id, name, team_id) values (444, 'Iain Hurren', 23);
-insert into player (id, name, team_id) values (445, 'Petronia Clutterham', 46);
-insert into player (id, name, team_id) values (446, 'Papageno Girke', 42);
-insert into player (id, name, team_id) values (447, 'Jilli Larraway', 10);
-insert into player (id, name, team_id) values (448, 'Sollie Abbis', 42);
-insert into player (id, name, team_id) values (449, 'Sharity McAuslene', 35);
-insert into player (id, name, team_id) values (450, 'Osborne Millson', 12);
-insert into player (id, name, team_id) values (451, 'Mandy Kiltie', 10);
-insert into player (id, name, team_id) values (452, 'Evan Slocket', 25);
-insert into player (id, name, team_id) values (453, 'Devan Ramard', 19);
-insert into player (id, name, team_id) values (454, 'Gussie Bruhke', 44);
-insert into player (id, name, team_id) values (455, 'Alfonse Gilchriest', 26);
-insert into player (id, name, team_id) values (456, 'Zilvia Hardwin', 6);
-insert into player (id, name, team_id) values (457, 'Faun Haysey', 14);
-insert into player (id, name, team_id) values (458, 'Marline Stert', 48);
-insert into player (id, name, team_id) values (459, 'Theresa Faux', 38);
-insert into player (id, name, team_id) values (460, 'Nanette Madelin', 35);
-insert into player (id, name, team_id) values (461, 'Meta O''Lehane', 28);
-insert into player (id, name, team_id) values (462, 'Clea Bonaire', 37);
-insert into player (id, name, team_id) values (463, 'Doti Ferrick', 47);
-insert into player (id, name, team_id) values (464, 'Yasmeen Rolph', 46);
-insert into player (id, name, team_id) values (465, 'Sissy Parham', 46);
-insert into player (id, name, team_id) values (466, 'Fawne Bearn', 4);
-insert into player (id, name, team_id) values (467, 'Mord Kelcey', 15);
-insert into player (id, name, team_id) values (468, 'Dulci Loveridge', 12);
-insert into player (id, name, team_id) values (469, 'Zelda Duligal', 31);
-insert into player (id, name, team_id) values (470, 'Tori Horwell', 7);
-insert into player (id, name, team_id) values (471, 'Mariquilla Wankel', 17);
-insert into player (id, name, team_id) values (472, 'Phedra Lysaght', 13);
-insert into player (id, name, team_id) values (473, 'Harmonie de Mullett', 7);
-insert into player (id, name, team_id) values (474, 'Chrissie Treasure', 43);
-insert into player (id, name, team_id) values (475, 'Lorain Arnaud', 2);
-insert into player (id, name, team_id) values (476, 'Shelley Findon', 43);
-insert into player (id, name, team_id) values (477, 'Adelina Hinrichsen', 47);
-insert into player (id, name, team_id) values (478, 'Aubrey Firpo', 39);
-insert into player (id, name, team_id) values (479, 'Farleigh Di Frisco', 36);
-insert into player (id, name, team_id) values (480, 'Shaine Slocumb', 32);
-insert into player (id, name, team_id) values (481, 'Jennifer Flanders', 4);
-insert into player (id, name, team_id) values (482, 'Randall McPheat', 13);
-insert into player (id, name, team_id) values (483, 'Gannon Heffernon', 3);
-insert into player (id, name, team_id) values (484, 'Sauncho Stronough', 38);
-insert into player (id, name, team_id) values (485, 'Halli Maker', 15);
-insert into player (id, name, team_id) values (486, 'Aggi Dabourne', 48);
-insert into player (id, name, team_id) values (487, 'Arleen Shone', 3);
-insert into player (id, name, team_id) values (488, 'Kurtis Marchello', 38);
-insert into player (id, name, team_id) values (489, 'Marwin Sallings', 50);
-insert into player (id, name, team_id) values (490, 'Giulio Baudin', 42);
-insert into player (id, name, team_id) values (491, 'Emelyne Jennaway', 20);
-insert into player (id, name, team_id) values (492, 'Man Bercevelo', 43);
-insert into player (id, name, team_id) values (493, 'Drake Burdytt', 40);
-insert into player (id, name, team_id) values (494, 'Gardie Summerlee', 29);
-insert into player (id, name, team_id) values (495, 'Riane Benedikt', 39);
-insert into player (id, name, team_id) values (496, 'Leopold Caw', 47);
-insert into player (id, name, team_id) values (497, 'Nanete Hamon', 3);
-insert into player (id, name, team_id) values (498, 'Paige Mawditt', 1);
-insert into player (id, name, team_id) values (499, 'Barnett McCahill', 43);
-insert into player (id, name, team_id) values (500, 'Guthry Chaulk', 13);
-insert into player (id, name, team_id) values (501, 'Raphaela Guswell', 12);
-insert into player (id, name, team_id) values (502, 'Leigh Dursley', 3);
-insert into player (id, name, team_id) values (503, 'Felicdad Pauley', 49);
-insert into player (id, name, team_id) values (504, 'Rhodia Peaple', 35);
-insert into player (id, name, team_id) values (505, 'Stern Stealey', 42);
-insert into player (id, name, team_id) values (506, 'Beverie Simoncelli', 37);
-insert into player (id, name, team_id) values (507, 'Eva Andrea', 26);
-insert into player (id, name, team_id) values (508, 'Mallory Rawkesby', 44);
-insert into player (id, name, team_id) values (509, 'Jeniece Duckering', 23);
-insert into player (id, name, team_id) values (510, 'Joshua Dunan', 20);
-insert into player (id, name, team_id) values (511, 'Bentlee Beaford', 41);
-insert into player (id, name, team_id) values (512, 'Timmy Evesque', 50);
-insert into player (id, name, team_id) values (513, 'Llewellyn Franca', 26);
-insert into player (id, name, team_id) values (514, 'Cherice Kenningham', 14);
-insert into player (id, name, team_id) values (515, 'Malinde Brackpool', 30);
-insert into player (id, name, team_id) values (516, 'Ira McCaw', 4);
-insert into player (id, name, team_id) values (517, 'Kass Newlands', 25);
-insert into player (id, name, team_id) values (518, 'Rosalyn Rolance', 41);
-insert into player (id, name, team_id) values (519, 'Ingunna Faulkner', 9);
-insert into player (id, name, team_id) values (520, 'Brandtr Crocetto', 34);
-insert into player (id, name, team_id) values (521, 'Kin Puller', 44);
-insert into player (id, name, team_id) values (522, 'Theobald Drance', 31);
-insert into player (id, name, team_id) values (523, 'Shelden Kemster', 47);
-insert into player (id, name, team_id) values (524, 'Gualterio Diemer', 33);
-insert into player (id, name, team_id) values (525, 'Tiphanie Maydwell', 39);
-insert into player (id, name, team_id) values (526, 'Nelia Roscoe', 28);
-insert into player (id, name, team_id) values (527, 'Barton Pavese', 48);
-insert into player (id, name, team_id) values (528, 'Halimeda Ranfield', 38);
-insert into player (id, name, team_id) values (529, 'Goober Durban', 10);
-insert into player (id, name, team_id) values (530, 'Carroll Delf', 6);
-insert into player (id, name, team_id) values (531, 'Corliss Heddy', 27);
-insert into player (id, name, team_id) values (532, 'Eustace De la Yglesia', 4);
-insert into player (id, name, team_id) values (533, 'Stanley Olyonov', 1);
-insert into player (id, name, team_id) values (534, 'Sawyere Caunt', 10);
-insert into player (id, name, team_id) values (535, 'Christoper Treverton', 31);
-insert into player (id, name, team_id) values (536, 'Ed Grishakov', 16);
-insert into player (id, name, team_id) values (537, 'Tessie Boncore', 50);
-insert into player (id, name, team_id) values (538, 'Basilius Lafford', 6);
-insert into player (id, name, team_id) values (539, 'Kingsly Dando', 21);
-insert into player (id, name, team_id) values (540, 'Fairleigh Cottill', 29);
-insert into player (id, name, team_id) values (541, 'Adelheid Waterworth', 28);
-insert into player (id, name, team_id) values (542, 'Krystle Cahen', 49);
-insert into player (id, name, team_id) values (543, 'Falito Malamore', 1);
-insert into player (id, name, team_id) values (544, 'Ronni Pickhaver', 35);
-insert into player (id, name, team_id) values (545, 'Kearney Nelm', 20);
-insert into player (id, name, team_id) values (546, 'Tuck Martellini', 19);
-insert into player (id, name, team_id) values (547, 'Tiffani Chasteau', 39);
-insert into player (id, name, team_id) values (548, 'Dominique Greenhough', 35);
-insert into player (id, name, team_id) values (549, 'Jessalyn Bartel', 50);
-insert into player (id, name, team_id) values (550, 'Wallache Shafier', 22);
-insert into player (id, name, team_id) values (551, 'Anders Romaynes', 31);
-insert into player (id, name, team_id) values (552, 'Bale Wrennall', 16);
-insert into player (id, name, team_id) values (553, 'Celina Rittelmeyer', 17);
-insert into player (id, name, team_id) values (554, 'Wash Doidge', 9);
-insert into player (id, name, team_id) values (555, 'Aurlie Marklin', 40);
-insert into player (id, name, team_id) values (556, 'Horacio Farington', 21);
-insert into player (id, name, team_id) values (557, 'Gussie Fligg', 9);
-insert into player (id, name, team_id) values (558, 'Langston Saffe', 44);
-insert into player (id, name, team_id) values (559, 'Allis Greatex', 1);
-insert into player (id, name, team_id) values (560, 'Putnam Darwent', 10);
-insert into player (id, name, team_id) values (561, 'Jarrett Tiernan', 9);
-insert into player (id, name, team_id) values (562, 'Melly Starrs', 39);
-insert into player (id, name, team_id) values (563, 'Kingston Sisley', 22);
-insert into player (id, name, team_id) values (564, 'Eugenius Cluely', 1);
-insert into player (id, name, team_id) values (565, 'Yolane Gulk', 36);
-insert into player (id, name, team_id) values (566, 'Clark Arbuckle', 14);
-insert into player (id, name, team_id) values (567, 'Theo Blakeley', 43);
-insert into player (id, name, team_id) values (568, 'Amos Leel', 11);
-insert into player (id, name, team_id) values (569, 'Adriano Scarrott', 5);
-insert into player (id, name, team_id) values (570, 'Laurianne Birkmyr', 34);
-insert into player (id, name, team_id) values (571, 'Robenia Bellas', 49);
-insert into player (id, name, team_id) values (572, 'Dougy Yewdall', 34);
-insert into player (id, name, team_id) values (573, 'Corry Baulch', 36);
-insert into player (id, name, team_id) values (574, 'Gregoor Bygrove', 7);
-insert into player (id, name, team_id) values (575, 'Willy Ragborne', 36);
-insert into player (id, name, team_id) values (576, 'Kalinda Roust', 12);
-insert into player (id, name, team_id) values (577, 'Karlik Hofner', 27);
-insert into player (id, name, team_id) values (578, 'Davina Woollett', 49);
-insert into player (id, name, team_id) values (579, 'Vallie Maher', 27);
-insert into player (id, name, team_id) values (580, 'Ryann Landells', 48);
-insert into player (id, name, team_id) values (581, 'Malissa Goodlud', 45);
-insert into player (id, name, team_id) values (582, 'Mabelle Lisciardelli', 33);
-insert into player (id, name, team_id) values (583, 'Averil Sawfoot', 42);
-insert into player (id, name, team_id) values (584, 'Scotty Highway', 37);
-insert into player (id, name, team_id) values (585, 'Mano Dredge', 37);
-insert into player (id, name, team_id) values (586, 'Lorne Sherrum', 14);
-insert into player (id, name, team_id) values (587, 'Dyane Houdhury', 41);
-insert into player (id, name, team_id) values (588, 'Odele Blaymires', 40);
-insert into player (id, name, team_id) values (589, 'Piggy Gullis', 25);
-insert into player (id, name, team_id) values (590, 'Jehanna Peskett', 23);
-insert into player (id, name, team_id) values (591, 'Margarete Gumery', 10);
-insert into player (id, name, team_id) values (592, 'Fredric Yanshin', 13);
-insert into player (id, name, team_id) values (593, 'Ermin McGonnell', 31);
-insert into player (id, name, team_id) values (594, 'Cori Ownsworth', 18);
-insert into player (id, name, team_id) values (595, 'Abbi Curnucke', 13);
-insert into player (id, name, team_id) values (596, 'Rosabel Midgely', 25);
-insert into player (id, name, team_id) values (597, 'Janelle Shillam', 48);
-insert into player (id, name, team_id) values (598, 'Chase Bourne', 45);
-insert into player (id, name, team_id) values (599, 'Robinetta Huetson', 36);
-insert into player (id, name, team_id) values (600, 'Cristi Unworth', 48);
-insert into player (id, name, team_id) values (601, 'Corena Mecchi', 22);
-insert into player (id, name, team_id) values (602, 'Doll Ladbrooke', 50);
-insert into player (id, name, team_id) values (603, 'Molly Cuseck', 7);
-insert into player (id, name, team_id) values (604, 'Emmi Comino', 26);
-insert into player (id, name, team_id) values (605, 'Garik McLucky', 36);
-insert into player (id, name, team_id) values (606, 'Coleen Stickens', 17);
-insert into player (id, name, team_id) values (607, 'Sallee Baudinelli', 24);
-insert into player (id, name, team_id) values (608, 'Barnabe Eccleshare', 3);
-insert into player (id, name, team_id) values (609, 'Amitie Beese', 48);
-insert into player (id, name, team_id) values (610, 'Iormina Dawkes', 21);
-insert into player (id, name, team_id) values (611, 'Steffane Nollet', 47);
-insert into player (id, name, team_id) values (612, 'Cary Bridden', 2);
-insert into player (id, name, team_id) values (613, 'Joby Usmar', 23);
-insert into player (id, name, team_id) values (614, 'Ilaire Eggins', 39);
-insert into player (id, name, team_id) values (615, 'Cortie Blunn', 6);
-insert into player (id, name, team_id) values (616, 'Crosby McKirton', 50);
-insert into player (id, name, team_id) values (617, 'Quinn Carnie', 37);
-insert into player (id, name, team_id) values (618, 'Jillayne Umfrey', 49);
-insert into player (id, name, team_id) values (619, 'Joelle Iacovuzzi', 15);
-insert into player (id, name, team_id) values (620, 'Larine Robardley', 5);
-insert into player (id, name, team_id) values (621, 'Dyanna Sams', 4);
-insert into player (id, name, team_id) values (622, 'Lorin Matczak', 1);
-insert into player (id, name, team_id) values (623, 'Erica Adolfsen', 14);
-insert into player (id, name, team_id) values (624, 'Jacquelin Dennert', 24);
-insert into player (id, name, team_id) values (625, 'Hoebart Duiged', 20);
-insert into player (id, name, team_id) values (626, 'Crichton Goley', 12);
-insert into player (id, name, team_id) values (627, 'Wolfie Tremoulet', 35);
-insert into player (id, name, team_id) values (628, 'Darby Gollop', 30);
-insert into player (id, name, team_id) values (629, 'Ned Tinman', 23);
-insert into player (id, name, team_id) values (630, 'Matilde Antos', 36);
-insert into player (id, name, team_id) values (631, 'Harriet Porker', 5);
-insert into player (id, name, team_id) values (632, 'Mariejeanne Burkin', 47);
-insert into player (id, name, team_id) values (633, 'Jourdan Malenfant', 30);
-insert into player (id, name, team_id) values (634, 'Clarissa Krysztofiak', 3);
-insert into player (id, name, team_id) values (635, 'Lilly Revance', 38);
-insert into player (id, name, team_id) values (636, 'Lorianna Romagosa', 18);
-insert into player (id, name, team_id) values (637, 'Natalee Caslake', 13);
-insert into player (id, name, team_id) values (638, 'Tiffanie Pitchers', 11);
-insert into player (id, name, team_id) values (639, 'Margarethe Mc Giffin', 46);
-insert into player (id, name, team_id) values (640, 'Hoebart Dible', 5);
-insert into player (id, name, team_id) values (641, 'Evy Oglesbee', 11);
-insert into player (id, name, team_id) values (642, 'Jamey Strass', 21);
-insert into player (id, name, team_id) values (643, 'Kristin Bridewell', 20);
-insert into player (id, name, team_id) values (644, 'Noni Coppin', 39);
-insert into player (id, name, team_id) values (645, 'Theodore Pele', 34);
-insert into player (id, name, team_id) values (646, 'Samara Nester', 3);
-insert into player (id, name, team_id) values (647, 'Sada Sunshine', 32);
-insert into player (id, name, team_id) values (648, 'Verena Giannasi', 25);
-insert into player (id, name, team_id) values (649, 'Margarethe Sherrum', 4);
-insert into player (id, name, team_id) values (650, 'Dode Maggorini', 4);
-insert into player (id, name, team_id) values (651, 'Frederigo Creech', 36);
-insert into player (id, name, team_id) values (652, 'Nickie Punchard', 23);
-insert into player (id, name, team_id) values (653, 'Owen Ulyatt', 22);
-insert into player (id, name, team_id) values (654, 'Robbin Le Breton', 19);
-insert into player (id, name, team_id) values (655, 'Daile McCullen', 5);
-insert into player (id, name, team_id) values (656, 'Zarla Plain', 8);
-insert into player (id, name, team_id) values (657, 'Ermanno Jiri', 7);
-insert into player (id, name, team_id) values (658, 'Clari Glendzer', 21);
-insert into player (id, name, team_id) values (659, 'Sal Wainscoat', 37);
-insert into player (id, name, team_id) values (660, 'Dani White', 23);
-insert into player (id, name, team_id) values (661, 'Lorettalorna Beechcraft', 7);
-insert into player (id, name, team_id) values (662, 'Jarrett Vlahos', 28);
-insert into player (id, name, team_id) values (663, 'Maressa Baggally', 32);
-insert into player (id, name, team_id) values (664, 'Katlin O''Hagirtie', 22);
-insert into player (id, name, team_id) values (665, 'Arthur Harkin', 32);
-insert into player (id, name, team_id) values (666, 'Sergent McGaw', 12);
-insert into player (id, name, team_id) values (667, 'Neil McPake', 23);
-insert into player (id, name, team_id) values (668, 'Lorianne Humm', 7);
-insert into player (id, name, team_id) values (669, 'Jaclyn Christiensen', 6);
-insert into player (id, name, team_id) values (670, 'Zak Cockshoot', 14);
-insert into player (id, name, team_id) values (671, 'Leone Bareham', 27);
-insert into player (id, name, team_id) values (672, 'Aggy Dilston', 3);
-insert into player (id, name, team_id) values (673, 'Brigit Castagneri', 46);
-insert into player (id, name, team_id) values (674, 'Wilhelmine Handling', 13);
-insert into player (id, name, team_id) values (675, 'Roselin Wilby', 21);
-insert into player (id, name, team_id) values (676, 'Rafa Magson', 1);
-insert into player (id, name, team_id) values (677, 'Francesca Dymond', 20);
-insert into player (id, name, team_id) values (678, 'Linnea Butterly', 3);
-insert into player (id, name, team_id) values (679, 'Alwyn Dogerty', 46);
-insert into player (id, name, team_id) values (680, 'Dianemarie Penhalewick', 35);
-insert into player (id, name, team_id) values (681, 'Morie Vasler', 7);
-insert into player (id, name, team_id) values (682, 'Pearce Basnett', 1);
-insert into player (id, name, team_id) values (683, 'Bobbe Po', 23);
-insert into player (id, name, team_id) values (684, 'Annie Boissier', 11);
-insert into player (id, name, team_id) values (685, 'Cordelie Raiment', 36);
-insert into player (id, name, team_id) values (686, 'Noble Kingsnorth', 13);
-insert into player (id, name, team_id) values (687, 'Adamo Spiteri', 43);
-insert into player (id, name, team_id) values (688, 'Tan Heyfield', 10);
-insert into player (id, name, team_id) values (689, 'Ellswerth Champion', 48);
-insert into player (id, name, team_id) values (690, 'Andrea Setford', 36);
-insert into player (id, name, team_id) values (691, 'Leonanie Plank', 49);
-insert into player (id, name, team_id) values (692, 'Bank Kingshott', 4);
-insert into player (id, name, team_id) values (693, 'Sebastiano Stuffins', 28);
-insert into player (id, name, team_id) values (694, 'Mona Dukesbury', 15);
-insert into player (id, name, team_id) values (695, 'Parry Bluett', 40);
-insert into player (id, name, team_id) values (696, 'Elonore Gayler', 40);
-insert into player (id, name, team_id) values (697, 'Burtie Landa', 7);
-insert into player (id, name, team_id) values (698, 'Agnesse Ruslen', 42);
-insert into player (id, name, team_id) values (699, 'Massimo Mixhel', 2);
-insert into player (id, name, team_id) values (700, 'Gayla Vials', 42);
-insert into player (id, name, team_id) values (701, 'Madalyn Clotworthy', 46);
-insert into player (id, name, team_id) values (702, 'Bridie Enoch', 27);
-insert into player (id, name, team_id) values (703, 'Jimmy Tidgewell', 17);
-insert into player (id, name, team_id) values (704, 'Marybelle Worthington', 48);
-insert into player (id, name, team_id) values (705, 'Gabbey Cutcliffe', 20);
-insert into player (id, name, team_id) values (706, 'Roshelle Leander', 16);
-insert into player (id, name, team_id) values (707, 'Alma Murrum', 31);
-insert into player (id, name, team_id) values (708, 'Arabella Lewton', 7);
-insert into player (id, name, team_id) values (709, 'Tyrone Behrend', 50);
-insert into player (id, name, team_id) values (710, 'Con Fryman', 15);
-insert into player (id, name, team_id) values (711, 'Homere Taggert', 44);
-insert into player (id, name, team_id) values (712, 'Edmund Nock', 11);
-insert into player (id, name, team_id) values (713, 'Gabi McClounan', 17);
-insert into player (id, name, team_id) values (714, 'Wade Leitche', 32);
-insert into player (id, name, team_id) values (715, 'Ara Daulton', 8);
-insert into player (id, name, team_id) values (716, 'Happy Barsby', 30);
-insert into player (id, name, team_id) values (717, 'Clint Dicte', 3);
-insert into player (id, name, team_id) values (718, 'Dory Duffitt', 7);
-insert into player (id, name, team_id) values (719, 'Ulysses Jeanesson', 37);
-insert into player (id, name, team_id) values (720, 'Judd Sawford', 46);
-insert into player (id, name, team_id) values (721, 'Anya Kollatsch', 28);
-insert into player (id, name, team_id) values (722, 'Cassius Kenyam', 35);
-insert into player (id, name, team_id) values (723, 'Mohandis Riby', 40);
-insert into player (id, name, team_id) values (724, 'Alfi Brixham', 6);
-insert into player (id, name, team_id) values (725, 'Andrea Jeandin', 12);
-insert into player (id, name, team_id) values (726, 'Marshall Mordecai', 1);
-insert into player (id, name, team_id) values (727, 'Berni Maudlen', 45);
-insert into player (id, name, team_id) values (728, 'Carlin Pantlin', 4);
-insert into player (id, name, team_id) values (729, 'Almira Zanutti', 36);
-insert into player (id, name, team_id) values (730, 'Sybille Cejka', 35);
-insert into player (id, name, team_id) values (731, 'Binky Craigs', 41);
-insert into player (id, name, team_id) values (732, 'Aloise Faiers', 31);
-insert into player (id, name, team_id) values (733, 'Lexi Storah', 33);
-insert into player (id, name, team_id) values (734, 'Pauly Ruusa', 38);
-insert into player (id, name, team_id) values (735, 'Zack Strickett', 31);
-insert into player (id, name, team_id) values (736, 'Marys Hurndall', 11);
-insert into player (id, name, team_id) values (737, 'Neala Grundell', 43);
-insert into player (id, name, team_id) values (738, 'Noll Avrahamov', 35);
-insert into player (id, name, team_id) values (739, 'Yevette Plumer', 38);
-insert into player (id, name, team_id) values (740, 'Rudy Kiernan', 48);
-insert into player (id, name, team_id) values (741, 'Kimble Middlehurst', 3);
-insert into player (id, name, team_id) values (742, 'Raymond Theobold', 10);
-insert into player (id, name, team_id) values (743, 'Harald Alster', 27);
-insert into player (id, name, team_id) values (744, 'Maud Downie', 22);
-insert into player (id, name, team_id) values (745, 'Ingamar Wild', 44);
-insert into player (id, name, team_id) values (746, 'Roddie Fildes', 6);
-insert into player (id, name, team_id) values (747, 'Tedmund Camp', 11);
-insert into player (id, name, team_id) values (748, 'Erhart Waddilove', 26);
-insert into player (id, name, team_id) values (749, 'Leonerd Teall', 18);
-insert into player (id, name, team_id) values (750, 'Zak Joannidi', 42);
-insert into player (id, name, team_id) values (751, 'Rodie Ounsworth', 22);
-insert into player (id, name, team_id) values (752, 'Tad Ryan', 11);
-insert into player (id, name, team_id) values (753, 'Katleen Rainer', 17);
-insert into player (id, name, team_id) values (754, 'Mathilde Dossettor', 10);
-insert into player (id, name, team_id) values (755, 'Nickey Murgatroyd', 43);
-insert into player (id, name, team_id) values (756, 'Leena Rappa', 7);
-insert into player (id, name, team_id) values (757, 'Helli Dunkirk', 43);
-insert into player (id, name, team_id) values (758, 'Mikel Kydd', 25);
-insert into player (id, name, team_id) values (759, 'Rooney Crilly', 16);
-insert into player (id, name, team_id) values (760, 'Lauren Bentsen', 25);
-insert into player (id, name, team_id) values (761, 'Onfre Hollingdale', 24);
-insert into player (id, name, team_id) values (762, 'Corabel Lockart', 16);
-insert into player (id, name, team_id) values (763, 'Reba Runnalls', 33);
-insert into player (id, name, team_id) values (764, 'Tallia Thirsk', 21);
-insert into player (id, name, team_id) values (765, 'Sabra Wiz', 8);
-insert into player (id, name, team_id) values (766, 'Jen Siggins', 11);
-insert into player (id, name, team_id) values (767, 'Tanny Milnthorpe', 30);
-insert into player (id, name, team_id) values (768, 'Gale McIlreavy', 49);
-insert into player (id, name, team_id) values (769, 'Maybelle Bouzan', 43);
-insert into player (id, name, team_id) values (770, 'Karney Stennett', 12);
-insert into player (id, name, team_id) values (771, 'Clement Biddiss', 28);
-insert into player (id, name, team_id) values (772, 'Emalee Gurry', 22);
-insert into player (id, name, team_id) values (773, 'Lind Peinton', 18);
-insert into player (id, name, team_id) values (774, 'Preston Donaho', 32);
-insert into player (id, name, team_id) values (775, 'Taylor Ielden', 44);
-insert into player (id, name, team_id) values (776, 'Etta Spiring', 13);
-insert into player (id, name, team_id) values (777, 'Floyd Neiland', 44);
-insert into player (id, name, team_id) values (778, 'Margaux Marris', 20);
-insert into player (id, name, team_id) values (779, 'Emmalynne Pope', 6);
-insert into player (id, name, team_id) values (780, 'Jude Huckfield', 33);
-insert into player (id, name, team_id) values (781, 'Minnnie Keady', 5);
-insert into player (id, name, team_id) values (782, 'Lyle McInteer', 3);
-insert into player (id, name, team_id) values (783, 'Asher Verrier', 5);
-insert into player (id, name, team_id) values (784, 'Kathryn Roe', 36);
-insert into player (id, name, team_id) values (785, 'Shelley Lackey', 31);
-insert into player (id, name, team_id) values (786, 'Kassandra Matteoni', 32);
-insert into player (id, name, team_id) values (787, 'Annelise Teaser', 28);
-insert into player (id, name, team_id) values (788, 'Anders Hubeaux', 34);
-insert into player (id, name, team_id) values (789, 'Trude Kingaby', 23);
-insert into player (id, name, team_id) values (790, 'Haley Aldins', 16);
-insert into player (id, name, team_id) values (791, 'Fitzgerald Cosely', 10);
-insert into player (id, name, team_id) values (792, 'Burg Petschelt', 30);
-insert into player (id, name, team_id) values (793, 'Germain Dhillon', 49);
-insert into player (id, name, team_id) values (794, 'Kelcie Woolvin', 45);
-insert into player (id, name, team_id) values (795, 'Reggis Rudgerd', 13);
-insert into player (id, name, team_id) values (796, 'Isidor Gonsalo', 21);
-insert into player (id, name, team_id) values (797, 'Morry Dugmore', 45);
-insert into player (id, name, team_id) values (798, 'Dahlia Greatreax', 32);
-insert into player (id, name, team_id) values (799, 'Elle Halgarth', 28);
-insert into player (id, name, team_id) values (800, 'Shana Hunton', 9);
-insert into player (id, name, team_id) values (801, 'Audi Maxsted', 18);
-insert into player (id, name, team_id) values (802, 'Nobe Luxton', 38);
-insert into player (id, name, team_id) values (803, 'Renado Whodcoat', 18);
-insert into player (id, name, team_id) values (804, 'Prescott Portigall', 49);
-insert into player (id, name, team_id) values (805, 'Chiquia McLae', 44);
-insert into player (id, name, team_id) values (806, 'Tedie Loram', 12);
-insert into player (id, name, team_id) values (807, 'Letisha Plumridege', 37);
-insert into player (id, name, team_id) values (808, 'Blondell Armstrong', 6);
-insert into player (id, name, team_id) values (809, 'Craggie Booth', 25);
-insert into player (id, name, team_id) values (810, 'Brok Skoyles', 38);
-insert into player (id, name, team_id) values (811, 'Yolane Leipoldt', 22);
-insert into player (id, name, team_id) values (812, 'Simon Claibourn', 23);
-insert into player (id, name, team_id) values (813, 'Kelcie Kepe', 48);
-insert into player (id, name, team_id) values (814, 'Levi Abelwhite', 13);
-insert into player (id, name, team_id) values (815, 'Reinwald Karpf', 11);
-insert into player (id, name, team_id) values (816, 'Mikol Erik', 27);
-insert into player (id, name, team_id) values (817, 'Kikelia Ellor', 32);
-insert into player (id, name, team_id) values (818, 'Petra Stanyforth', 29);
-insert into player (id, name, team_id) values (819, 'Elisabetta Smallpeace', 46);
-insert into player (id, name, team_id) values (820, 'Vale Lambdon', 43);
-insert into player (id, name, team_id) values (821, 'Agustin Pride', 6);
-insert into player (id, name, team_id) values (822, 'Stanleigh Bavister', 45);
-insert into player (id, name, team_id) values (823, 'Nickie Hencke', 43);
-insert into player (id, name, team_id) values (824, 'Bessy Tredwell', 13);
-insert into player (id, name, team_id) values (825, 'Alvis Peskin', 18);
-insert into player (id, name, team_id) values (826, 'Danica Mence', 16);
-insert into player (id, name, team_id) values (827, 'Amalle Creed', 47);
-insert into player (id, name, team_id) values (828, 'Britteny Doman', 6);
-insert into player (id, name, team_id) values (829, 'Belia Witherop', 16);
-insert into player (id, name, team_id) values (830, 'Everett Haliday', 41);
-insert into player (id, name, team_id) values (831, 'Teodora MacSharry', 29);
-insert into player (id, name, team_id) values (832, 'Carola Laight', 5);
-insert into player (id, name, team_id) values (833, 'Eleanor Thorneywork', 29);
-insert into player (id, name, team_id) values (834, 'Cristen Beteriss', 41);
-insert into player (id, name, team_id) values (835, 'Deena Effaunt', 32);
-insert into player (id, name, team_id) values (836, 'Quentin Soeiro', 16);
-insert into player (id, name, team_id) values (837, 'Jolie MacGillacolm', 49);
-insert into player (id, name, team_id) values (838, 'Gibb Benoist', 38);
-insert into player (id, name, team_id) values (839, 'Pennie Abrams', 25);
-insert into player (id, name, team_id) values (840, 'Marty Sloane', 50);
-insert into player (id, name, team_id) values (841, 'Manuel Matthaus', 50);
-insert into player (id, name, team_id) values (842, 'Drugi Wilcinskis', 28);
-insert into player (id, name, team_id) values (843, 'Ring Woloschinski', 11);
-insert into player (id, name, team_id) values (844, 'Aylmar Potticary', 20);
-insert into player (id, name, team_id) values (845, 'Donaugh Roseburgh', 27);
-insert into player (id, name, team_id) values (846, 'Had McKinstry', 34);
-insert into player (id, name, team_id) values (847, 'Sigrid Pardy', 16);
-insert into player (id, name, team_id) values (848, 'Missy Milley', 21);
-insert into player (id, name, team_id) values (849, 'Rowe Bromidge', 46);
-insert into player (id, name, team_id) values (850, 'Goraud Macer', 31);
-insert into player (id, name, team_id) values (851, 'Zollie Bumpas', 44);
-insert into player (id, name, team_id) values (852, 'Alvinia Frediani', 32);
-insert into player (id, name, team_id) values (853, 'Lew Enrico', 44);
-insert into player (id, name, team_id) values (854, 'Crichton Chmiel', 33);
-insert into player (id, name, team_id) values (855, 'Amye Finey', 42);
-insert into player (id, name, team_id) values (856, 'Hertha Hendonson', 15);
-insert into player (id, name, team_id) values (857, 'Kandace Stedman', 32);
-insert into player (id, name, team_id) values (858, 'Edithe Seymer', 9);
-insert into player (id, name, team_id) values (859, 'Luciana Jeaycock', 12);
-insert into player (id, name, team_id) values (860, 'Hollis Gaish', 12);
-insert into player (id, name, team_id) values (861, 'Blake Ilieve', 20);
-insert into player (id, name, team_id) values (862, 'Shelli Chinn', 18);
-insert into player (id, name, team_id) values (863, 'Angela Jahns', 23);
-insert into player (id, name, team_id) values (864, 'Marie Yeatman', 46);
-insert into player (id, name, team_id) values (865, 'Thornie Francklin', 7);
-insert into player (id, name, team_id) values (866, 'Aymer Cuss', 27);
-insert into player (id, name, team_id) values (867, 'Jeffy Crease', 36);
-insert into player (id, name, team_id) values (868, 'Valentijn Grimes', 15);
-insert into player (id, name, team_id) values (869, 'Ferris MacVagh', 43);
-insert into player (id, name, team_id) values (870, 'Giacopo Camel', 29);
-insert into player (id, name, team_id) values (871, 'Binnie McFade', 31);
-insert into player (id, name, team_id) values (872, 'Zelda Poxton', 28);
-insert into player (id, name, team_id) values (873, 'Myles Ingham', 13);
-insert into player (id, name, team_id) values (874, 'Madelin Withrington', 22);
-insert into player (id, name, team_id) values (875, 'Bette Downer', 47);
-insert into player (id, name, team_id) values (876, 'Van Scarman', 19);
-insert into player (id, name, team_id) values (877, 'Susan Keitch', 5);
-insert into player (id, name, team_id) values (878, 'Brooke Goadsby', 1);
-insert into player (id, name, team_id) values (879, 'Nari Crockett', 50);
-insert into player (id, name, team_id) values (880, 'Marchall Ungerechts', 4);
-insert into player (id, name, team_id) values (881, 'Jo-ann Dainty', 35);
-insert into player (id, name, team_id) values (882, 'Skell Aikenhead', 33);
-insert into player (id, name, team_id) values (883, 'Giacopo Croome', 7);
-insert into player (id, name, team_id) values (884, 'Melisent Cartan', 7);
-insert into player (id, name, team_id) values (885, 'Mallory McCadden', 34);
-insert into player (id, name, team_id) values (886, 'Tobit Birk', 29);
-insert into player (id, name, team_id) values (887, 'Thoma Belderfield', 16);
-insert into player (id, name, team_id) values (888, 'Orville Stear', 35);
-insert into player (id, name, team_id) values (889, 'Kessiah Farryn', 30);
-insert into player (id, name, team_id) values (890, 'Mervin Kender', 40);
-insert into player (id, name, team_id) values (891, 'Dacie Coplestone', 13);
-insert into player (id, name, team_id) values (892, 'Kyrstin Shewery', 34);
-insert into player (id, name, team_id) values (893, 'Tadio Sewill', 8);
-insert into player (id, name, team_id) values (894, 'Devi Gwillim', 6);
-insert into player (id, name, team_id) values (895, 'Mattias Sheffield', 13);
-insert into player (id, name, team_id) values (896, 'Hyacintha Scading', 28);
-insert into player (id, name, team_id) values (897, 'Tabor Burwell', 33);
-insert into player (id, name, team_id) values (898, 'Rycca Bromont', 16);
-insert into player (id, name, team_id) values (899, 'Montague Jenkinson', 39);
-insert into player (id, name, team_id) values (900, 'Flora Scapens', 33);
-insert into player (id, name, team_id) values (901, 'Babbie Duxbury', 43);
-insert into player (id, name, team_id) values (902, 'Amble Dufall', 24);
-insert into player (id, name, team_id) values (903, 'Chico Whanstall', 16);
-insert into player (id, name, team_id) values (904, 'Melesa Rive', 6);
-insert into player (id, name, team_id) values (905, 'Ravi Pendrick', 37);
-insert into player (id, name, team_id) values (906, 'Phedra Rowsel', 17);
-insert into player (id, name, team_id) values (907, 'Isabelle Lawtie', 45);
-insert into player (id, name, team_id) values (908, 'Nap Lacaze', 37);
-insert into player (id, name, team_id) values (909, 'Nichole Shaudfurth', 36);
-insert into player (id, name, team_id) values (910, 'Gannon Birdsall', 14);
-insert into player (id, name, team_id) values (911, 'Zollie Wigg', 38);
-insert into player (id, name, team_id) values (912, 'Aggy Dymock', 19);
-insert into player (id, name, team_id) values (913, 'Daniella Tejero', 5);
-insert into player (id, name, team_id) values (914, 'Elwin Foulsham', 37);
-insert into player (id, name, team_id) values (915, 'Kaila Samwyse', 27);
-insert into player (id, name, team_id) values (916, 'Coriss Parram', 17);
-insert into player (id, name, team_id) values (917, 'Tallulah Chrishop', 46);
-insert into player (id, name, team_id) values (918, 'Dyane Boom', 29);
-insert into player (id, name, team_id) values (919, 'Rooney Ingerman', 5);
-insert into player (id, name, team_id) values (920, 'Chandra Abrahamowitcz', 14);
-insert into player (id, name, team_id) values (921, 'Cammy Dummer', 6);
-insert into player (id, name, team_id) values (922, 'Nicol Antrack', 19);
-insert into player (id, name, team_id) values (923, 'Micah Simpson', 23);
-insert into player (id, name, team_id) values (924, 'Doreen Iczokvitz', 11);
-insert into player (id, name, team_id) values (925, 'Roxine Woodlands', 38);
-insert into player (id, name, team_id) values (926, 'Catha St. Aubyn', 22);
-insert into player (id, name, team_id) values (927, 'Carson Dyson', 10);
-insert into player (id, name, team_id) values (928, 'Rubina Crossgrove', 40);
-insert into player (id, name, team_id) values (929, 'Nikolos Lymer', 28);
-insert into player (id, name, team_id) values (930, 'Sutherland Brend', 13);
-insert into player (id, name, team_id) values (931, 'Fletch McLugaish', 39);
-insert into player (id, name, team_id) values (932, 'Dorian Bythell', 33);
-insert into player (id, name, team_id) values (933, 'Pia Houlahan', 20);
-insert into player (id, name, team_id) values (934, 'Bernhard McCandless', 22);
-insert into player (id, name, team_id) values (935, 'Modestia Tuckey', 37);
-insert into player (id, name, team_id) values (936, 'Clarette Ryves', 7);
-insert into player (id, name, team_id) values (937, 'Felic Eastmead', 50);
-insert into player (id, name, team_id) values (938, 'Reuben Goldsbrough', 19);
-insert into player (id, name, team_id) values (939, 'Adelaida Rubel', 18);
-insert into player (id, name, team_id) values (940, 'Jenn Eliesco', 14);
-insert into player (id, name, team_id) values (941, 'Catriona King', 36);
-insert into player (id, name, team_id) values (942, 'Lilla Fulloway', 12);
-insert into player (id, name, team_id) values (943, 'Janaya Skoggings', 32);
-insert into player (id, name, team_id) values (944, 'Morganne Giovanardi', 38);
-insert into player (id, name, team_id) values (945, 'Sheff McKinn', 4);
-insert into player (id, name, team_id) values (946, 'Violet Nimmo', 16);
-insert into player (id, name, team_id) values (947, 'Kizzee Legge', 39);
-insert into player (id, name, team_id) values (948, 'Mohammed Monan', 6);
-insert into player (id, name, team_id) values (949, 'Aubrey Coombs', 8);
-insert into player (id, name, team_id) values (950, 'Gavrielle Hellwing', 30);
-insert into player (id, name, team_id) values (951, 'Colene Byk', 47);
-insert into player (id, name, team_id) values (952, 'Alfy Lockie', 7);
-insert into player (id, name, team_id) values (953, 'Mathilde Davidovsky', 32);
-insert into player (id, name, team_id) values (954, 'Rusty Clemmett', 10);
-insert into player (id, name, team_id) values (955, 'Ailey Reneke', 10);
-insert into player (id, name, team_id) values (956, 'Alfonso Collisson', 9);
-insert into player (id, name, team_id) values (957, 'Ilario Heinig', 4);
-insert into player (id, name, team_id) values (958, 'Jock Berney', 31);
-insert into player (id, name, team_id) values (959, 'Dimitry Frise', 14);
-insert into player (id, name, team_id) values (960, 'Dario Treske', 23);
-insert into player (id, name, team_id) values (961, 'Wendeline O''Dwyer', 35);
-insert into player (id, name, team_id) values (962, 'Charline Staterfield', 40);
-insert into player (id, name, team_id) values (963, 'Farly Sibylla', 36);
-insert into player (id, name, team_id) values (964, 'Manfred Guitonneau', 8);
-insert into player (id, name, team_id) values (965, 'Katine Forte', 33);
-insert into player (id, name, team_id) values (966, 'Babbette Woolager', 37);
-insert into player (id, name, team_id) values (967, 'Wilmer Degue', 17);
-insert into player (id, name, team_id) values (968, 'Rebecca Jedraszek', 32);
-insert into player (id, name, team_id) values (969, 'Val Keunemann', 9);
-insert into player (id, name, team_id) values (970, 'Nicolea Reinhart', 35);
-insert into player (id, name, team_id) values (971, 'Genovera McDougall', 38);
-insert into player (id, name, team_id) values (972, 'Cly Bohills', 7);
-insert into player (id, name, team_id) values (973, 'Maryellen Provis', 9);
-insert into player (id, name, team_id) values (974, 'Doyle Boyford', 27);
-insert into player (id, name, team_id) values (975, 'Herman Kipling', 14);
-insert into player (id, name, team_id) values (976, 'Calla Mayne', 3);
-insert into player (id, name, team_id) values (977, 'Dukie Cellone', 1);
-insert into player (id, name, team_id) values (978, 'Jilli Royste', 9);
-insert into player (id, name, team_id) values (979, 'Alisun Rittmeyer', 15);
-insert into player (id, name, team_id) values (980, 'Candice Dagless', 34);
-insert into player (id, name, team_id) values (981, 'Arch Geddis', 46);
-insert into player (id, name, team_id) values (982, 'Virge Dade', 46);
-insert into player (id, name, team_id) values (983, 'Pier Strond', 21);
-insert into player (id, name, team_id) values (984, 'Gaby Marcome', 50);
-insert into player (id, name, team_id) values (985, 'Verna Bellows', 27);
-insert into player (id, name, team_id) values (986, 'Pam Dowbiggin', 10);
-insert into player (id, name, team_id) values (987, 'Abagail Acomb', 44);
-insert into player (id, name, team_id) values (988, 'Virgil Warboys', 7);
-insert into player (id, name, team_id) values (989, 'Kilian Belhomme', 38);
-insert into player (id, name, team_id) values (990, 'Lissa Bonafacino', 42);
-insert into player (id, name, team_id) values (991, 'Chicky Griswaite', 41);
-insert into player (id, name, team_id) values (992, 'Kipper Das', 50);
-insert into player (id, name, team_id) values (993, 'Nata Gilligan', 13);
-insert into player (id, name, team_id) values (994, 'Giacobo Pryor', 32);
-insert into player (id, name, team_id) values (995, 'Yolande Romayn', 29);
-insert into player (id, name, team_id) values (996, 'Modesty Westwood', 49);
-insert into player (id, name, team_id) values (997, 'Kalle Rochewell', 48);
-insert into player (id, name, team_id) values (998, 'Fenelia Farans', 3);
-insert into player (id, name, team_id) values (999, 'Jacob Bolsteridge', 32);
-insert into player (id, name, team_id) values (1000, 'Kirsten Bawles', 25);
+INSERT INTO PLAYER VALUES
+(1, 'Frank Stutely', 16),
+(2, 'Nanete Bulger', 2),
+(3, 'Lindi Ayliffe', 10),
+(4, 'Aylmar Piche', 14),
+(5, 'Miltie Basterfield', 43),
+(6, 'Con Bly', 49),
+(7, 'Franny Hannabuss', 8),
+(8, 'Torre Leeburn', 34),
+(9, 'Jocko Kruszelnicki', 1),
+(10, 'Shawnee Deveraux', 26),
+(11, 'Zuzana Cooley', 25),
+(12, 'Annabel Boteman', 15),
+(13, 'Quinn de Mendoza', 45),
+(14, 'Muriel Slucock', 49),
+(15, 'Jilli Pletts', 49),
+(16, 'Barde Rawlcliffe', 29),
+(17, 'Karena Harroway', 10),
+(18, 'Ad Attfield', 36),
+(19, 'Bobbi McFade', 14),
+(20, 'Ilsa Biddleston', 13),
+(21, 'Samuele Monkeman', 10),
+(22, 'Mandy Inglesfield', 47),
+(23, 'Mandie Jimenez', 13),
+(24, 'Sylvester Woolcocks', 13),
+(25, 'Meridith Stone Fewings', 23),
+(26, 'Gianni Mackneis', 29),
+(27, 'Kermit Gobeaux', 11),
+(28, 'Ada Swinley', 14),
+(29, 'Ariadne Prestland', 23),
+(30, 'Waverly Berrick', 22),
+(31, 'Rori Vannikov', 20),
+(32, 'Annetta Glasper', 32),
+(33, 'Allegra Runcieman', 2),
+(34, 'Forrest Chard', 48),
+(35, 'Dulce Broggelli', 3),
+(36, 'Durante Wattinham', 50),
+(37, 'Drusy Bartholat', 26),
+(38, 'Bard Cure', 11),
+(39, 'Marve Stocking', 24),
+(40, 'Skylar MacFie', 42),
+(41, 'Garland Clee', 33),
+(42, 'Winn Creffield', 16),
+(43, 'Alisun Strewther', 17),
+(44, 'Juliann Guerin', 6),
+(45, 'Farrel Robbert', 27),
+(46, 'Lilllie Cornborough', 49),
+(47, 'Shaun Ghelardoni', 48),
+(48, 'Clementius Sloper', 41),
+(49, 'Harriot Halse', 4),
+(50, 'Gaylord Fendlow', 10),
+(51, 'Towney Mesias', 39),
+(52, 'Zachery Duke', 20),
+(53, 'Britt Meers', 38),
+(54, 'Garrot Witter', 16),
+(55, 'Tommi Mewburn', 8),
+(56, 'Jermain Mourant', 31),
+(57, 'Opaline Moehler', 28),
+(58, 'Codie Ceillier', 40),
+(59, 'Aland Clemson', 18),
+(60, 'Chastity Liggett', 9),
+(61, 'Glennis Ducrow', 6),
+(62, 'Jehu Dowse', 33),
+(63, 'Giacinta Boshier', 24),
+(64, 'Gerry Goldby', 46),
+(65, 'Sharon Willshear', 35),
+(66, 'Nada Jewel', 41),
+(67, 'Randall Longman', 2),
+(68, 'Lillis Doby', 30),
+(69, 'Olva McKea', 49),
+(70, 'Prentiss Pawelec', 40),
+(71, 'Izaak Vasyunkin', 8),
+(72, 'Even Richard', 13),
+(73, 'Celle Jenson', 37),
+(74, 'Aurie Soles', 49),
+(75, 'Olin Dearell', 38),
+(76, 'Hall Cancott', 48),
+(77, 'Nollie Biglin', 50),
+(78, 'Martyn Scandwright', 37),
+(79, 'Finlay Haley', 34),
+(80, 'Arney Mehaffey', 4),
+(81, 'Reinhold Senogles', 48),
+(82, 'Curr St. Louis', 16),
+(83, 'Bathsheba Spino', 8),
+(84, 'Paul Cossey', 16),
+(85, 'Faulkner Handford', 1),
+(86, 'Cross Tanslie', 36),
+(87, 'Robyn Sauvage', 41),
+(88, 'Alix Bysouth', 50),
+(89, 'Averil Platt', 17),
+(90, 'Nissie Shakle', 2),
+(91, 'Sigfrid Dreher', 7),
+(92, 'Gizela Autrie', 16),
+(93, 'Morgan Cello', 38),
+(94, 'Ive Pauli', 29),
+(95, 'Leeland Stredwick', 14),
+(96, 'Vince Stinton', 20),
+(97, 'Patrica Dunbabin', 14),
+(98, 'Gusti Fowell', 40),
+(99, 'Shandy Memory', 27),
+(100, 'Velma Sandever', 26),
+(101, 'Davita Muldrew', 20),
+(102, 'Orland Carlos', 21),
+(103, 'Benson Ketteman', 16),
+(104, 'Berny Jorgesen', 32),
+(105, 'Jermain Cockrill', 9),
+(106, 'Byron Water', 38),
+(107, 'Row O''Doherty', 12),
+(108, 'Gordan Carlo', 26),
+(109, 'Stella Alliker', 27),
+(110, 'Nathanial Sandes', 46),
+(111, 'Faunie Bartrop', 41),
+(112, 'Danni Dysart', 50),
+(113, 'Kalvin Bugg', 12),
+(114, 'Philis Taree', 45),
+(115, 'Thacher Gerdes', 40),
+(116, 'Brent Dominighi', 50),
+(117, 'Edie Merton', 19),
+(118, 'Devonna Hartly', 22),
+(119, 'Wang Carnilian', 50),
+(120, 'Zsa zsa Faulconer', 29),
+(121, 'Dale Aronin', 18),
+(122, 'Ambrose Fairbrass', 32),
+(123, 'Milt Povlsen', 4),
+(124, 'Fawnia Sawrey', 35),
+(125, 'Dalli Illiston', 17),
+(126, 'Caldwell Dudman', 11),
+(127, 'Devlin Moon', 29),
+(128, 'Dona Zoppie', 17),
+(129, 'Marius Harmer', 33),
+(130, 'Jo-anne Standage', 27),
+(131, 'Maureene Brock', 23),
+(132, 'Erl Traice', 49),
+(133, 'Enrichetta Van Salzberger', 28),
+(134, 'Petunia Sandeford', 46),
+(135, 'Noak Reboulet', 23),
+(136, 'Dore Boffey', 23),
+(137, 'Irwin Artharg', 20),
+(138, 'Yul Konke', 33),
+(139, 'Lindi Slack', 2),
+(140, 'Ardis Oldale', 28),
+(141, 'Friedrich O''Loinn', 3),
+(142, 'Klaus Ainsbury', 20),
+(143, 'Laurie Lounds', 3),
+(144, 'Cornelia Yearsley', 20),
+(145, 'Desiri Week', 43),
+(146, 'Myrah Lagen', 22),
+(147, 'Tabbatha Ornils', 31),
+(148, 'Gregory Rehor', 4),
+(149, 'Efrem Roderham', 27),
+(150, 'Vaughan Pearde', 22),
+(151, 'Heida Jinks', 50),
+(152, 'Rayna Klawi', 36),
+(153, 'Kip Salmon', 21),
+(154, 'Nelle Choat', 38),
+(155, 'Melinde Biggen', 28),
+(156, 'Archambault O''Dulchonta', 32),
+(157, 'Sybille Barlace', 29),
+(158, 'Winn Seagrove', 36),
+(159, 'Ferdy Towsey', 16),
+(160, 'Bernadine Finnie', 1),
+(161, 'Linnet Pietri', 47),
+(162, 'Marve Laughlin', 41),
+(163, 'Hayyim Gordon-Giles', 11),
+(164, 'Laurette Wadhams', 22),
+(165, 'Lynnette Essery', 5),
+(166, 'Adara Quince', 49),
+(167, 'Bram Bockler', 3),
+(168, 'Krysta Levings', 29),
+(169, 'Kimmie Pembery', 34),
+(170, 'Willi Beachem', 26),
+(171, 'Trever McAdam', 29),
+(172, 'Roseanna Kinzett', 42),
+(173, 'Murry O''Hogertie', 13),
+(174, 'Silvester Cobson', 28),
+(175, 'Mattie Navein', 42),
+(176, 'Shantee Hugin', 29),
+(177, 'Cory Burt', 21),
+(178, 'Sara-ann Olivari', 4),
+(179, 'Clea Picford', 3),
+(180, 'Lucio Raincin', 18),
+(181, 'Kerby Meece', 38),
+(182, 'Kassia Leisk', 23),
+(183, 'Thalia Ditchburn', 48),
+(184, 'Corrie Sergean', 35),
+(185, 'Paul Ebbett', 35),
+(186, 'Pavel Stockbridge', 3),
+(187, 'Sandy Callen', 33),
+(188, 'Jami Demcik', 18),
+(189, 'Estelle Burridge', 37),
+(190, 'Hasheem Lesley', 12),
+(191, 'Ailsun Morgon', 20),
+(192, 'Hedi Andrioletti', 37),
+(193, 'Fern Hilldrup', 11),
+(194, 'Ethelbert Hartlebury', 11),
+(195, 'Fanny Kock', 22),
+(196, 'Daisi Caspell', 44),
+(197, 'Karoline Cattemull', 48),
+(198, 'Eachelle Edgcombe', 33),
+(199, 'Neville Sant', 38),
+(200, 'Euell Muller', 10),
+(201, 'Francoise Iashvili', 26),
+(202, 'Uri Falks', 49),
+(203, 'Troy Tuley', 2),
+(204, 'Garland Windebank', 10),
+(205, 'Hadrian Vittel', 11),
+(206, 'Randy Duckerin', 30),
+(207, 'Alverta Goor', 19),
+(208, 'Fernanda Pulley', 31),
+(209, 'Zacharia Rusbridge', 26),
+(210, 'Sylvia Cosgry', 27),
+(211, 'Wendie Carde', 11),
+(212, 'Rosemarie Carnegie', 37),
+(213, 'Mikael Colmore', 40),
+(214, 'Juana Giacobelli', 20),
+(215, 'Augie Faccini', 10),
+(216, 'Clarita Kobisch', 3),
+(217, 'Brittaney Cramphorn', 17),
+(218, 'Elinor Cokely', 47),
+(219, 'Janine O''Lunny', 5),
+(220, 'Annemarie Openshaw', 42),
+(221, 'Clarabelle Stollberger', 32),
+(222, 'Demetris Malmar', 32),
+(223, 'Guy Kinsman', 9),
+(224, 'Katrina Porker', 41),
+(225, 'Edmund Houndson', 35),
+(226, 'Kirsteni Brame', 6),
+(227, 'Yolanthe Sange', 17),
+(228, 'Dasya Gasken', 24),
+(229, 'Eldon Howat', 26),
+(230, 'Sarajane Sallans', 18),
+(231, 'Biddy Capponer', 9),
+(232, 'Estrellita Spratley', 36),
+(233, 'Grenville Ord', 5),
+(234, 'Babb Matevushev', 27),
+(235, 'Kinsley Kleingrub', 50),
+(236, 'Bertha Spragg', 12),
+(237, 'Berton Jenman', 11),
+(238, 'Nikos Arnout', 6),
+(239, 'Reinaldos Comino', 42),
+(240, 'Netta Lillegard', 38),
+(241, 'Alicia Nestoruk', 49),
+(242, 'Hilly Penylton', 13),
+(243, 'Bee Ledgerton', 24),
+(244, 'Lynnet Imason', 42),
+(245, 'Darlleen Oaten', 49),
+(246, 'Jeffie Iskower', 8),
+(247, 'Caspar Gowry', 28),
+(248, 'Kaye Schaben', 35),
+(249, 'Hazel Frye', 47),
+(250, 'Rhodia Verity', 28),
+(251, 'Caye Cadden', 13),
+(252, 'Henrik Allone', 19),
+(253, 'Teresa Itschakov', 12),
+(254, 'Cari MacRonald', 47),
+(255, 'Erina Cundict', 29),
+(256, 'Normie Beals', 50),
+(257, 'Ondrea Carleman', 43),
+(258, 'Alissa Ranson', 30),
+(259, 'Gertruda Nowlan', 40),
+(260, 'Tiphanie Kimbrough', 21),
+(261, 'Amabel Matthensen', 24),
+(262, 'Annadiane Del Castello', 24),
+(263, 'Cirstoforo Georgelin', 29),
+(264, 'Brit Shipton', 3),
+(265, 'Desi Getty', 39),
+(266, 'Luz Hearne', 18),
+(267, 'Sofie Midghall', 48),
+(268, 'Maurene Pougher', 15),
+(269, 'Deni Blandamere', 34),
+(270, 'Arne Gives', 16),
+(271, 'Brande Bricklebank', 10),
+(272, 'Barn Rainville', 20),
+(273, 'Thorn Orriss', 1),
+(274, 'Catharine Guterson', 35),
+(275, 'Oran Torrie', 37),
+(276, 'Valeda Crowhurst', 42),
+(277, 'Georgeanne Anderson', 14),
+(278, 'Cristian Naisbitt', 42),
+(279, 'Delano Bullock', 7),
+(280, 'Efrem Coopman', 50),
+(281, 'Edwin Cottingham', 9),
+(282, 'Herminia Balhatchet', 3),
+(283, 'Trula Grichukhanov', 19),
+(284, 'Lynda Cregg', 46),
+(285, 'Libbey Rusbridge', 23),
+(286, 'Melanie Philo', 8),
+(287, 'Willa Stratford', 12),
+(288, 'Culver Ingilson', 6),
+(289, 'Iggie Inge', 29),
+(290, 'Alleen Flynn', 21),
+(291, 'Cosette Cockell', 50),
+(292, 'Lisabeth Craigmile', 7),
+(293, 'Stanislaw Jatczak', 34),
+(294, 'Codie Dowtry', 26),
+(295, 'Korrie Mioni', 44),
+(296, 'Orlan Ashurst', 43),
+(297, 'Claudia Gruszczak', 3),
+(298, 'Hamlin Dikels', 7),
+(299, 'Crosby Tomaszek', 43),
+(300, 'Giulia Double', 35),
+(301, 'Clifford Hammersley', 36),
+(302, 'Noe Ruddoch', 28),
+(303, 'Louis Guido', 18),
+(304, 'Dal Dargavel', 22),
+(305, 'Essie Gresser', 47),
+(306, 'Corliss Broadis', 10),
+(307, 'Zacharie Piperley', 9),
+(308, 'Ignatius Maleck', 9),
+(309, 'Michail Jordanson', 22),
+(310, 'Terrance Brassington', 6),
+(311, 'Ashley Thompsett', 46),
+(312, 'Wake Tourot', 23),
+(313, 'Jock Cleeves', 32),
+(314, 'Norah Muff', 17),
+(315, 'Lila Gawkroge', 43),
+(316, 'Celinda Sprowell', 50),
+(317, 'Missie Huge', 28),
+(318, 'Lena Elix', 19),
+(319, 'Corabelle Balaizot', 23),
+(320, 'Krystle Yakunchikov', 6),
+(321, 'Bill Gallety', 17),
+(322, 'Darrin Ramsdell', 22),
+(323, 'Pavla Painter', 14),
+(324, 'Dirk Konke', 13),
+(325, 'Sallie Borgne', 29),
+(326, 'Sonja Gearing', 37),
+(327, 'Isidore Fesby', 43),
+(328, 'Bruis McGonigal', 47),
+(329, 'Maurise De Matteis', 50),
+(330, 'Boris Akess', 17),
+(331, 'Guthry McLorinan', 38),
+(332, 'Yanaton Bruce', 49),
+(333, 'Clari Logue', 4),
+(334, 'Roderigo Brotherhood', 33),
+(335, 'Dalston Barhims', 29),
+(336, 'Pattie Tong', 9),
+(337, 'Abraham Sharland', 38),
+(338, 'Tony Coneybeer', 37),
+(339, 'Sheffield Dunsmuir', 46),
+(340, 'Kendre Mitchiner', 34),
+(341, 'Ede Kevis', 37),
+(342, 'Fara Thyng', 25),
+(343, 'Griffith Pennicott', 45),
+(344, 'Marisa Pasterfield', 4),
+(345, 'Goran Dank', 50),
+(346, 'Fredric McGrowther', 42),
+(347, 'Donall Bandey', 44),
+(348, 'Lynn Cohr', 9),
+(349, 'Orion Wilcott', 40),
+(350, 'Violante Fairfoot', 26),
+(351, 'Tilly Demougeot', 49),
+(352, 'Brandtr Obern', 28),
+(353, 'Vanya Zealey', 5),
+(354, 'Gard Kervin', 1),
+(355, 'Coriss Merriment', 10),
+(356, 'Brent Basilotta', 45),
+(357, 'Tiffie Gottelier', 1),
+(358, 'Curcio Stirley', 27),
+(359, 'Danny Creeboe', 21),
+(360, 'Mellisa Maeer', 5),
+(361, 'Reed Farherty', 36),
+(362, 'Leontyne Rudsdell', 50),
+(363, 'Mellisa Greener', 21),
+(364, 'Marnia Stratley', 20),
+(365, 'Orion Peppin', 12),
+(366, 'Myrilla Clow', 4),
+(367, 'Selig Hanlin', 38),
+(368, 'Enoch Dunseath', 30),
+(369, 'Donnie Jedryka', 3),
+(370, 'Fernanda Henningham', 26),
+(371, 'Barry Robatham', 8),
+(372, 'Rees Habergham', 10),
+(373, 'Angeline Melland', 23),
+(374, 'Thaxter Everwin', 3),
+(375, 'Russ Cottrell', 21),
+(376, 'Giustina Donaway', 5),
+(377, 'Sayer Povey', 23),
+(378, 'Fay Dono', 46),
+(379, 'Phyllida Jorio', 2),
+(380, 'Clarine Hawney', 29),
+(381, 'Park Suddell', 38),
+(382, 'Duky Davy', 2),
+(383, 'Chance Leads', 49),
+(384, 'Lotti Adelsberg', 1),
+(385, 'Tomas Jurisic', 35),
+(386, 'Barbi Rowdell', 32),
+(387, 'Tremain Hansley', 22),
+(388, 'Gallagher Sheringham', 6),
+(389, 'Gabriella Sussems', 4),
+(390, 'Essa Janeczek', 6),
+(391, 'Catriona Andreas', 37),
+(392, 'Godart Wegner', 27),
+(393, 'Annetta Jurisch', 24),
+(394, 'Faber Moen', 8),
+(395, 'Debbi Nisot', 48),
+(396, 'Perry Whorall', 48),
+(397, 'Laura Seelbach', 8),
+(398, 'Cy Buck', 2),
+(399, 'Alexina Arthurs', 11),
+(400, 'Dory Riches', 6),
+(401, 'Pia Leivesley', 22),
+(402, 'Rivkah Leynton', 16),
+(403, 'Viv Clawsley', 36),
+(404, 'Paige Dunphy', 9),
+(405, 'Percy Cammish', 14),
+(406, 'Gauthier Borges', 35),
+(407, 'Josey Hillum', 17),
+(408, 'Meara Syne', 7),
+(409, 'Naomi O''Kuddyhy', 40),
+(410, 'Barris Tibbits', 10),
+(411, 'Georgi Dancy', 49),
+(412, 'Seana Le Houx', 44),
+(413, 'Sheba Braithwait', 43),
+(414, 'Kamillah Prettejohns', 14),
+(415, 'Stanley Vargas', 46),
+(416, 'Idalia Crebott', 9),
+(417, 'Janice Lambirth', 21),
+(418, 'Barb Ham', 6),
+(419, 'Cozmo Sherlaw', 10),
+(420, 'Vinnie Sebring', 49),
+(421, 'Kendall Glennon', 2),
+(422, 'Alanah Horsley', 50),
+(423, 'Bat Coltherd', 34),
+(424, 'Elaina Wyke', 14),
+(425, 'Whittaker Ucchino', 12),
+(426, 'Judye Caldecourt', 36),
+(427, 'Torie Muir', 15),
+(428, 'Daron Mettericke', 47),
+(429, 'Sydelle Mitrikhin', 6),
+(430, 'Aurea Deschelle', 10),
+(431, 'Cortie Becket', 50),
+(432, 'Ashlen Soonhouse', 1),
+(433, 'Amber Alleburton', 36),
+(434, 'Amil Clemas', 1),
+(435, 'Analiese Hail', 46),
+(436, 'Jemmy Pendered', 37),
+(437, 'Mayer Leipnik', 43),
+(438, 'Victoir Garie', 19),
+(439, 'Brooke Baxendale', 16),
+(440, 'Corny Gamett', 46),
+(441, 'Blinny Golsworthy', 12),
+(442, 'Addy Girardet', 4),
+(443, 'Templeton Ginnety', 4),
+(444, 'Iain Hurren', 23),
+(445, 'Petronia Clutterham', 46),
+(446, 'Papageno Girke', 42),
+(447, 'Jilli Larraway', 10),
+(448, 'Sollie Abbis', 42),
+(449, 'Sharity McAuslene', 35),
+(450, 'Osborne Millson', 12),
+(451, 'Mandy Kiltie', 10),
+(452, 'Evan Slocket', 25),
+(453, 'Devan Ramard', 19),
+(454, 'Gussie Bruhke', 44),
+(455, 'Alfonse Gilchriest', 26),
+(456, 'Zilvia Hardwin', 6),
+(457, 'Faun Haysey', 14),
+(458, 'Marline Stert', 48),
+(459, 'Theresa Faux', 38),
+(460, 'Nanette Madelin', 35),
+(461, 'Meta O''Lehane', 28),
+(462, 'Clea Bonaire', 37),
+(463, 'Doti Ferrick', 47),
+(464, 'Yasmeen Rolph', 46),
+(465, 'Sissy Parham', 46),
+(466, 'Fawne Bearn', 4),
+(467, 'Mord Kelcey', 15),
+(468, 'Dulci Loveridge', 12),
+(469, 'Zelda Duligal', 31),
+(470, 'Tori Horwell', 7),
+(471, 'Mariquilla Wankel', 17),
+(472, 'Phedra Lysaght', 13),
+(473, 'Harmonie de Mullett', 7),
+(474, 'Chrissie Treasure', 43),
+(475, 'Lorain Arnaud', 2),
+(476, 'Shelley Findon', 43),
+(477, 'Adelina Hinrichsen', 47),
+(478, 'Aubrey Firpo', 39),
+(479, 'Farleigh Di Frisco', 36),
+(480, 'Shaine Slocumb', 32),
+(481, 'Jennifer Flanders', 4),
+(482, 'Randall McPheat', 13),
+(483, 'Gannon Heffernon', 3),
+(484, 'Sauncho Stronough', 38),
+(485, 'Halli Maker', 15),
+(486, 'Aggi Dabourne', 48),
+(487, 'Arleen Shone', 3),
+(488, 'Kurtis Marchello', 38),
+(489, 'Marwin Sallings', 50),
+(490, 'Giulio Baudin', 42),
+(491, 'Emelyne Jennaway', 20),
+(492, 'Man Bercevelo', 43),
+(493, 'Drake Burdytt', 40),
+(494, 'Gardie Summerlee', 29),
+(495, 'Riane Benedikt', 39),
+(496, 'Leopold Caw', 47),
+(497, 'Nanete Hamon', 3),
+(498, 'Paige Mawditt', 1),
+(499, 'Barnett McCahill', 43),
+(500, 'Guthry Chaulk', 13),
+(501, 'Raphaela Guswell', 12),
+(502, 'Leigh Dursley', 3),
+(503, 'Felicdad Pauley', 49),
+(504, 'Rhodia Peaple', 35),
+(505, 'Stern Stealey', 42),
+(506, 'Beverie Simoncelli', 37),
+(507, 'Eva Andrea', 26),
+(508, 'Mallory Rawkesby', 44),
+(509, 'Jeniece Duckering', 23),
+(510, 'Joshua Dunan', 20),
+(511, 'Bentlee Beaford', 41),
+(512, 'Timmy Evesque', 50),
+(513, 'Llewellyn Franca', 26),
+(514, 'Cherice Kenningham', 14),
+(515, 'Malinde Brackpool', 30),
+(516, 'Ira McCaw', 4),
+(517, 'Kass Newlands', 25),
+(518, 'Rosalyn Rolance', 41),
+(519, 'Ingunna Faulkner', 9),
+(520, 'Brandtr Crocetto', 34),
+(521, 'Kin Puller', 44),
+(522, 'Theobald Drance', 31),
+(523, 'Shelden Kemster', 47),
+(524, 'Gualterio Diemer', 33),
+(525, 'Tiphanie Maydwell', 39),
+(526, 'Nelia Roscoe', 28),
+(527, 'Barton Pavese', 48),
+(528, 'Halimeda Ranfield', 38),
+(529, 'Goober Durban', 10),
+(530, 'Carroll Delf', 6),
+(531, 'Corliss Heddy', 27),
+(532, 'Eustace De la Yglesia', 4),
+(533, 'Stanley Olyonov', 1),
+(534, 'Sawyere Caunt', 10),
+(535, 'Christoper Treverton', 31),
+(536, 'Ed Grishakov', 16),
+(537, 'Tessie Boncore', 50),
+(538, 'Basilius Lafford', 6),
+(539, 'Kingsly Dando', 21),
+(540, 'Fairleigh Cottill', 29),
+(541, 'Adelheid Waterworth', 28),
+(542, 'Krystle Cahen', 49),
+(543, 'Falito Malamore', 1),
+(544, 'Ronni Pickhaver', 35),
+(545, 'Kearney Nelm', 20),
+(546, 'Tuck Martellini', 19),
+(547, 'Tiffani Chasteau', 39),
+(548, 'Dominique Greenhough', 35),
+(549, 'Jessalyn Bartel', 50),
+(550, 'Wallache Shafier', 22),
+(551, 'Anders Romaynes', 31),
+(552, 'Bale Wrennall', 16),
+(553, 'Celina Rittelmeyer', 17),
+(554, 'Wash Doidge', 9),
+(555, 'Aurlie Marklin', 40),
+(556, 'Horacio Farington', 21),
+(557, 'Gussie Fligg', 9),
+(558, 'Langston Saffe', 44),
+(559, 'Allis Greatex', 1),
+(560, 'Putnam Darwent', 10),
+(561, 'Jarrett Tiernan', 9),
+(562, 'Melly Starrs', 39),
+(563, 'Kingston Sisley', 22),
+(564, 'Eugenius Cluely', 1),
+(565, 'Yolane Gulk', 36),
+(566, 'Clark Arbuckle', 14),
+(567, 'Theo Blakeley', 43),
+(568, 'Amos Leel', 11),
+(569, 'Adriano Scarrott', 5),
+(570, 'Laurianne Birkmyr', 34),
+(571, 'Robenia Bellas', 49),
+(572, 'Dougy Yewdall', 34),
+(573, 'Corry Baulch', 36),
+(574, 'Gregoor Bygrove', 7),
+(575, 'Willy Ragborne', 36),
+(576, 'Kalinda Roust', 12),
+(577, 'Karlik Hofner', 27),
+(578, 'Davina Woollett', 49),
+(579, 'Vallie Maher', 27),
+(580, 'Ryann Landells', 48),
+(581, 'Malissa Goodlud', 45),
+(582, 'Mabelle Lisciardelli', 33),
+(583, 'Averil Sawfoot', 42),
+(584, 'Scotty Highway', 37),
+(585, 'Mano Dredge', 37),
+(586, 'Lorne Sherrum', 14),
+(587, 'Dyane Houdhury', 41),
+(588, 'Odele Blaymires', 40),
+(589, 'Piggy Gullis', 25),
+(590, 'Jehanna Peskett', 23),
+(591, 'Margarete Gumery', 10),
+(592, 'Fredric Yanshin', 13),
+(593, 'Ermin McGonnell', 31),
+(594, 'Cori Ownsworth', 18),
+(595, 'Abbi Curnucke', 13),
+(596, 'Rosabel Midgely', 25),
+(597, 'Janelle Shillam', 48),
+(598, 'Chase Bourne', 45),
+(599, 'Robinetta Huetson', 36),
+(600, 'Cristi Unworth', 48),
+(601, 'Corena Mecchi', 22),
+(602, 'Doll Ladbrooke', 50),
+(603, 'Molly Cuseck', 7),
+(604, 'Emmi Comino', 26),
+(605, 'Garik McLucky', 36),
+(606, 'Coleen Stickens', 17),
+(607, 'Sallee Baudinelli', 24),
+(608, 'Barnabe Eccleshare', 3),
+(609, 'Amitie Beese', 48),
+(610, 'Iormina Dawkes', 21),
+(611, 'Steffane Nollet', 47),
+(612, 'Cary Bridden', 2),
+(613, 'Joby Usmar', 23),
+(614, 'Ilaire Eggins', 39),
+(615, 'Cortie Blunn', 6),
+(616, 'Crosby McKirton', 50),
+(617, 'Quinn Carnie', 37),
+(618, 'Jillayne Umfrey', 49),
+(619, 'Joelle Iacovuzzi', 15),
+(620, 'Larine Robardley', 5),
+(621, 'Dyanna Sams', 4),
+(622, 'Lorin Matczak', 1),
+(623, 'Erica Adolfsen', 14),
+(624, 'Jacquelin Dennert', 24),
+(625, 'Hoebart Duiged', 20),
+(626, 'Crichton Goley', 12),
+(627, 'Wolfie Tremoulet', 35),
+(628, 'Darby Gollop', 30),
+(629, 'Ned Tinman', 23),
+(630, 'Matilde Antos', 36),
+(631, 'Harriet Porker', 5),
+(632, 'Mariejeanne Burkin', 47),
+(633, 'Jourdan Malenfant', 30),
+(634, 'Clarissa Krysztofiak', 3),
+(635, 'Lilly Revance', 38),
+(636, 'Lorianna Romagosa', 18),
+(637, 'Natalee Caslake', 13),
+(638, 'Tiffanie Pitchers', 11),
+(639, 'Margarethe Mc Giffin', 46),
+(640, 'Hoebart Dible', 5),
+(641, 'Evy Oglesbee', 11),
+(642, 'Jamey Strass', 21),
+(643, 'Kristin Bridewell', 20),
+(644, 'Noni Coppin', 39),
+(645, 'Theodore Pele', 34),
+(646, 'Samara Nester', 3),
+(647, 'Sada Sunshine', 32),
+(648, 'Verena Giannasi', 25),
+(649, 'Margarethe Sherrum', 4),
+(650, 'Dode Maggorini', 4),
+(651, 'Frederigo Creech', 36),
+(652, 'Nickie Punchard', 23),
+(653, 'Owen Ulyatt', 22),
+(654, 'Robbin Le Breton', 19),
+(655, 'Daile McCullen', 5),
+(656, 'Zarla Plain', 8),
+(657, 'Ermanno Jiri', 7),
+(658, 'Clari Glendzer', 21),
+(659, 'Sal Wainscoat', 37),
+(660, 'Dani White', 23),
+(661, 'Lorettalorna Beechcraft', 7),
+(662, 'Jarrett Vlahos', 28),
+(663, 'Maressa Baggally', 32),
+(664, 'Katlin O''Hagirtie', 22),
+(665, 'Arthur Harkin', 32),
+(666, 'Sergent McGaw', 12),
+(667, 'Neil McPake', 23),
+(668, 'Lorianne Humm', 7),
+(669, 'Jaclyn Christiensen', 6),
+(670, 'Zak Cockshoot', 14),
+(671, 'Leone Bareham', 27),
+(672, 'Aggy Dilston', 3),
+(673, 'Brigit Castagneri', 46),
+(674, 'Wilhelmine Handling', 13),
+(675, 'Roselin Wilby', 21),
+(676, 'Rafa Magson', 1),
+(677, 'Francesca Dymond', 20),
+(678, 'Linnea Butterly', 3),
+(679, 'Alwyn Dogerty', 46),
+(680, 'Dianemarie Penhalewick', 35),
+(681, 'Morie Vasler', 7),
+(682, 'Pearce Basnett', 1),
+(683, 'Bobbe Po', 23),
+(684, 'Annie Boissier', 11),
+(685, 'Cordelie Raiment', 36),
+(686, 'Noble Kingsnorth', 13),
+(687, 'Adamo Spiteri', 43),
+(688, 'Tan Heyfield', 10),
+(689, 'Ellswerth Champion', 48),
+(690, 'Andrea Setford', 36),
+(691, 'Leonanie Plank', 49),
+(692, 'Bank Kingshott', 4),
+(693, 'Sebastiano Stuffins', 28),
+(694, 'Mona Dukesbury', 15),
+(695, 'Parry Bluett', 40),
+(696, 'Elonore Gayler', 40),
+(697, 'Burtie Landa', 7),
+(698, 'Agnesse Ruslen', 42),
+(699, 'Massimo Mixhel', 2),
+(700, 'Gayla Vials', 42),
+(701, 'Madalyn Clotworthy', 46),
+(702, 'Bridie Enoch', 27),
+(703, 'Jimmy Tidgewell', 17),
+(704, 'Marybelle Worthington', 48),
+(705, 'Gabbey Cutcliffe', 20),
+(706, 'Roshelle Leander', 16),
+(707, 'Alma Murrum', 31),
+(708, 'Arabella Lewton', 7),
+(709, 'Tyrone Behrend', 50),
+(710, 'Con Fryman', 15),
+(711, 'Homere Taggert', 44),
+(712, 'Edmund Nock', 11),
+(713, 'Gabi McClounan', 17),
+(714, 'Wade Leitche', 32),
+(715, 'Ara Daulton', 8),
+(716, 'Happy Barsby', 30),
+(717, 'Clint Dicte', 3),
+(718, 'Dory Duffitt', 7),
+(719, 'Ulysses Jeanesson', 37),
+(720, 'Judd Sawford', 46),
+(721, 'Anya Kollatsch', 28),
+(722, 'Cassius Kenyam', 35),
+(723, 'Mohandis Riby', 40),
+(724, 'Alfi Brixham', 6),
+(725, 'Andrea Jeandin', 12),
+(726, 'Marshall Mordecai', 1),
+(727, 'Berni Maudlen', 45),
+(728, 'Carlin Pantlin', 4),
+(729, 'Almira Zanutti', 36),
+(730, 'Sybille Cejka', 35),
+(731, 'Binky Craigs', 41),
+(732, 'Aloise Faiers', 31),
+(733, 'Lexi Storah', 33),
+(734, 'Pauly Ruusa', 38),
+(735, 'Zack Strickett', 31),
+(736, 'Marys Hurndall', 11),
+(737, 'Neala Grundell', 43),
+(738, 'Noll Avrahamov', 35),
+(739, 'Yevette Plumer', 38),
+(740, 'Rudy Kiernan', 48),
+(741, 'Kimble Middlehurst', 3),
+(742, 'Raymond Theobold', 10),
+(743, 'Harald Alster', 27),
+(744, 'Maud Downie', 22),
+(745, 'Ingamar Wild', 44),
+(746, 'Roddie Fildes', 6),
+(747, 'Tedmund Camp', 11),
+(748, 'Erhart Waddilove', 26),
+(749, 'Leonerd Teall', 18),
+(750, 'Zak Joannidi', 42),
+(751, 'Rodie Ounsworth', 22),
+(752, 'Tad Ryan', 11),
+(753, 'Katleen Rainer', 17),
+(754, 'Mathilde Dossettor', 10),
+(755, 'Nickey Murgatroyd', 43),
+(756, 'Leena Rappa', 7),
+(757, 'Helli Dunkirk', 43),
+(758, 'Mikel Kydd', 25),
+(759, 'Rooney Crilly', 16),
+(760, 'Lauren Bentsen', 25),
+(761, 'Onfre Hollingdale', 24),
+(762, 'Corabel Lockart', 16),
+(763, 'Reba Runnalls', 33),
+(764, 'Tallia Thirsk', 21),
+(765, 'Sabra Wiz', 8),
+(766, 'Jen Siggins', 11),
+(767, 'Tanny Milnthorpe', 30),
+(768, 'Gale McIlreavy', 49),
+(769, 'Maybelle Bouzan', 43),
+(770, 'Karney Stennett', 12),
+(771, 'Clement Biddiss', 28),
+(772, 'Emalee Gurry', 22),
+(773, 'Lind Peinton', 18),
+(774, 'Preston Donaho', 32),
+(775, 'Taylor Ielden', 44),
+(776, 'Etta Spiring', 13),
+(777, 'Floyd Neiland', 44),
+(778, 'Margaux Marris', 20),
+(779, 'Emmalynne Pope', 6),
+(780, 'Jude Huckfield', 33),
+(781, 'Minnnie Keady', 5),
+(782, 'Lyle McInteer', 3),
+(783, 'Asher Verrier', 5),
+(784, 'Kathryn Roe', 36),
+(785, 'Shelley Lackey', 31),
+(786, 'Kassandra Matteoni', 32),
+(787, 'Annelise Teaser', 28),
+(788, 'Anders Hubeaux', 34),
+(789, 'Trude Kingaby', 23),
+(790, 'Haley Aldins', 16),
+(791, 'Fitzgerald Cosely', 10),
+(792, 'Burg Petschelt', 30),
+(793, 'Germain Dhillon', 49),
+(794, 'Kelcie Woolvin', 45),
+(795, 'Reggis Rudgerd', 13),
+(796, 'Isidor Gonsalo', 21),
+(797, 'Morry Dugmore', 45),
+(798, 'Dahlia Greatreax', 32),
+(799, 'Elle Halgarth', 28),
+(800, 'Shana Hunton', 9),
+(801, 'Audi Maxsted', 18),
+(802, 'Nobe Luxton', 38),
+(803, 'Renado Whodcoat', 18),
+(804, 'Prescott Portigall', 49),
+(805, 'Chiquia McLae', 44),
+(806, 'Tedie Loram', 12),
+(807, 'Letisha Plumridege', 37),
+(808, 'Blondell Armstrong', 6),
+(809, 'Craggie Booth', 25),
+(810, 'Brok Skoyles', 38),
+(811, 'Yolane Leipoldt', 22),
+(812, 'Simon Claibourn', 23),
+(813, 'Kelcie Kepe', 48),
+(814, 'Levi Abelwhite', 13),
+(815, 'Reinwald Karpf', 11),
+(816, 'Mikol Erik', 27),
+(817, 'Kikelia Ellor', 32),
+(818, 'Petra Stanyforth', 29),
+(819, 'Elisabetta Smallpeace', 46),
+(820, 'Vale Lambdon', 43),
+(821, 'Agustin Pride', 6),
+(822, 'Stanleigh Bavister', 45),
+(823, 'Nickie Hencke', 43),
+(824, 'Bessy Tredwell', 13),
+(825, 'Alvis Peskin', 18),
+(826, 'Danica Mence', 16),
+(827, 'Amalle Creed', 47),
+(828, 'Britteny Doman', 6),
+(829, 'Belia Witherop', 16),
+(830, 'Everett Haliday', 41),
+(831, 'Teodora MacSharry', 29),
+(832, 'Carola Laight', 5),
+(833, 'Eleanor Thorneywork', 29),
+(834, 'Cristen Beteriss', 41),
+(835, 'Deena Effaunt', 32),
+(836, 'Quentin Soeiro', 16),
+(837, 'Jolie MacGillacolm', 49),
+(838, 'Gibb Benoist', 38),
+(839, 'Pennie Abrams', 25),
+(840, 'Marty Sloane', 50),
+(841, 'Manuel Matthaus', 50),
+(842, 'Drugi Wilcinskis', 28),
+(843, 'Ring Woloschinski', 11),
+(844, 'Aylmar Potticary', 20),
+(845, 'Donaugh Roseburgh', 27),
+(846, 'Had McKinstry', 34),
+(847, 'Sigrid Pardy', 16),
+(848, 'Missy Milley', 21),
+(849, 'Rowe Bromidge', 46),
+(850, 'Goraud Macer', 31),
+(851, 'Zollie Bumpas', 44),
+(852, 'Alvinia Frediani', 32),
+(853, 'Lew Enrico', 44),
+(854, 'Crichton Chmiel', 33),
+(855, 'Amye Finey', 42),
+(856, 'Hertha Hendonson', 15),
+(857, 'Kandace Stedman', 32),
+(858, 'Edithe Seymer', 9),
+(859, 'Luciana Jeaycock', 12),
+(860, 'Hollis Gaish', 12),
+(861, 'Blake Ilieve', 20),
+(862, 'Shelli Chinn', 18),
+(863, 'Angela Jahns', 23),
+(864, 'Marie Yeatman', 46),
+(865, 'Thornie Francklin', 7),
+(866, 'Aymer Cuss', 27),
+(867, 'Jeffy Crease', 36),
+(868, 'Valentijn Grimes', 15),
+(869, 'Ferris MacVagh', 43),
+(870, 'Giacopo Camel', 29),
+(871, 'Binnie McFade', 31),
+(872, 'Zelda Poxton', 28),
+(873, 'Myles Ingham', 13),
+(874, 'Madelin Withrington', 22),
+(875, 'Bette Downer', 47),
+(876, 'Van Scarman', 19),
+(877, 'Susan Keitch', 5),
+(878, 'Brooke Goadsby', 1),
+(879, 'Nari Crockett', 50),
+(880, 'Marchall Ungerechts', 4),
+(881, 'Jo-ann Dainty', 35),
+(882, 'Skell Aikenhead', 33),
+(883, 'Giacopo Croome', 7),
+(884, 'Melisent Cartan', 7),
+(885, 'Mallory McCadden', 34),
+(886, 'Tobit Birk', 29),
+(887, 'Thoma Belderfield', 16),
+(888, 'Orville Stear', 35),
+(889, 'Kessiah Farryn', 30),
+(890, 'Mervin Kender', 40),
+(891, 'Dacie Coplestone', 13),
+(892, 'Kyrstin Shewery', 34),
+(893, 'Tadio Sewill', 8),
+(894, 'Devi Gwillim', 6),
+(895, 'Mattias Sheffield', 13),
+(896, 'Hyacintha Scading', 28),
+(897, 'Tabor Burwell', 33),
+(898, 'Rycca Bromont', 16),
+(899, 'Montague Jenkinson', 39),
+(900, 'Flora Scapens', 33),
+(901, 'Babbie Duxbury', 43),
+(902, 'Amble Dufall', 24),
+(903, 'Chico Whanstall', 16),
+(904, 'Melesa Rive', 6),
+(905, 'Ravi Pendrick', 37),
+(906, 'Phedra Rowsel', 17),
+(907, 'Isabelle Lawtie', 45),
+(908, 'Nap Lacaze', 37),
+(909, 'Nichole Shaudfurth', 36),
+(910, 'Gannon Birdsall', 14),
+(911, 'Zollie Wigg', 38),
+(912, 'Aggy Dymock', 19),
+(913, 'Daniella Tejero', 5),
+(914, 'Elwin Foulsham', 37),
+(915, 'Kaila Samwyse', 27),
+(916, 'Coriss Parram', 17),
+(917, 'Tallulah Chrishop', 46),
+(918, 'Dyane Boom', 29),
+(919, 'Rooney Ingerman', 5),
+(920, 'Chandra Abrahamowitcz', 14),
+(921, 'Cammy Dummer', 6),
+(922, 'Nicol Antrack', 19),
+(923, 'Micah Simpson', 23),
+(924, 'Doreen Iczokvitz', 11),
+(925, 'Roxine Woodlands', 38),
+(926, 'Catha St. Aubyn', 22),
+(927, 'Carson Dyson', 10),
+(928, 'Rubina Crossgrove', 40),
+(929, 'Nikolos Lymer', 28),
+(930, 'Sutherland Brend', 13),
+(931, 'Fletch McLugaish', 39),
+(932, 'Dorian Bythell', 33),
+(933, 'Pia Houlahan', 20),
+(934, 'Bernhard McCandless', 22),
+(935, 'Modestia Tuckey', 37),
+(936, 'Clarette Ryves', 7),
+(937, 'Felic Eastmead', 50),
+(938, 'Reuben Goldsbrough', 19),
+(939, 'Adelaida Rubel', 18),
+(940, 'Jenn Eliesco', 14),
+(941, 'Catriona King', 36),
+(942, 'Lilla Fulloway', 12),
+(943, 'Janaya Skoggings', 32),
+(944, 'Morganne Giovanardi', 38),
+(945, 'Sheff McKinn', 4),
+(946, 'Violet Nimmo', 16),
+(947, 'Kizzee Legge', 39),
+(948, 'Mohammed Monan', 6),
+(949, 'Aubrey Coombs', 8),
+(950, 'Gavrielle Hellwing', 30),
+(951, 'Colene Byk', 47),
+(952, 'Alfy Lockie', 7),
+(953, 'Mathilde Davidovsky', 32),
+(954, 'Rusty Clemmett', 10),
+(955, 'Ailey Reneke', 10),
+(956, 'Alfonso Collisson', 9),
+(957, 'Ilario Heinig', 4),
+(958, 'Jock Berney', 31),
+(959, 'Dimitry Frise', 14),
+(960, 'Dario Treske', 23),
+(961, 'Wendeline O''Dwyer', 35),
+(962, 'Charline Staterfield', 40),
+(963, 'Farly Sibylla', 36),
+(964, 'Manfred Guitonneau', 8),
+(965, 'Katine Forte', 33),
+(966, 'Babbette Woolager', 37),
+(967, 'Wilmer Degue', 17),
+(968, 'Rebecca Jedraszek', 32),
+(969, 'Val Keunemann', 9),
+(970, 'Nicolea Reinhart', 35),
+(971, 'Genovera McDougall', 38),
+(972, 'Cly Bohills', 7),
+(973, 'Maryellen Provis', 9),
+(974, 'Doyle Boyford', 27),
+(975, 'Herman Kipling', 14),
+(976, 'Calla Mayne', 3),
+(977, 'Dukie Cellone', 1),
+(978, 'Jilli Royste', 9),
+(979, 'Alisun Rittmeyer', 15),
+(980, 'Candice Dagless', 34),
+(981, 'Arch Geddis', 46),
+(982, 'Virge Dade', 46),
+(983, 'Pier Strond', 21),
+(984, 'Gaby Marcome', 50),
+(985, 'Verna Bellows', 27),
+(986, 'Pam Dowbiggin', 10),
+(987, 'Abagail Acomb', 44),
+(988, 'Virgil Warboys', 7),
+(989, 'Kilian Belhomme', 38),
+(990, 'Lissa Bonafacino', 42),
+(991, 'Chicky Griswaite', 41),
+(992, 'Kipper Das', 50),
+(993, 'Nata Gilligan', 13),
+(994, 'Giacobo Pryor', 32),
+(995, 'Yolande Romayn', 29),
+(996, 'Modesty Westwood', 49),
+(997, 'Kalle Rochewell', 48),
+(998, 'Fenelia Farans', 3),
+(999, 'Jacob Bolsteridge', 32),
+(1000, 'Kirsten Bawles', 25);
+
+
+
+INSERT INTO GOAL VALUES
+(1, 1, 90, 2),
+(2, 1, 421, 2),
+(3, 2, 85, 1),
+(4, 2, 141, 3),
+(5, 4, 90, 2),
+(6, 4, 139, 2),
+(7, 6, 344, 4),
+(8, 6, 148, 4),
+(9, 6, 728, 4),
+(10, 7, 179, 3),
+(11, 7, 646, 3),
+(12, 7, 672, 3),
+(13, 7, 726, 1),
+(14, 8, 646, 3),
+(15, 8, 741, 3),
+(16, 8, 672, 3),
+(17, 9, 672, 3),
+(18, 9, 186, 3),
+(19, 9, 516, 4),
+(20, 9, 692, 4),
+(21, 10, 945, 4),
+(22, 10, 650, 4),
+(23, 10, 622, 1),
+(24, 10, 676, 1),
+(25, 10, 498, 1),
+(26, 11, 650, 4),
+(27, 11, 90, 2),
+(28, 12, 692, 4),
+(29, 12, 148, 4),
+(30, 12, 186, 3),
+(31, 12, 186, 3),
+(32, 14, 165, 5),
+(33, 15, 620, 5),
+(34, 15, 360, 5),
+(35, 15, 397, 8),
+(36, 16, 400, 6),
+(37, 16, 919, 5),
+(38, 16, 913, 5),
+(39, 17, 390, 6),
+(40, 18, 656, 8),
+(41, 19, 574, 7),
+(42, 19, 781, 5),
+(43, 20, 668, 7),
+(44, 20, 530, 6),
+(45, 21, 292, 7),
+(46, 21, 91, 7),
+(47, 22, 394, 8),
+(48, 22, 640, 5),
+(49, 23, 949, 8),
+(50, 24, 394, 8),
+(51, 24, 765, 8),
+(52, 24, 657, 7),
+(53, 24, 91, 7),
+(54, 24, 298, 7),
+(55, 25, 348, 9),
+(56, 26, 747, 11),
+(57, 28, 404, 9),
+(58, 28, 251, 13),
+(59, 28, 795, 13),
+(60, 28, 72, 13),
+(61, 29, 223, 9),
+(62, 29, 519, 9),
+(63, 30, 529, 10),
+(64, 31, 204, 10),
+(65, 32, 754, 10),
+(66, 32, 637, 13),
+(67, 32, 20, 13),
+(68, 33, 557, 9),
+(69, 34, 766, 11),
+(70, 35, 684, 11),
+(71, 35, 211, 11),
+(72, 35, 253, 12),
+(73, 37, 770, 12),
+(74, 37, 231, 9),
+(75, 38, 576, 12),
+(76, 38, 253, 12),
+(77, 39, 666, 12),
+(78, 39, 712, 11),
+(79, 40, 113, 12),
+(80, 40, 770, 12),
+(81, 40, 253, 12),
+(82, 40, 425, 12),
+(83, 41, 674, 13),
+(84, 41, 72, 13),
+(85, 41, 173, 13),
+(86, 41, 60, 9),
+(87, 41, 348, 9),
+(88, 41, 281, 9),
+(89, 42, 686, 13),
+(90, 42, 306, 10),
+(91, 44, 500, 13),
+(92, 44, 190, 12),
+(93, 44, 806, 12),
+(94, 45, 427, 15),
+(95, 46, 54, 16),
+(96, 48, 920, 14),
+(97, 48, 566, 14),
+(98, 48, 862, 18),
+(99, 49, 424, 14),
+(100, 50, 920, 14),
+(101, 50, 491, 20),
+(102, 51, 910, 14),
+(103, 51, 920, 14),
+(104, 52, 485, 15),
+(105, 53, 619, 15),
+(106, 53, 898, 16),
+(107, 53, 946, 16),
+(108, 53, 1, 16),
+(109, 54, 485, 15),
+(110, 54, 553, 17),
+(111, 55, 188, 18),
+(112, 55, 801, 18),
+(113, 56, 654, 19),
+(114, 57, 856, 15),
+(115, 57, 96, 20),
+(116, 57, 96, 20),
+(117, 58, 675, 21),
+(118, 58, 177, 21),
+(119, 58, 177, 21),
+(120, 59, 898, 16),
+(121, 59, 670, 14),
+(122, 60, 467, 15),
+(123, 60, 268, 15),
+(124, 61, 836, 16),
+(125, 61, 703, 17),
+(126, 63, 922, 19),
+(127, 63, 453, 19),
+(128, 64, 142, 20),
+(129, 64, 625, 20),
+(130, 65, 536, 16),
+(131, 65, 536, 16),
+(132, 65, 552, 16),
+(133, 65, 42, 16),
+(134, 65, 836, 16),
+(135, 66, 314, 17),
+(136, 67, 89, 17),
+(137, 67, 906, 17),
+(138, 67, 868, 15),
+(139, 67, 427, 15),
+(140, 67, 12, 15),
+(141, 68, 790, 16),
+(142, 69, 939, 18),
+(143, 69, 801, 18),
+(144, 70, 753, 17),
+(145, 70, 938, 19),
+(146, 70, 117, 19),
+(147, 71, 906, 17),
+(148, 71, 321, 17),
+(149, 71, 753, 17),
+(150, 71, 916, 17),
+(151, 71, 272, 20),
+(152, 72, 227, 17),
+(153, 72, 658, 21),
+(154, 72, 764, 21),
+(155, 73, 323, 14),
+(156, 74, 427, 15),
+(157, 74, 485, 15),
+(158, 75, 825, 18),
+(159, 76, 321, 17),
+(160, 76, 703, 17),
+(161, 78, 59, 18),
+(162, 78, 705, 20),
+(163, 79, 675, 21),
+(164, 80, 959, 14),
+(165, 80, 920, 14),
+(166, 82, 270, 16),
+(167, 82, 103, 16),
+(168, 83, 546, 19),
+(169, 84, 453, 19),
+(170, 84, 438, 19),
+(171, 84, 801, 18),
+(172, 84, 303, 18),
+(173, 85, 546, 19),
+(174, 85, 252, 19),
+(175, 85, 938, 19),
+(176, 85, 144, 20),
+(177, 85, 778, 20),
+(178, 86, 938, 19),
+(179, 87, 514, 14),
+(180, 87, 920, 14),
+(181, 88, 427, 15),
+(182, 89, 836, 16),
+(183, 90, 217, 17),
+(184, 92, 144, 20),
+(185, 92, 101, 20),
+(186, 93, 31, 20),
+(187, 93, 610, 21),
+(188, 94, 848, 21),
+(189, 94, 290, 21),
+(190, 94, 642, 21),
+(191, 94, 556, 21),
+(192, 94, 28, 14),
+(193, 95, 796, 21),
+(194, 95, 675, 21),
+(195, 97, 539, 21),
+(196, 98, 848, 21),
+(197, 98, 610, 21),
+(198, 98, 59, 18),
+(199, 98, 594, 18),
+(200, 99, 675, 21),
+(201, 101, 146, 22),
+(202, 101, 772, 22),
+(203, 101, 387, 22),
+(204, 101, 667, 23),
+(205, 102, 664, 22),
+(206, 102, 874, 22),
+(207, 102, 401, 22),
+(208, 103, 926, 22),
+(209, 103, 601, 22),
+(210, 103, 811, 22),
+(211, 104, 748, 26),
+(212, 104, 294, 26),
+(213, 105, 866, 27),
+(214, 106, 751, 22),
+(215, 106, 929, 28),
+(216, 108, 772, 22),
+(217, 109, 39, 24),
+(218, 109, 63, 24),
+(219, 111, 923, 23),
+(220, 111, 863, 23),
+(221, 111, 37, 26),
+(222, 111, 455, 26),
+(223, 112, 652, 23),
+(224, 112, 392, 27),
+(225, 113, 789, 23),
+(226, 113, 312, 23),
+(227, 113, 590, 23),
+(228, 114, 660, 23),
+(229, 114, 127, 29),
+(230, 115, 902, 24),
+(231, 116, 761, 24),
+(232, 116, 652, 23),
+(233, 117, 624, 24),
+(234, 117, 261, 24),
+(235, 117, 517, 25),
+(236, 117, 758, 25),
+(237, 118, 607, 24),
+(238, 119, 624, 24),
+(239, 120, 761, 24),
+(240, 120, 761, 24),
+(241, 120, 243, 24),
+(242, 120, 393, 24),
+(243, 121, 393, 24),
+(244, 121, 228, 24),
+(245, 121, 171, 29),
+(246, 121, 176, 29),
+(247, 123, 1000, 25),
+(248, 123, 342, 25),
+(249, 123, 667, 23),
+(250, 124, 261, 24),
+(251, 125, 294, 26),
+(252, 125, 748, 26),
+(253, 125, 294, 26),
+(254, 126, 342, 25),
+(255, 126, 648, 25),
+(256, 126, 210, 27),
+(257, 126, 671, 27),
+(258, 128, 517, 25),
+(259, 129, 455, 26),
+(260, 129, 195, 22),
+(261, 130, 135, 23),
+(262, 131, 455, 26),
+(263, 131, 370, 26),
+(264, 132, 604, 26),
+(265, 132, 517, 25),
+(266, 132, 648, 25),
+(267, 132, 11, 25),
+(268, 133, 100, 26),
+(269, 133, 100, 26),
+(270, 134, 370, 26),
+(271, 135, 350, 26),
+(272, 135, 229, 26),
+(273, 135, 120, 29),
+(274, 135, 171, 29),
+(275, 136, 743, 27),
+(276, 136, 387, 22),
+(277, 137, 234, 27),
+(278, 137, 136, 23),
+(279, 137, 25, 23),
+(280, 138, 915, 27),
+(281, 138, 228, 24),
+(282, 139, 702, 27),
+(283, 139, 531, 27),
+(284, 139, 760, 25),
+(285, 139, 589, 25),
+(286, 139, 342, 25),
+(287, 140, 845, 27),
+(288, 141, 149, 27),
+(289, 144, 771, 28),
+(290, 144, 590, 23),
+(291, 145, 155, 28),
+(292, 145, 228, 24),
+(293, 146, 247, 28),
+(294, 146, 140, 28),
+(295, 147, 10, 26),
+(296, 148, 133, 28),
+(297, 149, 693, 28),
+(298, 149, 335, 29),
+(299, 150, 263, 29),
+(300, 151, 831, 29),
+(301, 151, 918, 29),
+(302, 151, 168, 29),
+(303, 152, 243, 24),
+(304, 152, 228, 24),
+(305, 152, 624, 24),
+(306, 153, 995, 29),
+(307, 153, 94, 29),
+(308, 154, 26, 29),
+(309, 154, 157, 29),
+(310, 154, 209, 26),
+(311, 154, 108, 26),
+(312, 155, 845, 27),
+(313, 156, 133, 28),
+(314, 157, 515, 30),
+(315, 157, 208, 31),
+(316, 157, 147, 31),
+(317, 158, 313, 32),
+(318, 159, 633, 30),
+(319, 159, 767, 30),
+(320, 159, 932, 33),
+(321, 160, 850, 31),
+(322, 161, 732, 31),
+(323, 161, 735, 31),
+(324, 161, 551, 31),
+(325, 161, 122, 32),
+(326, 163, 994, 32),
+(327, 164, 647, 32),
+(328, 164, 469, 31),
+(329, 165, 953, 32),
+(330, 165, 221, 32),
+(331, 167, 469, 31),
+(332, 168, 129, 33),
+(333, 168, 222, 32),
+(334, 169, 881, 35),
+(335, 170, 680, 35),
+(336, 170, 881, 35),
+(337, 170, 788, 34),
+(338, 171, 807, 37),
+(339, 171, 659, 37),
+(340, 172, 301, 36),
+(341, 172, 154, 38),
+(342, 173, 685, 36),
+(343, 173, 599, 36),
+(344, 173, 152, 36),
+(345, 173, 644, 39),
+(346, 175, 87, 41),
+(347, 176, 73, 37),
+(348, 177, 584, 37),
+(349, 177, 739, 38),
+(350, 177, 838, 38),
+(351, 177, 381, 38),
+(352, 178, 338, 37),
+(353, 178, 265, 39),
+(354, 178, 562, 39),
+(355, 179, 462, 37),
+(356, 179, 70, 40),
+(357, 180, 719, 37),
+(358, 180, 719, 37),
+(359, 182, 326, 37),
+(360, 183, 93, 38),
+(361, 184, 528, 38),
+(362, 184, 70, 40),
+(363, 185, 484, 38),
+(364, 187, 495, 39),
+(365, 188, 971, 38),
+(366, 189, 562, 39),
+(367, 189, 547, 39),
+(368, 189, 899, 39),
+(369, 190, 478, 39),
+(370, 190, 478, 39),
+(371, 190, 644, 39),
+(372, 190, 931, 39),
+(373, 190, 87, 41),
+(374, 190, 48, 41),
+(375, 190, 111, 41),
+(376, 191, 349, 40),
+(377, 191, 605, 36),
+(378, 191, 361, 36),
+(379, 192, 723, 40),
+(380, 192, 617, 37),
+(381, 193, 695, 40),
+(382, 193, 588, 40),
+(383, 193, 213, 40),
+(384, 193, 890, 40),
+(385, 193, 739, 38),
+(386, 193, 53, 38),
+(387, 194, 213, 40),
+(388, 195, 695, 40),
+(389, 196, 48, 41),
+(390, 196, 18, 36),
+(391, 197, 991, 41),
+(392, 198, 53, 38),
+(393, 199, 66, 41),
+(394, 199, 587, 41),
+(395, 199, 87, 41),
+(396, 199, 931, 39),
+(397, 200, 66, 41),
+(398, 200, 111, 41),
+(399, 200, 213, 40),
+(400, 200, 695, 40),
+(401, 200, 409, 40),
+(402, 201, 239, 42),
+(403, 202, 769, 43),
+(404, 202, 823, 43),
+(405, 202, 737, 43),
+(406, 202, 448, 42),
+(407, 203, 295, 44),
+(408, 203, 777, 44),
+(409, 203, 114, 45),
+(410, 203, 727, 45),
+(411, 203, 794, 45),
+(412, 204, 311, 46),
+(413, 204, 673, 46),
+(414, 205, 951, 47),
+(415, 205, 463, 47),
+(416, 206, 81, 48),
+(417, 207, 412, 44),
+(418, 207, 508, 44),
+(419, 207, 578, 49),
+(420, 207, 618, 49),
+(421, 208, 347, 44),
+(422, 208, 412, 44),
+(423, 208, 454, 44),
+(424, 208, 412, 44),
+(425, 208, 362, 50),
+(426, 208, 112, 50),
+(427, 209, 356, 45),
+(428, 210, 673, 46),
+(429, 210, 819, 46),
+(430, 210, 311, 46),
+(431, 211, 727, 45),
+(432, 211, 523, 47),
+(433, 212, 13, 45),
+(434, 212, 598, 45),
+(435, 212, 267, 48),
+(436, 212, 47, 48),
+(437, 213, 356, 45),
+(438, 213, 542, 49),
+(439, 213, 6, 49),
+(440, 213, 74, 49),
+(441, 216, 13, 45),
+(442, 216, 727, 45),
+(443, 217, 445, 46),
+(444, 217, 328, 47),
+(445, 217, 496, 47),
+(446, 218, 339, 46),
+(447, 218, 673, 46),
+(448, 218, 415, 46),
+(449, 218, 396, 48),
+(450, 220, 110, 46),
+(451, 220, 841, 50),
+(452, 221, 523, 47),
+(453, 222, 632, 47),
+(454, 222, 794, 45),
+(455, 223, 632, 47),
+(456, 223, 328, 47),
+(457, 223, 465, 46),
+(458, 224, 827, 47),
+(459, 224, 328, 47),
+(460, 224, 218, 47),
+(461, 224, 396, 48),
+(462, 227, 600, 48),
+(463, 227, 395, 48),
+(464, 227, 197, 48),
+(465, 228, 689, 48),
+(466, 228, 907, 45),
+(467, 228, 343, 45),
+(468, 229, 76, 48),
+(469, 229, 720, 46),
+(470, 230, 827, 47),
+(471, 231, 396, 48),
+(472, 232, 76, 48),
+(473, 232, 512, 50),
+(474, 232, 602, 50),
+(475, 232, 489, 50),
+(476, 233, 196, 44),
+(477, 234, 420, 49),
+(478, 236, 428, 47),
+(479, 237, 15, 49),
+(480, 237, 47, 48),
+(481, 238, 14, 49),
+(482, 238, 709, 50),
+(483, 240, 879, 50),
+(484, 240, 489, 50),
+(485, 241, 291, 50),
+(486, 242, 151, 50),
+(487, 242, 489, 50),
+(488, 242, 523, 47),
+(489, 243, 81, 48),
+(490, 244, 602, 50),
+(491, 244, 537, 50),
+(492, 244, 69, 49);
+
+
 

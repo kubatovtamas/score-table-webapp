@@ -32,6 +32,8 @@ Gollovo(***jatekos_id***, ***merkozes_id***, ***csapat_id***)
 
 #### MEGVALÓSÍTÁSI KÖRNYEZET
 
+Az adatok generálására a mockaroo.com által nyújtott szolgáltatásokat, saját programelemeket, in-memory adatbázisból 
+SQL dump-pal gyűjtött adatokat használtam, a data.sql és schema.sql fájlokba gyűjtve a parancsokat.
 A program Java nyelven íródott, MySQL adatbázisra épülve, Spring Boot keretrendszerben. A program futtatása egy jar fájl indításával lehetséges.
 {**TODO**: actual command ide}```$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar```  
 A szerver a 8080 porton indul.
@@ -73,7 +75,7 @@ WHERE
             WHERE country_id = (
                 SELECT C.id 
                 FROM COUNTRY AS C 
-                WHERE LOWER(name) LIKE '%russia%'
+                WHERE LOWER(name) LIKE '%indonesia%'
             )
         )
     )
@@ -199,7 +201,52 @@ ORDER BY PTS DESC;
 
 
 
-/* 3. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO */
+/* 3. TOP 10 GÓLLÖVŐLISTA, ORSZÁG NÉV ALAPJÁN */
+
+SELECT
+    PLAYER.NAME AS PLAYER_NAME,
+    TEAM.NAME AS TEAM_NAME,
+    COUNT(*) AS NUM_GOALS
+FROM GOAL
+LEFT JOIN PLAYER
+    ON GOAL.PLAYER_ID = PLAYER.ID
+LEFT JOIN TEAM
+    ON TEAM.ID = PLAYER.TEAM_ID
+LEFT JOIN LEAGUE
+    ON LEAGUE.ID = TEAM.LEAGUE_ID
+WHERE
+    LEAGUE.COUNTRY_ID = (
+        SELECT
+            COUNTRY.ID
+        FROM
+            COUNTRY
+        WHERE
+            LOWER(COUNTRY.NAME) LIKE '%czech%'
+    )
+GROUP BY player_id
+ORDER BY NUM_GOALS DESC
+LIMIT 10;
+
+/*                                        RESULT     
+        
+| HOME_TEAM         | AWAY_TEAM             | SCORE   | DIFFERENCE   | DATE                |
+|-------------------|-----------------------|---------|--------------|---------------------|
+| Czech Busters     | Czech Legends         | 5-0     | 5            | 2020-12-06 11:22:11 |
+| Tanzanian Bombers | Tanzanian Tornadoes   | 4-0     | 4            | 2020-12-08 00:39:08 |
+| American Stingers | American Geckos       | 4-0     | 4            | 2020-11-10 14:41:44 |
+| Czech Sharks      | Czech Sonics          | 4-1     | 3            | 2020-12-14 16:06:08 |
+| American Fighters | American Rockets      | 3-0     | 3            | 2020-09-22 05:49:56 |
+| American Fighters | American Stingers     | 0-3     | 3            | 2020-11-09 01:39:56 |
+| American Kickers  | American United       | 3-0     | 3            | 2020-11-21 16:00:49 |
+| Russian Flying    | Russian Sharpshooters | 3-0     | 3            | 2020-12-15 16:52:01 |
+| American Kickers  | American Stingers     | 3-0     | 3            | 2020-10-21 18:36:39 |
+| Czech Legends     | Czech Wasps           | 4-1     | 3            | 2020-12-30 22:33:04 |
+|------------------------------------------------------------------------------------------|
+*/
+
+
+
+/* 4. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO */
 
 SELECT
     L.NAME AS LEAGUE_NAME,
@@ -236,14 +283,10 @@ LIMIT 10;
 |-------------------|-----------------------|---------|--------------|---------------------|
 */
 
-/* 4. 1 CSAPAT JATEKOSAINAK LEKÉRDEZÉSE */
-SELECT P.name as PLAYER_NAME
-FROM PLAYER AS P
-LEFT JOIN TEAM AS T 
-    ON P.team_id = T.id
-where T.name = 'American Geckos';
 
-/* 4. TOP 10 LEGNAGYOBB ARANYU GYOZELEM INFO */
+
+/* 5. TOP 10 LEGNAGYOBB ARANYU GYOZELEM INFO */
+
 SELECT
     L.NAME, 
     HOME.NAME AS HOME_TEAM,
@@ -260,19 +303,12 @@ LEFT JOIN LEAGUE AS L
      ON home.league_id = L.id
 ORDER BY DIFFERENCE DESC
 LIMIT 10;
-
-
 ```
 
 #### TODO:
-- góllövők feature + összetett lekérdezés
 - doksi: táblatervek
 - admin felület mindenestül
 - JPA részen constraintek
 - ER: add date to merkozes, lekepezesekhez is
 - doksi: readme/ kepernyoterv / howto
-
--eddig 5 tábla:  
-+1 góllövők
-+x users
 
