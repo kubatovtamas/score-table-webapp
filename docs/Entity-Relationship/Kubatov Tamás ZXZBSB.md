@@ -282,27 +282,6 @@ LIMIT 10;
 | Czech Legends     | Czech Wasps           | 4-1     | 3            | 2020-12-30 22:33:04 |
 |-------------------|-----------------------|---------|--------------|---------------------|
 */
-
-
-
-/* 5. TOP 10 LEGNAGYOBB ARANYU GYOZELEM INFO */
-
-SELECT
-    L.NAME, 
-    HOME.NAME AS HOME_TEAM,
-    AWAY.NAME AS AWAY_TEAM,
-    CONCAT(G.NUM_HOME_GOALS, '-', G.NUM_AWAY_GOALS) AS SCORE,
-    ABS(G.NUM_AWAY_GOALS - G.NUM_HOME_GOALS)  AS DIFFERENCE,
-    G.DATE AS DATE
-FROM GAME AS G
-LEFT JOIN TEAM AS AWAY
-    ON away.id = G.away_team_id
-LEFT JOIN team AS HOME
-    ON home.id = G.home_team_id
-LEFT JOIN LEAGUE AS L
-     ON home.league_id = L.id
-ORDER BY DIFFERENCE DESC
-LIMIT 10;
 ```
 
 #### TODO:
