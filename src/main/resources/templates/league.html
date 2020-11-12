@@ -14,32 +14,90 @@
 <body>
 
 
+<section>
+    <h1>TEAMS</h1>
+    <table>
+        <tr th:each="team : ${teams}">
+            <td th:text="${team.getName()}">Test</td>
+        </tr>
+    </table>
+</section>
 
-<table>
-    <tr th:each="team : ${teams}">
-        <td th:text="${team.getName()}">Test</td>
-    </tr>
-</table>
+<section>
+    <h1>TABLE</h1>
+    <table>
+        <tr>
+            <td>TEAM</td>
+            <td>P</td>
+            <td>GF</td>
+            <td>GA</td>
+            <td>GD</td>
+            <td>PTS</td>
+        </tr>
+        <tr th:each="row : ${table}">
+            <td th:text="${row.getTeamName()}">TEAM</td>
+            <td th:text="${row.getPlayed()}">P</td>
+            <td th:text="${row.getGoalsFor()}">GF</td>
+            <td th:text="${row.getGoalsAgainst()}">GA</td>
+            <td th:text="${row.getGoalsGoalDifference()}">GD</td>
+            <td th:text="${row.getPoints()}">PTS</td>
+        </tr>
+    </table>
+</section>
 
-<table>
-    <tr>
-        <td>TEAM</td>
-        <td>P</td>
-        <td>GF</td>
-        <td>GA</td>
-        <td>GD</td>
-        <td>PTS</td>
-    </tr>
-    <tr th:each="row : ${table}">
-        <td th:text="${row.getTeamName()}">TEAM</td>
-        <td th:text="${row.getPlayed()}">P</td>
-        <td th:text="${row.getGoalsFor()}">GF</td>
-        <td th:text="${row.getGoalsAgainst()}">GA</td>
-        <td th:text="${row.getGoalsGoalDifference()}">GD</td>
-        <td th:text="${row.getPoints()}">PTS</td>
-    </tr>
+<section>
+    <h1>MATCHES</h1>
+    <table>
+        <tr>
+            <td>HOME_TEAM</td>
+            <td>AWAY_TEAM</td>
+            <td>SCORE</td>
+            <td>DATE</td>
+        </tr>
+        <tr th:each="row : ${match}">
+            <td th:text="${row.getHomeTeamName()}">TEAM</td>
+            <td th:text="${row.getAwayTeamName()}">TEAM</td>
+            <td th:text="${row.getScore()}">TEAM</td>
+            <td th:text="${row.getDate()}">TEAM</td>
+        </tr>
+    </table>
+</section>
 
-</table>
+<section>
+    <h1>TOP SCORERS</h1>
+    <table>
+        <tr>
+            <td>PLAYER_NAME</td>
+            <td>TEAM_NAME</td>
+            <td>NUM_GOALS</td>
+        </tr>
+        <tr th:each="row : ${scorer}">
+            <td th:text="${row.getPlayerName()}">TEAM</td>
+            <td th:text="${row.getTeamName()}">TEAM</td>
+            <td th:text="${row.getNumGoals()}">TEAM</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h1>LARGEST WINS</h1>
+    <table>
+        <tr>
+            <td>HOME_TEAM</td>
+            <td>AWAY_TEAM</td>
+            <td>SCORE</td>
+            <td>DIFFERENCE</td>
+            <td>DATE</td>
+        </tr>
+        <tr th:each="row : ${goalDifference}">
+            <td th:text="${row.getHomeTeamName()}">TEAM</td>
+            <td th:text="${row.getAwayTeamName()}">TEAM</td>
+            <td th:text="${row.getScore()}">TEAM</td>
+            <td th:text="${row.getDifference()}">TEAM</td>
+            <td th:text="${row.getDate()}">TEAM</td>
+        </tr>
+    </table>
+</section>
 
 </body>
 </html>

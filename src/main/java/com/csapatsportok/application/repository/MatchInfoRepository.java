@@ -20,7 +20,7 @@ public class MatchInfoRepository {
         this.jdbc = jdbc;
     }
 
-    public List<MatchInfo> getMatchinfoByCountryName(String name) {
+    public List<MatchInfo> getMatchinfoByLeagueName(String name) {
         String sql = """
                 SELECT
                     home.name AS HOME_TEAM,
@@ -39,11 +39,7 @@ public class MatchInfoRepository {
                         WHERE T.league_id = (
                             SELECT L.id
                             FROM LEAGUE AS L
-                            WHERE country_id = (
-                                SELECT C.id
-                                FROM COUNTRY AS C
-                                WHERE LOWER(name) LIKE :name
-                            )
+                            WHERE L.name LIKE :name
                         )
                     )
                 ORDER BY G.date;

@@ -19,7 +19,7 @@ public class ScorerInfoRepository {
         this.jdbc = jdbc;
     }
 
-    public List<ScorerInfo> getScorerInfoByCountryName(String name) {
+    public List<ScorerInfo> getScorerInfoByLeagueName(String name) {
         String sql = """
                 SELECT
                     PLAYER.NAME AS PLAYER_NAME,
@@ -33,13 +33,10 @@ public class ScorerInfoRepository {
                 LEFT JOIN LEAGUE
                     ON LEAGUE.ID = TEAM.LEAGUE_ID
                 WHERE
-                    LEAGUE.COUNTRY_ID = (
-                        SELECT
-                            COUNTRY.ID
-                        FROM
-                            COUNTRY
-                        WHERE
-                            LOWER(COUNTRY.NAME) LIKE :name
+                    LEAGUE.ID = (
+                        SELECT L.id
+                        FROM LEAGUE AS L
+                        WHERE L.name LIKE :name
                     )
                 GROUP BY player_id
                 ORDER BY NUM_GOALS DESC

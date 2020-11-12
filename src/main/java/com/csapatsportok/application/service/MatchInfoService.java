@@ -19,7 +19,8 @@ public class MatchInfoService {
         this.matchInfoRepo = matchInfoRepo;
     }
 
-    public List<MatchInfo> getMatchinfoByCountryName(String name) {
-        return matchInfoRepo.getMatchinfoByCountryName(name);
+    public List<MatchInfo> getMatchinfoByLeagueName(String name) {
+        return matchInfoRepo.getMatchinfoByLeagueName(name);
+
     }
 }

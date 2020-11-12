@@ -1,7 +1,6 @@
 package com.csapatsportok.application.service;
 
 import com.csapatsportok.application.info.ScorerInfo;
-import com.csapatsportok.application.repository.MatchInfoRepository;
 import com.csapatsportok.application.repository.ScorerInfoRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ScorerInfoService {
         this.scorerInfoRepo = scorerInfoRepo;
     }
 
-    public List<ScorerInfo> getScorerInfoByCountryName(String name) {
-        return scorerInfoRepo.getScorerInfoByCountryName(name);
+    public List<ScorerInfo> getScorerInfoByLeagueName(String name) {
+        return scorerInfoRepo.getScorerInfoByLeagueName(name);
     }
 }

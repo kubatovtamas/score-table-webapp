@@ -93,44 +93,16 @@ public class MainController {
     public String league(@PathVariable(value = "name") String name, Model model) {
         League league = leagueServ.getLeagueByName(name);
         List<TableInfo> tableInfos = tableInfoService.getTableInfoByLeagueName(league.getName());
+        List<MatchInfo> matchInfos = matchInfoService.getMatchinfoByLeagueName(league.getName());
+        List<ScorerInfo> scorerInfos = scorerInfoService.getScorerInfoByLeagueName(league.getName());
+        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoService.getGoalDifferenceInfoByLeagueName(league.getName());
+
         model.addAttribute("teams", teamServ.getTeamsByLeague(league));
         model.addAttribute("table", tableInfos);
-        return "league";
-    }
-
-
-
-
-
-    /* TABLE */
-    @RequestMapping("/testtable")
-    public String test1(Model model) {
-        List<TableInfo> tableInfos = tableInfoService.getTableInfoByLeagueName("united");
-        model.addAttribute("table", tableInfos);
-        return "testtable";
-    }
-
-    /* MATCHES */
-    @RequestMapping("/testmatch")
-    public String test2(Model model) {
-        List<MatchInfo> matchInfos = matchInfoService.getMatchinfoByCountryName("united");
         model.addAttribute("match", matchInfos);
-        return "testmatch";
-    }
-
-    /* SCORERS */
-    @RequestMapping("/testscorer")
-    public String test3(Model model) {
-        List<ScorerInfo> scorerInfos = scorerInfoService.getScorerInfoByCountryName("united");
         model.addAttribute("scorer", scorerInfos);
-        return "testscorer";
-    }
-
-    /* GOAL DIFFERENCE */
-    @RequestMapping("/testgoaldiff")
-    public String test4(Model model) {
-        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoService.getGoalDifferenceInfoByCountryName("united");
         model.addAttribute("goalDifference", goalDifferenceInfos);
-        return "testgoaldiff";
+
+        return "league";
     }
 }

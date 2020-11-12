@@ -19,7 +19,7 @@ public class GoalDifferenceInfoService {
         this.goalDifferenceInfoRepo = goalDifferenceInfoRepo;
     }
 
-    public List<GoalDifferenceInfo> getGoalDifferenceInfoByCountryName(String name) {
-        return goalDifferenceInfoRepo.getGoalDifferenceInfoByCountryName(name);
+    public List<GoalDifferenceInfo> getGoalDifferenceInfoByLeagueName(String name) {
+        return goalDifferenceInfoRepo.getGoalDifferenceInfoByLeagueName(name);
     }
 }
