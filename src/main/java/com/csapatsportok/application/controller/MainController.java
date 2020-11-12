@@ -1,6 +1,14 @@
 package com.csapatsportok.application.controller;
 
+import com.csapatsportok.application.info.GoalDifferenceInfo;
+import com.csapatsportok.application.info.MatchInfo;
+import com.csapatsportok.application.info.ScorerInfo;
+import com.csapatsportok.application.info.TableInfo;
 import com.csapatsportok.application.domain.*;
+import com.csapatsportok.application.repository.GoalDifferenceInfoRepository;
+import com.csapatsportok.application.repository.MatchInfoRepository;
+import com.csapatsportok.application.repository.ScorerInfoRepository;
+import com.csapatsportok.application.repository.TableInfoRepository;
 import com.csapatsportok.application.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,6 +81,54 @@ public class MainController {
         return "leagues";
     }
 
+
+    /* TABLE */
+    private TableInfoRepository tableInfoRepo;
+    @Autowired
+    public void setTableInfoRepository(TableInfoRepository tableRepo) { this.tableInfoRepo = tableRepo; }
+
+    @RequestMapping("/testtable")
+    public String test1(Model model) {
+        List<TableInfo> tableInfos = tableInfoRepo.getTableInfoByCountryName("united");
+        model.addAttribute("table", tableInfos);
+        return "testtable";
+    }
+
+    /* MATCHES */
+    private MatchInfoRepository matchInfoRepo;
+    @Autowired
+    public void setMatchInfoRepo(MatchInfoRepository matchInfoRepo) { this.matchInfoRepo = matchInfoRepo; }
+
+    @RequestMapping("/testmatch")
+    public String test2(Model model) {
+        List<MatchInfo> matchInfos = matchInfoRepo.getMatchinfoByCountryName("united");
+        model.addAttribute("match", matchInfos);
+        return "testmatch";
+    }
+
+    /* SCORERS */
+    private ScorerInfoRepository scorerInfoRepo;
+    @Autowired
+    public void setScorerInfoRepo(ScorerInfoRepository scorerInfoRepo) { this.scorerInfoRepo = scorerInfoRepo; }
+
+    @RequestMapping("/testscorer")
+    public String test3(Model model) {
+        List<ScorerInfo> scorerInfos = scorerInfoRepo.getScorerInfoByCountryName("united");
+        model.addAttribute("scorer", scorerInfos);
+        return "testscorer";
+    }
+
+    /* GOAL DIFFERENCE */
+    private GoalDifferenceInfoRepository goalDifferenceInfoRepo;
+    @Autowired
+    public void setGoalDifferenceInfoRepo(GoalDifferenceInfoRepository goalDifferenceInfoRepo) { this.goalDifferenceInfoRepo = goalDifferenceInfoRepo; }
+
+    @RequestMapping("/testgoaldiff")
+    public String test4(Model model) {
+        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoRepo.getGoalDifferenceInfoByCountryName("united");
+        model.addAttribute("goalDifference", goalDifferenceInfos);
+        return "testgoaldiff";
+    }
 
 
 //    private HashMap<Team, List<Player>> getRosters() {

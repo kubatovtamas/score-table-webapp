@@ -94,7 +94,7 @@ ORDER BY G.date;
 
 
 
-/* 2. LIGA TÁBLA, ORSZÁGNÉV ALAPJÁN, CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, 
+/* 2. LIGA TÁBLA, ORSZÁGNÉV ALAPJÁN: CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, 
 ÖSSZESÍTETT GÓL INFO, ÖSSZESÍTETT PONT, PONT SZERINT CSÖKKENŐ SORRENDBEN */
 
 SELECT 
@@ -227,21 +227,22 @@ GROUP BY player_id
 ORDER BY NUM_GOALS DESC
 LIMIT 10;
 
-/*                                        RESULT     
+/*                      RESULT     
         
-| HOME_TEAM         | AWAY_TEAM             | SCORE   | DIFFERENCE   | DATE                |
-|-------------------|-----------------------|---------|--------------|---------------------|
-| Czech Busters     | Czech Legends         | 5-0     | 5            | 2020-12-06 11:22:11 |
-| Tanzanian Bombers | Tanzanian Tornadoes   | 4-0     | 4            | 2020-12-08 00:39:08 |
-| American Stingers | American Geckos       | 4-0     | 4            | 2020-11-10 14:41:44 |
-| Czech Sharks      | Czech Sonics          | 4-1     | 3            | 2020-12-14 16:06:08 |
-| American Fighters | American Rockets      | 3-0     | 3            | 2020-09-22 05:49:56 |
-| American Fighters | American Stingers     | 0-3     | 3            | 2020-11-09 01:39:56 |
-| American Kickers  | American United       | 3-0     | 3            | 2020-11-21 16:00:49 |
-| Russian Flying    | Russian Sharpshooters | 3-0     | 3            | 2020-12-15 16:52:01 |
-| American Kickers  | American Stingers     | 3-0     | 3            | 2020-10-21 18:36:39 |
-| Czech Legends     | Czech Wasps           | 4-1     | 3            | 2020-12-30 22:33:04 |
-|------------------------------------------------------------------------------------------|
+| PLAYER_NAME           | TEAM_NAME        | NUM_GOALS   |
+|-----------------------|------------------|-------------|
+| Chandra Abrahamowitcz | Czech Wasps      | 5           |
+| Torie Muir            | Czech Flying     | 4           |
+| Roselin Wilby         | Czech Legends    | 4           |
+| Quentin Soeiro        | Czech Busters    | 3           |
+| Audi Maxsted          | Czech Kickers    | 3           |
+| Halli Maker           | Czech Flying     | 3           |
+| Reuben Goldsbrough    | Czech Hurricanes | 3           |
+| Missy Milley          | Czech Legends    | 2           |
+| Tuck Martellini       | Czech Hurricanes | 2           |
+| Bill Gallety          | Czech Sharks     | 2           |
+|--------------------------------------------------------|
+
 */
 
 
@@ -262,6 +263,11 @@ LEFT JOIN TEAM AS HOME
     ON home.id = G.home_team_id
 LEFT JOIN LEAGUE AS L
     ON home.league_id = L.id
+WHERE L.country_id = (
+    SELECT C.id
+    FROM COUNTRY AS C
+    WHERE LOWER(name) LIKE '%united%'
+)
 ORDER BY DIFFERENCE DESC
 LIMIT 10;
 
