@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Score Table</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+</style>
+<body>
+<ul class="center">
+    <li><a href="default.asp">Countries</a></li>
+    <li><a href="default.asp">Leagues</a></li>
+    <li><a href="default.asp">Teams</a></li>
+    <li><a href="default.asp">Players</a></li>
+    <li><a href="default.asp">Games</a></li>
+    <li><a href="default.asp">Goals</a></li>
+</ul>
+
+
+<table class="center">
+    <tr>
+        <td>Country</td>
+        <td th:colspan="${maxNumOfLeagues}">Leagues</td>
+    </tr>
+    <tr th:each="country : ${countries}">
+        <td th:text="${country.getName()}">Test</td>
+        <td th:each="league : ${country.getLeagues()}">
+            <a th:href="@{/league/{name} (name = ${league.getName()})}" th:text="${league.getName()}">league name</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

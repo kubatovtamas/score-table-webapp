@@ -21,4 +21,6 @@ public class LeagueService {
     public League getLeagueByName(String name) {
         return leagueRepo.findByName(name);
     }
+
+
 }

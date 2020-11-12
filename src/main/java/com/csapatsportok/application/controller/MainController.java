@@ -5,10 +5,6 @@ import com.csapatsportok.application.info.MatchInfo;
 import com.csapatsportok.application.info.ScorerInfo;
 import com.csapatsportok.application.info.TableInfo;
 import com.csapatsportok.application.domain.*;
-import com.csapatsportok.application.repository.GoalDifferenceInfoRepository;
-import com.csapatsportok.application.repository.MatchInfoRepository;
-import com.csapatsportok.application.repository.ScorerInfoRepository;
-import com.csapatsportok.application.repository.TableInfoRepository;
 import com.csapatsportok.application.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,135 +44,93 @@ public class MainController {
         this.teamServ = teamServ;
     }
 
+    private TableInfoService tableInfoService;
+    @Autowired
+    public void setTableInfoService(TableInfoService tableInfoService) { this.tableInfoService = tableInfoService; }
 
-    private List<Country> getCountries() {
-        return countryServ.getCountryRepo().findAll();
+    private MatchInfoService matchInfoService;
+    @Autowired
+    public void setMatchInfoService(MatchInfoService matchInfoService) { this.matchInfoService = matchInfoService; }
+
+    private ScorerInfoService scorerInfoService;
+    @Autowired
+    public void setScorerInfoService(ScorerInfoService scorerInfoService) {
+        this.scorerInfoService = scorerInfoService;
     }
 
-    private int getMaxNumOfLeagues() {
-        return countryServ.getCountryRepo().findMaxNumberOfLeagues();
-    }
-
-    private List<Team> getTeamsByLeague(League league) {
-        return teamServ.getTeamRepo().findAllByLeague(league);
-    }
-
-    private League getLeagueByName(String name) {
-        return leagueServ.getLeagueByName(name);
+    private GoalDifferenceInfoService goalDifferenceInfoService;
+    @Autowired
+    public void setGoalDifferenceInfoService(GoalDifferenceInfoService goalDifferenceInfoService) {
+        this.goalDifferenceInfoService = goalDifferenceInfoService;
     }
 
 
-    @RequestMapping("/countries")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @RequestMapping("/")
     public String index(Model model) {
-        // Countries + Their Leagues
-        model.addAttribute("countries", getCountries());
-        model.addAttribute("maxNumOfLeagues", getMaxNumOfLeagues());
-        return "countries";
+        model.addAttribute("countries", countryServ.getCountries());
+        model.addAttribute("maxNumOfLeagues", countryServ.getMaxNumOfLeagues());
+        return "index";
     }
 
     @RequestMapping("/league/{name}")
     public String league(@PathVariable(value = "name") String name, Model model) {
-        League league = getLeagueByName(name);
-        model.addAttribute("teams", getTeamsByLeague(league));
-        return "leagues";
+        League league = leagueServ.getLeagueByName(name);
+        List<TableInfo> tableInfos = tableInfoService.getTableInfoByCountryName("united");
+        model.addAttribute("teams", teamServ.getTeamsByLeague(league));
+        model.addAttribute("table", tableInfos);
+        return "league";
     }
 
 
-    /* TABLE */
-    private TableInfoRepository tableInfoRepo;
-    @Autowired
-    public void setTableInfoRepository(TableInfoRepository tableRepo) { this.tableInfoRepo = tableRepo; }
 
+
+
+    /* TABLE */
     @RequestMapping("/testtable")
     public String test1(Model model) {
-        List<TableInfo> tableInfos = tableInfoRepo.getTableInfoByCountryName("united");
+        List<TableInfo> tableInfos = tableInfoService.getTableInfoByCountryName("united");
         model.addAttribute("table", tableInfos);
         return "testtable";
     }
 
     /* MATCHES */
-    private MatchInfoRepository matchInfoRepo;
-    @Autowired
-    public void setMatchInfoRepo(MatchInfoRepository matchInfoRepo) { this.matchInfoRepo = matchInfoRepo; }
-
     @RequestMapping("/testmatch")
     public String test2(Model model) {
-        List<MatchInfo> matchInfos = matchInfoRepo.getMatchinfoByCountryName("united");
+        List<MatchInfo> matchInfos = matchInfoService.getMatchinfoByCountryName("united");
         model.addAttribute("match", matchInfos);
         return "testmatch";
     }
 
     /* SCORERS */
-    private ScorerInfoRepository scorerInfoRepo;
-    @Autowired
-    public void setScorerInfoRepo(ScorerInfoRepository scorerInfoRepo) { this.scorerInfoRepo = scorerInfoRepo; }
-
     @RequestMapping("/testscorer")
     public String test3(Model model) {
-        List<ScorerInfo> scorerInfos = scorerInfoRepo.getScorerInfoByCountryName("united");
+        List<ScorerInfo> scorerInfos = scorerInfoService.getScorerInfoByCountryName("united");
         model.addAttribute("scorer", scorerInfos);
         return "testscorer";
     }
 
     /* GOAL DIFFERENCE */
-    private GoalDifferenceInfoRepository goalDifferenceInfoRepo;
-    @Autowired
-    public void setGoalDifferenceInfoRepo(GoalDifferenceInfoRepository goalDifferenceInfoRepo) { this.goalDifferenceInfoRepo = goalDifferenceInfoRepo; }
-
     @RequestMapping("/testgoaldiff")
     public String test4(Model model) {
-        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoRepo.getGoalDifferenceInfoByCountryName("united");
+        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoService.getGoalDifferenceInfoByCountryName("united");
         model.addAttribute("goalDifference", goalDifferenceInfos);
         return "testgoaldiff";
     }
-
-
-//    private HashMap<Team, List<Player>> getRosters() {
-//        List<Team> teams = teamServ.getTeamRepo().findAll();
-//        HashMap<Team, List<Player>> rosters = new HashMap<Team, List<Player>>();
-//        for (Team team : teams) {
-//            List<Player> players = playerServ.getPlayerRepo().findAllByTeam(team);
-//            rosters.put(team, players);
-//        }
-//        return rosters;
-//    }
-
-//    @GetMapping("/all")
-//    public ResponseEntity<?> getTeamPlayerInfo() {
-//        return ResponseEntity.ok(getRosters());
-//    }
-//
-//    @RequestMapping("/postgoal")
-//    public ResponseEntity<Object> addGoal() {
-//        Goal goal = new Goal();
-//        goalServ.getGoalRepo().save(goal);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-
-//    @RequestMapping("/postgoals")
-//    public ResponseEntity<Object> addGoals() {
-//        Random rnd = new Random();
-//        var games = gameServ.getGameRepo().findAll();
-//        var rosters = getRosters();
-//        for (Game game : games) {
-//            for (int i = 0; i < game.getNumHomeGoals(); i++) {
-//                int randomIdx = rnd.nextInt(rosters.get(game.getHomeTeam()).size());
-//                Goal goal = new Goal();
-//                goal.setGame(game);
-//                goal.setTeam(game.getHomeTeam());
-//                goal.setPlayer(rosters.get(game.getHomeTeam()).get(randomIdx));
-//                goalServ.getGoalRepo().save(goal);
-//            }
-//            for (int i = 0; i < game.getNumAwayGoals(); i++) {
-//                int randomIdx = rnd.nextInt(rosters.get(game.getAwayTeam()).size());
-//                Goal goal = new Goal();
-//                goal.setGame(game);
-//                goal.setTeam(game.getAwayTeam());
-//                goal.setPlayer(rosters.get(game.getAwayTeam()).get(randomIdx));
-//                goalServ.getGoalRepo().save(goal);
-//            }
-//        }
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-
 }
