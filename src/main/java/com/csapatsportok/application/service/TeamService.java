@@ -24,4 +24,8 @@ public class TeamService {
     public List<Team> getTeamsByLeague(League league) {
         return teamRepo.findAllByLeague(league);
     }
+
+    public List<Team> getAllTeams() {
+        return teamRepo.findAll();
+    }
 }

@@ -7,6 +7,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Data
 public class LeagueService {
@@ -23,4 +25,7 @@ public class LeagueService {
     }
 
 
+    public List<League> getAllLeagues() {
+        return leagueRepo.findAll();
+    }
 }

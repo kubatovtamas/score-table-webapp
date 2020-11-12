@@ -34,7 +34,7 @@
             <td>GD</td>
             <td>PTS</td>
         </tr>
-        <tr th:each="row : ${table}">
+        <tr th:each="row : ${results}">
             <td th:text="${row.getTeamName()}">TEAM</td>
             <td th:text="${row.getPlayed()}">P</td>
             <td th:text="${row.getGoalsFor()}">GF</td>
@@ -54,7 +54,7 @@
             <td>SCORE</td>
             <td>DATE</td>
         </tr>
-        <tr th:each="row : ${match}">
+        <tr th:each="row : ${matches}">
             <td th:text="${row.getHomeTeamName()}">TEAM</td>
             <td th:text="${row.getAwayTeamName()}">TEAM</td>
             <td th:text="${row.getScore()}">TEAM</td>
@@ -71,7 +71,7 @@
             <td>TEAM_NAME</td>
             <td>NUM_GOALS</td>
         </tr>
-        <tr th:each="row : ${scorer}">
+        <tr th:each="row : ${scorers}">
             <td th:text="${row.getPlayerName()}">TEAM</td>
             <td th:text="${row.getTeamName()}">TEAM</td>
             <td th:text="${row.getNumGoals()}">TEAM</td>
@@ -89,7 +89,7 @@
             <td>DIFFERENCE</td>
             <td>DATE</td>
         </tr>
-        <tr th:each="row : ${goalDifference}">
+        <tr th:each="row : ${goalDiffs}">
             <td th:text="${row.getHomeTeamName()}">TEAM</td>
             <td th:text="${row.getAwayTeamName()}">TEAM</td>
             <td th:text="${row.getScore()}">TEAM</td>

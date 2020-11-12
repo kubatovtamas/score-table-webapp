@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface TeamRepository extends CrudRepository<Team, Long> {
-    @Override
+
     List<Team> findAll();
 
     List<Team> findAllByLeague(League league);

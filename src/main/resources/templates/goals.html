@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Score Table</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<body>
+
+
+<section>
+    <h1>GOALS</h1>
+    <table>
+        <tr>
+            <td>PLAYER_NAME</td>
+            <td>FOR_TEAM</td>
+            <td>ON_MATCH</td>
+            <td>RESULT</td>
+            <td>DATE</td>
+        </tr>
+        <tr th:each="goal : ${goals}">
+            <td th:text="${goal.getPlayer().getName()}">TEAM</td>
+            <td th:text="${goal.getPlayer().getTeam().getName()}">TEAM</td>
+            <td th:text="${goal.getGame().getTeams()}">TEAM</td>
+            <td th:text="${goal.getGame().getResult()}">TEAM</td>
+            <td th:text="${goal.getGame().getDate()}">TEAM</td>
+        </tr>
+    </table>
+</section>
+
+
+</body>
+</html>

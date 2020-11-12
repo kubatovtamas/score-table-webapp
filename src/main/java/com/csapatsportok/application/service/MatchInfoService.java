@@ -21,6 +21,9 @@ public class MatchInfoService {
 
     public List<MatchInfo> getMatchinfoByLeagueName(String name) {
         return matchInfoRepo.getMatchinfoByLeagueName(name);
+    }
 
+    public List<MatchInfo> getAllMatchInfo() {
+        return matchInfoRepo.getAllMatchinfo();
     }
 }

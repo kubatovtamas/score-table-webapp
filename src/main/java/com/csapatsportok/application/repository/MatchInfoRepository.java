@@ -56,5 +56,29 @@ public class MatchInfoRepository {
         );
     }
 
+    public List<MatchInfo> getAllMatchinfo() {
+        String sql = """
+                SELECT
+                    home.name AS HOME_TEAM,
+                    away.name AS AWAY_TEAM,
+                    CONCAT(G.NUM_HOME_GOALS, '-', G.NUM_AWAY_GOALS) AS SCORE,
+                    G.date as DATE
+                FROM game AS G
+                LEFT JOIN team AS AWAY
+                    ON away.id = G.away_team_id
+                LEFT JOIN team AS HOME
+                    ON home.id = G.home_team_id
+                ORDER BY G.date;
+                """;
+
+        return jdbc.query(sql, (resultSet, i) -> new MatchInfo(
+                        resultSet.getString("HOME_TEAM"),
+                        resultSet.getString("AWAY_TEAM"),
+                        resultSet.getString("SCORE"),
+                        resultSet.getDate("DATE")
+                )
+        );
+    }
+
 
 }

@@ -21,4 +21,12 @@ public class Game {
     private int numHomeGoals;
     private int numAwayGoals;
     private LocalDateTime date;
+
+    public String getResult() {
+        return numHomeGoals + "-" + numAwayGoals;
+    }
+
+    public String getTeams() {
+        return homeTeam.getName() + "-" + awayTeam.getName();
+    }
 }

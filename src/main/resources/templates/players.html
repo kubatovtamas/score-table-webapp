@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Score Table</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<body>
+
+
+<section>
+    <h1>PLAYERS</h1>
+    <table>
+        <tr>
+            <td>PLAYER_NAME</td>
+            <td>TEAM_NAME</td>
+            <td>LEAGUE_NAME</td>
+        </tr>
+        <tr th:each="player : ${players}">
+            <td th:text="${player.getName()}">Test</td>
+            <td th:text="${player.getTeam().getName()}">Test</td>
+            <td th:text="${player.getTeam().getLeague().getName()}">Test</td>
+        </tr>
+    </table>
+</section>
+
+
+</body>
+</html>

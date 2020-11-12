@@ -75,17 +75,11 @@ public class MainController {
 
 
 
-
-
-
-
-
-
-
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("countries", countryServ.getCountries());
         model.addAttribute("maxNumOfLeagues", countryServ.getMaxNumOfLeagues());
+
         return "index";
     }
 
@@ -98,11 +92,51 @@ public class MainController {
         List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoService.getGoalDifferenceInfoByLeagueName(league.getName());
 
         model.addAttribute("teams", teamServ.getTeamsByLeague(league));
-        model.addAttribute("table", tableInfos);
-        model.addAttribute("match", matchInfos);
-        model.addAttribute("scorer", scorerInfos);
-        model.addAttribute("goalDifference", goalDifferenceInfos);
+        model.addAttribute("results", tableInfos);
+        model.addAttribute("matches", matchInfos);
+        model.addAttribute("scorers", scorerInfos);
+        model.addAttribute("goalDiffs", goalDifferenceInfos);
 
         return "league";
+    }
+
+    @RequestMapping("/leagues")
+    public String allLeagues(Model model) {
+        List<League> leagues = leagueServ.getAllLeagues();
+        model.addAttribute("leagues", leagues);
+
+        return "leagues";
+    }
+
+    @RequestMapping("/teams")
+    public String allTeams(Model model) {
+        List<Team> teams = teamServ.getAllTeams();
+        model.addAttribute("teams", teams);
+
+        return "teams";
+    }
+
+    @RequestMapping("/players")
+    public String allPlayers(Model model) {
+        List<Player> players = playerServ.getAllPlayers();
+        model.addAttribute("players", players);
+
+        return "players";
+    }
+
+    @RequestMapping("/matches")
+    public String allGames(Model model) {
+        List<MatchInfo> matchInfos = matchInfoService.getAllMatchInfo();
+        model.addAttribute("matches", matchInfos);
+
+        return "matches";
+    }
+
+    @RequestMapping("/goals")
+    public String allGoals(Model model) {
+        List<Goal> goals = goalServ.getAllGoals();
+        model.addAttribute("goals", goals);
+
+        return "goals";
     }
 }
