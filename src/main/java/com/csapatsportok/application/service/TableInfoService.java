@@ -19,7 +19,7 @@ public class TableInfoService {
         this.tableInfoRepo = tableInfoRepo;
     }
 
-    public List<TableInfo> getTableInfoByCountryName(String name) {
-        return tableInfoRepo.getTableInfoByCountryName(name);
+    public List<TableInfo> getTableInfoByLeagueName(String name) {
+        return tableInfoRepo.getTableInfoByLeagueName(name);
     }
 }

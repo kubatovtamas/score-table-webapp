@@ -19,7 +19,7 @@ public class TableInfoRepository {
         this.jdbc = jdbc;
     }
 
-    public List<TableInfo> getTableInfoByCountryName(String name) {
+    public List<TableInfo> getTableInfoByLeagueName(String name) {
         String sql = """
                 SELECT
                     TEAM,
@@ -56,17 +56,13 @@ public class TableInfoRepository {
                                 WHERE T.league_id = (
                                     SELECT L.id
                                     FROM LEAGUE AS L
-                                    WHERE L.country_id = (
-                                        SELECT C.id
-                                        FROM COUNTRY AS C
-                                        WHERE LOWER(name) LIKE :name
-                                    )
+                                    WHERE L.name LIKE :name
                                 )
                         )
                     ) as HOME_RESULTS
-                               
+                              
                     UNION ALL
-                               
+                              
                     SELECT
                         AWAY_TEAM AS TEAM,
                         AWAY_POINTS AS POINTS,
@@ -94,11 +90,7 @@ public class TableInfoRepository {
                                 WHERE T.league_id = (
                                     SELECT L.id
                                     FROM LEAGUE AS L
-                                    WHERE L.country_id = (
-                                        SELECT C.id
-                                        FROM COUNTRY AS C
-                                        WHERE LOWER(name) LIKE :name
-                                    )
+                                    WHERE L.name LIKE :name
                                 )
                         )
                     ) AS AWAY_RESULTS

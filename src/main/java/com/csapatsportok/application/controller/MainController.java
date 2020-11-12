@@ -92,7 +92,7 @@ public class MainController {
     @RequestMapping("/league/{name}")
     public String league(@PathVariable(value = "name") String name, Model model) {
         League league = leagueServ.getLeagueByName(name);
-        List<TableInfo> tableInfos = tableInfoService.getTableInfoByCountryName("united");
+        List<TableInfo> tableInfos = tableInfoService.getTableInfoByLeagueName(league.getName());
         model.addAttribute("teams", teamServ.getTeamsByLeague(league));
         model.addAttribute("table", tableInfos);
         return "league";
@@ -105,7 +105,7 @@ public class MainController {
     /* TABLE */
     @RequestMapping("/testtable")
     public String test1(Model model) {
-        List<TableInfo> tableInfos = tableInfoService.getTableInfoByCountryName("united");
+        List<TableInfo> tableInfos = tableInfoService.getTableInfoByLeagueName("united");
         model.addAttribute("table", tableInfos);
         return "testtable";
     }
