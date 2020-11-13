@@ -21,7 +21,7 @@
 > Külső kulcs: *dőlt*  
 
 Orszag (**orszag_id**, orszag_nev)  
-Bajnoksag (**bajnoksag_id**, bajnoksag_nev, *orszag_id*)  
+Bajnoksag (**bajn   oksag_id**, bajnoksag_nev, *orszag_id*)  
 Csapat (**csapat_id**, csapat_nev, *bajnoksag_id*)  
 Jatekos (**jatekos_id**, jatekos_nev, *csapat_id*)  
 Merkozes (**merkozes_id**, *hazai_csapat_id*, hazai_golok_szama, *vendeg_csapat_id*, vendeg_golok_szama, datum)  
@@ -48,19 +48,21 @@ lekérdezésben össze kelljen őket kapcsolni.
 
 A program Java nyelven íródott, MySQL adatbázisra épülve, Spring Boot keretrendszerben.
 Webes alkalmazás, böngészőben használható, a SpringBoot által nyújtott TomCat szerveren fut.
-Ebből fakadóan a megjelenítés HTML/CSS, a dinamikus HTML kezelésre Thymeleaf-et, 
-a megjelenítéshez Bootstrap5-öt, az adatbázissal való kommunikációra 
+Ebből fakadóan a megjelenítés HTML/CSS. A dinamikus HTML kezelésre Thymeleaf-et, 
+a megjelenítéshez Bootstrap-et, az adatbázissal való kommunikációra 
 a triviálisabb lekérdezések esetén Hibernate-et, a bonyolultabb lekérdezések esetén JDBC-t 
 használtam, natív SQL parancsokkal.
 Az adatok generálására főleg mockaroo.com által nyújtott szolgáltatásokat vettem igénybe. 
 Ezen felül saját programrészeket is felhasználtam, ahol szükséges volt valamilyen bonyolultabb 
 logika által generálni adatot. 
 (Például a GOAL tábla gólszerző-csapat-meccs véletlenszerű, de helyes generálása) 
-Itt programon belüli Java kód volt a logika (ez a végső verzióban már nincs benne), 
-ez in-memory adatbázist 
-(H2, amit a végsőkig használtam, mielőtt a végleges MySQL DB-re migráltam) töltött fel, 
+Ezt a programba írt Java-SQL kóddal töltöttem fel in-memory adatbázisba,
+(H2, amit a végsőkig használtam, mielőtt a végleges MySQL DB-re migráltam) 
 onnan SQL dump-pal gyűjtöttem ki az INSERT INTO parancsokat.
-A schema.sql és data.sql fájlokban találhatóak a kezdeti tábla sémák és adatok.
+A data.sql fájlban találhatóak a kezdeti adatok.
+A táblákat a Java objectekből JPA-vel generáltam, minden konfigurációt a domain/-en belüli
+osztályokban, JPA annotációkkal végeztem. A végleges adatbázis szerkezet dumpja a 
+schema.sql-ben található.
 A program futtatása a scoretable.jar fájl indításával lehetséges.
 {**TODO**: actual command ide}```$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar```  
 A szerver a 8080 porton indul.
@@ -70,43 +72,47 @@ A szerver a 8080 porton indul.
 #### A PROGRAM SZOLGÁLTATÁSAI
 
 ##### Adatbázisban lévő adatok kilistázása
-A különböző táblák adataihoz különböző menüpontokban férhetünk hozzá, melyeket a főoldalról, illetve a menüsávból érhetünk el. Lehetőségünk van bajnokságok, csapatok, meccsnapok szerint listázni a meccseket. Elérhetőek góllövő listák is. Illetve láthatjuk a bajnokságok állásait.
+A főoldalon az adatbázisban szereplő országok, és azokban rendezett ligák találhatóak.
+A ligák egyikére kattintva részletesebb információkat kapunk róluk. Ezek a résztvevő 
+csapatok, a tabella jelenlegi állása, a lejátszott meccsek információi, góllövőlista, 
+és a legnagyobb arányú győzelmekről egy összesítő táblázat érdekességképpen. 
+A felső menüsorban található linkek mind egyre az összes liga, csapat, játékos, meccs, 
+és gól információt listázó oldalra vezetnek. Itt lehetőségünk van keresni az adathalmazban, 
+illetve azt különböző oszlopok szerint csoportosítani. Itt van lehetősége a belépett 
+felhasználónak a sorok melletti gombok használatával az adatok módosítására, illetve 
+törlésére. Nem megfelelő utasításokkal az adattáblák nem módosíthatóak, 
+az applikáció hibaüzenetet jelenít meg.
 
 ##### Admin felület
-Új adat felvitele, már létező módosítása törlése admin jogosultsággal lehetséges. Erre egy külön grafikus felület nyújt lehetőséget.
-{**TODO**: how to login admin}
-Nem megfelelő utasításokkal az adattáblák nem módosíthatóak, az applikáció hibaüzenetet jelenít meg.
+
+
 
 
 #### NEMTRIVIÁLIS LEKÉRDEZÉSEK
 ```SQL
-/* 1. MECCS INFO, ORSZÁGNÉV ALAPJÁN, DÁTUM SZERINT NÖVEKVŐ SORRENDBEN */  
+/* 1. MECCS INFO, LIGA NÉV ALAPJÁN, DÁTUM SZERINT NÖVEKVŐ SORRENDBEN */  
 
 SELECT
-    home.name AS HOME_TEAM, 
-    away.name AS AWAY_TEAM,
+    HOME.NAME AS HOME_TEAM, 
+    AWAY.NAME AS AWAY_TEAM,
     CONCAT(G.NUM_HOME_GOALS, '-', G.NUM_AWAY_GOALS) AS SCORE,
-    G.date as DATE
-FROM game AS G
-LEFT JOIN team AS AWAY
-    ON away.id = G.away_team_id
-LEFT JOIN team AS HOME
-    ON home.id = G.home_team_id
+    G.DATE as DATE
+FROM GAME AS G
+LEFT JOIN TEAM AS AWAY
+    ON AWAY.ID = G.AWAY_TEAM_ID
+LEFT JOIN TEAM AS HOME
+    ON HOME.ID = G.HOME_TEAM_ID
 WHERE 
-    home_team_id IN (
-        SELECT T.id
-        FROM team AS T
-        WHERE T.league_id = (
-            SELECT L.id 
+    HOME_TEAM_ID IN (
+        SELECT T.ID
+        FROM TEAM AS T
+        WHERE T.LEAGUE_ID = (
+            SELECT L.ID 
             FROM LEAGUE AS L 
-            WHERE country_id = (
-                SELECT C.id 
-                FROM COUNTRY AS C 
-                WHERE LOWER(name) LIKE '%indonesia%'
-            )
+            WHERE L.NAME LIKE '%Indonesia%'
         )
     )
-ORDER BY G.date;
+ORDER BY G.DATE;
 
 /*
                                RESULT
@@ -121,8 +127,8 @@ ORDER BY G.date;
 
 
 
-/* 2. LIGA TÁBLA, LIGA NÉV ALAPJÁN: CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, 
-ÖSSZESÍTETT GÓL INFO, ÖSSZESÍTETT PONT, PONT SZERINT CSÖKKENŐ SORRENDBEN */
+/* 2. LIGA TÁBLA, LIGA NÉV ALAPJÁN: CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, LŐTT  
+GÓL, KAPOTT GÓL, GÓLKÜLÖNBSÉG, SZERZETT PONTOK, PONT SZERINT CSÖKKENŐ SORRENDBEN */
 
 SELECT
     TEAM,
@@ -140,7 +146,7 @@ FROM (
         (HOME_GOALS_FOR - HOME_GOALS_AGAINST) AS GOAL_DIFFERENCE
     FROM (
         SELECT
-            home.name AS HOME_TEAM,
+            HOME.NAME AS HOME_TEAM,
             CASE
                 WHEN G.NUM_HOME_GOALS > G.NUM_AWAY_GOALS THEN 3
                 WHEN G.NUM_HOME_GOALS < G.NUM_AWAY_GOALS THEN 0
@@ -149,17 +155,17 @@ FROM (
             G.NUM_HOME_GOALS AS HOME_GOALS_FOR,
             G.NUM_AWAY_GOALS AS HOME_GOALS_AGAINST
         FROM GAME AS G
-        LEFT JOIN team AS AWAY
-            ON away.id = G.away_team_id
-        LEFT JOIN team AS HOME
-            ON home.id = G.home_team_id
-        WHERE HOME.id in (
-                SELECT T.id
-                FROM team AS T
-                WHERE T.league_id = (
-                    SELECT L.id
+        LEFT JOIN TEAM AS AWAY
+            ON AWAY.ID = G.AWAY_TEAM_ID
+        LEFT JOIN TEAM AS HOME
+            ON HOME.ID = G.HOME_TEAM_ID
+        WHERE HOME.ID IN (
+                SELECT T.ID
+                FROM TEAM AS T
+                WHERE T.LEAGUE_ID = (
+                    SELECT L.ID
                     FROM LEAGUE AS L
-                    WHERE L.name LIKE :name
+                    WHERE L.name LIKE '%Major%'
                 )
         )
     ) as HOME_RESULTS
@@ -174,7 +180,7 @@ FROM (
         (AWAY_GOALS_FOR - AWAY_GOALS_AGAINST) AS GOAL_DIFFERENCE
     FROM (
         SELECT
-            away.name AS AWAY_TEAM,
+            AWAY.NAME AS AWAY_TEAM,
             CASE
                 WHEN G.NUM_HOME_GOALS < G.NUM_AWAY_GOALS THEN 3
                 WHEN G.NUM_HOME_GOALS > G.NUM_AWAY_GOALS THEN 0
@@ -183,17 +189,17 @@ FROM (
             G.NUM_AWAY_GOALS AS AWAY_GOALS_FOR,
             G.NUM_HOME_GOALS AS AWAY_GOALS_AGAINST
         FROM GAME AS G
-        LEFT JOIN team AS AWAY
-            ON away.id = G.away_team_id
-        LEFT JOIN team AS HOME
-            ON home.id = G.home_team_id
-        WHERE HOME.id in (
-                SELECT T.id
-                FROM team AS T
-                WHERE T.league_id = (
-                    SELECT L.id
+        LEFT JOIN TEAM AS AWAY
+            ON AWAY.ID = G.AWAY_TEAM_ID
+        LEFT JOIN TEAM AS HOME
+            ON HOME.ID = G.HOME_TEAM_ID
+        WHERE HOME.ID IN (
+                SELECT T.ID
+                FROM TEAM AS T
+                WHERE T.LEAGUE_ID = (
+                    SELECT L.ID
                     FROM LEAGUE AS L
-                    WHERE L.name LIKE :name
+                    WHERE L.name LIKE '%Major%'
                 )
         )
     ) AS AWAY_RESULTS
@@ -220,7 +226,7 @@ ORDER BY PTS DESC;
 
 
 
-/* 3. TOP 10 GÓLLÖVŐLISTA, ORSZÁG NÉV ALAPJÁN */
+/* 3. TOP 10 GÓLLÖVŐLISTA, LIGA NÉV ALAPJÁN */
 
 SELECT
     PLAYER.NAME AS PLAYER_NAME,
@@ -234,15 +240,12 @@ LEFT JOIN TEAM
 LEFT JOIN LEAGUE
     ON LEAGUE.ID = TEAM.LEAGUE_ID
 WHERE
-    LEAGUE.COUNTRY_ID = (
-        SELECT
-            COUNTRY.ID
-        FROM
-            COUNTRY
-        WHERE
-            LOWER(COUNTRY.NAME) LIKE '%czech%'
-    )
-GROUP BY player_id
+    LEAGUE.ID = (
+    SELECT L.ID
+    FROM LEAGUE AS L
+    WHERE L.NAME LIKE '%Czech%'
+)
+GROUP BY PLAYER_ID
 ORDER BY NUM_GOALS DESC
 LIMIT 10;
 
@@ -266,10 +269,9 @@ LIMIT 10;
 
 
 
-/* 4. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO */
+/* 4. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO, LIGA NÉV ALAPJÁN */
 
 SELECT
-    L.NAME AS LEAGUE_NAME,
     HOME.NAME AS HOME_TEAM,
     AWAY.NAME AS AWAY_TEAM,
     CONCAT(G.NUM_HOME_GOALS, '-', G.NUM_AWAY_GOALS) AS SCORE,
@@ -277,15 +279,15 @@ SELECT
     G.DATE AS DATE
 FROM GAME AS G
 LEFT JOIN TEAM AS AWAY
-    ON away.id = G.away_team_id
+    ON AWAY.ID = G.AWAY_TEAM_ID
 LEFT JOIN TEAM AS HOME
-    ON home.id = G.home_team_id
+    ON HOME.ID = G.HOME_TEAM_ID
 LEFT JOIN LEAGUE AS L
-    ON home.league_id = L.id
-WHERE L.country_id = (
-    SELECT C.id
-    FROM COUNTRY AS C
-    WHERE LOWER(name) LIKE '%united%'
+    ON HOME.LEAGUE_ID = L.ID
+ WHERE L.ID = (
+    SELECT L.ID
+    FROM LEAGUE AS L
+    WHERE L.NAME LIKE '%Czech%'
 )
 ORDER BY DIFFERENCE DESC
 LIMIT 10;
@@ -310,9 +312,79 @@ LIMIT 10;
 ```
 
 #### TODO:
-- doksi: táblatervek
+
 - admin felület mindenestül
 - JPA részen constraintek
-- ER: add date to merkozes, lekepezesekhez is
-- doksi: readme/ kepernyoterv / howto
 
+
+create: 
+```SQL
+create table country (
+    id   bigint generated by default as identity,
+    name varchar(255),
+    primary key (id)
+);
+
+create table game (
+    id             bigint generated by default as identity,
+    date           timestamp,
+    num_away_goals integer not null,
+    num_home_goals integer not null,
+    away_team_id   bigint,
+    home_team_id   bigint,
+    primary key (id)
+);
+
+create table goal (
+    id        bigint generated by default as identity,
+    game_id   bigint,
+    player_id bigint,
+    team_id   bigint,
+    primary key (id)
+);
+
+create table league (
+    id         bigint generated by default as identity,
+    name       varchar(255),
+    country_id bigint,
+    primary key (id)
+);
+
+create table player (
+    id      bigint generated by default as identity,
+    name    varchar(255),
+    team_id bigint,
+    primary key (id)
+);
+
+create table team (
+    id        bigint generated by default as identity,
+    name      varchar(255),
+    league_id bigint,
+    primary key (id)
+);
+
+alter table game
+    add constraint FKaowpughmnfa6ifikwfy6wf4g2 foreign key (away_team_id) references team;
+
+alter table game
+    add constraint FK51yuyu3ukyq5e8nsvywbof2ws foreign key (home_team_id) references team;
+
+alter table goal
+    add constraint FK3xcybek61cdmo4enyyyten6l6 foreign key (game_id) references game;
+
+alter table goal
+    add constraint FKnxibcbjg2e3dqfo4l77bvp8cc foreign key (player_id) references player;
+
+alter table goal
+    add constraint FK5h3n8a7x2jfhrcqom6c3xtduf foreign key (team_id) references team;
+
+alter table league
+    add constraint FKtdt2rqg50rlqti7yubvppq25e foreign key (country_id) references country;
+
+alter table player
+    add constraint FKdvd6ljes11r44igawmpm1mc5s foreign key (team_id) references team;
+
+alter table team
+    add constraint FK9rk8716asfr76xkn99aa3uvp foreign key (league_id) references league;
+```
