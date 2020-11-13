@@ -1,6 +1,11 @@
 # Csapatsportok
 
-> A kötelező program a csapatsportok témaköre. Kulcsszavai a 'csapatok', 'versenyzők', 'mérkőzések', 'pontszerzők/góllövők'. Az adatbázis futball meccsek adatait tárolja. Segítségével egy olyan alkalmazás lesz megvalósítva, amely megjeleníti a tárolt mérkőzések csapatait, azoknak játékosait, gólszerzőket, illetve módosítani, új adatot felvinni is lehet grafikus felületen.
+>A kötelező program témája a csapatsportok. Kulcsszavai a 'csapatok', 'versenyzők', 'mérkőzések', 
+>'pontszerzők/góllövők'. Az adatbázis futball meccsek adatait tárolja. 
+>Segítségével egy olyan alkalmazás lesz megvalósítva, amely megjeleníti a tárolt országok, ligák, 
+>csapatok, mérkőzések adatait, a játékosokhoz és a meccsekhez tartozó adatokkal, többek között 
+>a meccsek gólszerzőit. Ezen felül módosítani, új adatot felvinni, a már meglévőket módosítani 
+>is lehet grafikus felületen.
 ---
 
 
@@ -15,26 +20,48 @@
 > Kulcs: **félkövér**  
 > Külső kulcs: *dőlt*  
 
-Orszag(**orszag_id**, orszag_nev)  
-Bajnoksag(**bajnoksag_id**, bajnoksag_nev, *orszag_id*)  
-Csapat(**csapat_id**, csapat_nev, *bajnoksag_id*)  
-Jatekos(**jatekos_id**, jatekos_nev, *csapat_id*)  
-Merkozes(**merkozes_id**, *hazai_csapat_id*, hazai_golok_szama, *vendeg_csapat_id*, vendeg_golok_szama)  
-Gollovo(***jatekos_id***, ***merkozes_id***, ***csapat_id***) 
+Orszag (**orszag_id**, orszag_nev)  
+Bajnoksag (**bajnoksag_id**, bajnoksag_nev, *orszag_id*)  
+Csapat (**csapat_id**, csapat_nev, *bajnoksag_id*)  
+Jatekos (**jatekos_id**, jatekos_nev, *csapat_id*)  
+Merkozes (**merkozes_id**, *hazai_csapat_id*, hazai_golok_szama, *vendeg_csapat_id*, vendeg_golok_szama, datum)  
+Gol (**gol_id**, *jatekos_id*, *merkozes_id*, *csapat_id*) 
 
 
 #### NORMALIZÁLÁS
 
 1. Normálforma: A Mérkőzés összetett attribútuma helyettesítve lett részattribútumaival.
 2. Normálforma: Minden másodlagos attribútum teljesen függ a kulcstól.
-3. Normálforma: Az attribútumok között nincs tranzitív függés.
+3. Normálforma: Az attribútumok között nincs tranzitív függés, kivéve a Mérkőzés esetében, 
+( {hazai_csapat_id, vendeg_csapat_id, datum} -> {hazai_golok_szama, vendeg_golok_szama} ) 
+itt indokoltnak találtam 2NF-ben hagyni a táblát, mert ezeket az adatokat mindig egyben kell 
+kezelni, és szükségtelen komplexitásnak láttam szétválasztani a táblát, hogy aztán minden 
+lekérdezésben össze kelljen őket kapcsolni.
+
+
+
+#### ADATBÁZIS DIAGRAM
+![DB-Schema](DB_SCHEMA_DIAGRAM.png "DB-Schema")
 
 
 #### MEGVALÓSÍTÁSI KÖRNYEZET
 
-Az adatok generálására a mockaroo.com által nyújtott szolgáltatásokat, saját programelemeket, in-memory adatbázisból 
-SQL dump-pal gyűjtött adatokat használtam, a data.sql és schema.sql fájlokba gyűjtve a parancsokat.
-A program Java nyelven íródott, MySQL adatbázisra épülve, Spring Boot keretrendszerben. A program futtatása egy jar fájl indításával lehetséges.
+A program Java nyelven íródott, MySQL adatbázisra épülve, Spring Boot keretrendszerben.
+Webes alkalmazás, böngészőben használható, a SpringBoot által nyújtott TomCat szerveren fut.
+Ebből fakadóan a megjelenítés HTML/CSS, a dinamikus HTML kezelésre Thymeleaf-et, 
+a megjelenítéshez Bootstrap5-öt, az adatbázissal való kommunikációra 
+a triviálisabb lekérdezések esetén Hibernate-et, a bonyolultabb lekérdezések esetén JDBC-t 
+használtam, natív SQL parancsokkal.
+Az adatok generálására főleg mockaroo.com által nyújtott szolgáltatásokat vettem igénybe. 
+Ezen felül saját programrészeket is felhasználtam, ahol szükséges volt valamilyen bonyolultabb 
+logika által generálni adatot. 
+(Például a GOAL tábla gólszerző-csapat-meccs véletlenszerű, de helyes generálása) 
+Itt programon belüli Java kód volt a logika (ez a végső verzióban már nincs benne), 
+ez in-memory adatbázist 
+(H2, amit a végsőkig használtam, mielőtt a végleges MySQL DB-re migráltam) töltött fel, 
+onnan SQL dump-pal gyűjtöttem ki az INSERT INTO parancsokat.
+A schema.sql és data.sql fájlokban találhatóak a kezdeti tábla sémák és adatok.
+A program futtatása a scoretable.jar fájl indításával lehetséges.
 {**TODO**: actual command ide}```$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar```  
 A szerver a 8080 porton indul.
 {**TODO**: kapcsolódás sql-hez, egyéb setup dolgok}.
