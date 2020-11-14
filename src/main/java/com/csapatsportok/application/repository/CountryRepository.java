@@ -6,12 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CountryRepository extends CrudRepository<Country, Long> {
-    @Override
-    List<Country> findAll();
-
     @Query(value = """
             SELECT count(country_id) as c
             FROM LEAGUE
@@ -20,4 +18,6 @@ public interface CountryRepository extends CrudRepository<Country, Long> {
             limit 1
             """,nativeQuery = true)
     int findMaxNumberOfLeagues();
+
+
 }

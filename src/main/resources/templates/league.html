@@ -13,8 +13,15 @@
 </style>
 <body>
 
-
 <section>
+    <a href="#teams"><button>Teams</button></a>
+    <a href="#table"><button>Table</button></a>
+    <a href="#matches"><button>Matches</button></a>
+    <a href="#topscorers"><button>Top Scorers</button></a>
+    <a href="#goaldiff"><button>Largest Wins</button></a>
+</section>
+
+<section id="teams">
     <h1>TEAMS</h1>
     <table>
         <tr th:each="team : ${teams}">
@@ -23,7 +30,7 @@
     </table>
 </section>
 
-<section>
+<section id="table">
     <h1>TABLE</h1>
     <table>
         <tr>
@@ -45,7 +52,7 @@
     </table>
 </section>
 
-<section>
+<section id="matches">
     <h1>MATCHES</h1>
     <table>
         <tr>
@@ -63,7 +70,7 @@
     </table>
 </section>
 
-<section>
+<section id="topscorers">
     <h1>TOP SCORERS</h1>
     <table>
         <tr>
@@ -79,7 +86,7 @@
     </table>
 </section>
 
-<section>
+<section id="goaldiff">
     <h1>LARGEST WINS</h1>
     <table>
         <tr>

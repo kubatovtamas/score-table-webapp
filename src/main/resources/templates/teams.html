@@ -16,16 +16,28 @@
 
 <section>
     <h1>TEAMS</h1>
+
+    <a><button>Add new Team</button></a>
+
     <table>
-        <tr>
-            <td>COUNTRY</td>
-            <td>LEAGUE</td>
-            <td>TEAM_NAME</td>
-        </tr>
+        <thead>
+            <tr>
+                <td>COUNTRY</td>
+                <td>LEAGUE</td>
+                <td>TEAM_NAME</td>
+            </tr>
+        </thead>
+
         <tr th:each="team : ${teams}">
             <td th:text="${team.getLeague().getCountry().getName()}">Test</td>
             <td th:text="${team.getLeague().getName()}">Test</td>
             <td th:text="${team.getName()}">Test</td>
+            <td>
+                <a><button>EDIT</button></a>
+            </td>
+            <td>
+                <a><button>DELETE</button></a>
+            </td>
         </tr>
     </table>
 </section>

@@ -16,18 +16,30 @@
 
 <section>
     <h1>MATCHES</h1>
+
+    <a><button>Add new Match</button></a>
+
     <table>
-        <tr>
-            <td>HOME_TEAM</td>
-            <td>AWAY_TEAM</td>
-            <td>SCORE</td>
-            <td>DATE</td>
-        </tr>
-        <tr th:each="row : ${matches}">
-            <td th:text="${row.getHomeTeamName()}">TEAM</td>
-            <td th:text="${row.getAwayTeamName()}">TEAM</td>
-            <td th:text="${row.getScore()}">TEAM</td>
-            <td th:text="${row.getDate()}">TEAM</td>
+        <thead>
+            <tr>
+                <td>HOME_TEAM</td>
+                <td>AWAY_TEAM</td>
+                <td>SCORE</td>
+                <td>DATE</td>
+            </tr>
+        </thead>
+
+        <tr th:each="match : ${matches}">
+            <td th:text="${match.getHomeTeamName()}">TEAM</td>
+            <td th:text="${match.getAwayTeamName()}">TEAM</td>
+            <td th:text="${match.getScore()}">TEAM</td>
+            <td th:text="${match.getDate()}">TEAM</td>
+            <td>
+                <a><button>EDIT</button></a>
+            </td>
+            <td>
+                <a><button>DELETE</button></a>
+            </td>
         </tr>
     </table>
 </section>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -76,12 +77,46 @@ public class MainController {
 
 
     @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("countries", countryServ.getCountries());
+    public String getAllCountries(Model model) {
+        List<League> leagues = leagueServ.getAllLeagues();
+        model.addAttribute("countries", countryServ.getAllCountries());
         model.addAttribute("maxNumOfLeagues", countryServ.getMaxNumOfLeagues());
+        model.addAttribute("leagues", leagues);
 
-        return "index";
+        return "countries/countries";
     }
+
+    @RequestMapping(path = {"/edit", "/edit/{id}"})
+    public String editCountryById(Model model, @PathVariable("id") Optional<Long> id) throws RuntimeException {
+        if (id.isPresent()) {
+            /* Edit Existing */
+            Country country = countryServ.getCountryById(id.get());
+            model.addAttribute("country", country);
+        } else {
+            /* Add New */
+            model.addAttribute("country", new Country());
+        }
+
+        List<League> leagues = leagueServ.getAllLeagues();
+        model.addAttribute("leagues", leagues);
+
+        return "countries/add_edit_country";
+    }
+
+    @RequestMapping(path = "/delete/{id}")
+    public String deleteEmployeeById(Model model, @PathVariable("id") Long id) throws RuntimeException {
+        countryServ.deleteCountryById(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping(path = "/createCountry", method = RequestMethod.POST)
+    public String createOrUpdateEmployee(Country country) {
+        /* Submit */
+        countryServ.createOrUpdateCountry(country);
+        return "redirect:/";
+    }
+
+
 
     @RequestMapping("/league/{name}")
     public String league(@PathVariable(value = "name") String name, Model model) {
