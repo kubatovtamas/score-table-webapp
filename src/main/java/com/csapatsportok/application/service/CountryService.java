@@ -15,7 +15,6 @@ import java.util.Optional;
 public class CountryService {
 
     private CountryRepository countryRepo;
-
     @Autowired
     public void setCountryRepo(CountryRepository countryRepo) {
         this.countryRepo = countryRepo;
@@ -45,14 +44,11 @@ public class CountryService {
         }
     }
 
-    public Country createOrUpdateCountry(Country entity) {
-        Country result;
-
+    public void createOrUpdateCountry(Country entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
             entity = countryRepo.save(entity);
 
-            result = entity;
         } else {
             /* Edit Existing Entity */
             Optional<Country> country = countryRepo.findById(entity.getId());
@@ -63,14 +59,11 @@ public class CountryService {
                 newEntity.setLeagues(entity.getLeagues());
                 newEntity = countryRepo.save(newEntity);
 
-                result = newEntity;
             } else {
                 entity = countryRepo.save(entity);
 
-                result = entity;
             }
         }
-        return result;
     }
 
     public void deleteCountryById(Long id) throws RuntimeException {

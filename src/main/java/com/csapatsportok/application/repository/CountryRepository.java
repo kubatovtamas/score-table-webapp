@@ -18,6 +18,4 @@ public interface CountryRepository extends CrudRepository<Country, Long> {
             limit 1
             """,nativeQuery = true)
     int findMaxNumberOfLeagues();
-
-
 }

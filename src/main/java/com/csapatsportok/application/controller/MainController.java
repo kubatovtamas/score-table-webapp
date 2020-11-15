@@ -27,11 +27,11 @@ public class MainController {
 
     private GoalService goalServ;
     @Autowired
-    public void setGameService(GoalService goalServ) { this.goalServ = goalServ; }
+    public void setGoalService(GoalService goalServ) { this.goalServ = goalServ; }
 
     private LeagueService leagueServ;
     @Autowired
-    public void setGameService(LeagueService leagueServ) { this.leagueServ = leagueServ; }
+    public void setLeagueService(LeagueService leagueServ) { this.leagueServ = leagueServ; }
 
     private PlayerService playerServ;
     @Autowired
@@ -41,7 +41,7 @@ public class MainController {
 
     private TeamService teamServ;
     @Autowired
-    public void setCountryService(TeamService teamServ) {
+    public void setTeamService(TeamService teamServ) {
         this.teamServ = teamServ;
     }
 
@@ -71,85 +71,6 @@ public class MainController {
 
 
 
-
-
-
-
-
-    @RequestMapping("/")
-    public String getAllCountries(Model model) {
-        List<League> leagues = leagueServ.getAllLeagues();
-        model.addAttribute("countries", countryServ.getAllCountries());
-        model.addAttribute("maxNumOfLeagues", countryServ.getMaxNumOfLeagues());
-        model.addAttribute("leagues", leagues);
-
-        return "countries/countries";
-    }
-
-    @RequestMapping(path = {"/edit", "/edit/{id}"})
-    public String editCountryById(Model model, @PathVariable("id") Optional<Long> id) throws RuntimeException {
-        if (id.isPresent()) {
-            /* Edit Existing */
-            Country country = countryServ.getCountryById(id.get());
-            model.addAttribute("country", country);
-        } else {
-            /* Add New */
-            model.addAttribute("country", new Country());
-        }
-
-        List<League> leagues = leagueServ.getAllLeagues();
-        model.addAttribute("leagues", leagues);
-
-        return "countries/add_edit_country";
-    }
-
-    @RequestMapping(path = "/delete/{id}")
-    public String deleteEmployeeById(Model model, @PathVariable("id") Long id) throws RuntimeException {
-        countryServ.deleteCountryById(id);
-        return "redirect:/";
-    }
-
-    @RequestMapping(path = "/createCountry", method = RequestMethod.POST)
-    public String createOrUpdateEmployee(Country country) {
-        /* Submit */
-        countryServ.createOrUpdateCountry(country);
-        return "redirect:/";
-    }
-
-
-
-    @RequestMapping("/league/{name}")
-    public String league(@PathVariable(value = "name") String name, Model model) {
-        League league = leagueServ.getLeagueByName(name);
-        List<TableInfo> tableInfos = tableInfoService.getTableInfoByLeagueName(league.getName());
-        List<MatchInfo> matchInfos = matchInfoService.getMatchinfoByLeagueName(league.getName());
-        List<ScorerInfo> scorerInfos = scorerInfoService.getScorerInfoByLeagueName(league.getName());
-        List<GoalDifferenceInfo> goalDifferenceInfos = goalDifferenceInfoService.getGoalDifferenceInfoByLeagueName(league.getName());
-
-        model.addAttribute("teams", teamServ.getTeamsByLeague(league));
-        model.addAttribute("results", tableInfos);
-        model.addAttribute("matches", matchInfos);
-        model.addAttribute("scorers", scorerInfos);
-        model.addAttribute("goalDiffs", goalDifferenceInfos);
-
-        return "league";
-    }
-
-    @RequestMapping("/leagues")
-    public String allLeagues(Model model) {
-        List<League> leagues = leagueServ.getAllLeagues();
-        model.addAttribute("leagues", leagues);
-
-        return "leagues";
-    }
-
-    @RequestMapping("/teams")
-    public String allTeams(Model model) {
-        List<Team> teams = teamServ.getAllTeams();
-        model.addAttribute("teams", teams);
-
-        return "teams";
-    }
 
     @RequestMapping("/players")
     public String allPlayers(Model model) {

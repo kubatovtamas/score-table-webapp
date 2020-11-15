@@ -8,6 +8,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -17,15 +19,17 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(unique=true, nullable = false)
+    @NotBlank(message = "Name may not be blank")
     private String name;
 
     @ManyToOne
+    @NotNull
     @JsonIgnoreProperties("teams")
     private League league;
 
     @OneToMany(mappedBy = "team")
-//    @Cascade({CascadeType.ALL})
-//    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private List<Player> players;
 
     public String toString() {

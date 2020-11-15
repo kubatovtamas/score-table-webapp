@@ -28,8 +28,6 @@ public class Country {
 
     @OneToMany(mappedBy = "country")
     @JsonIgnoreProperties("country")
-//    @Cascade({CascadeType.ALL})
-//    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<League> leagues;
 
     public String toString() {
