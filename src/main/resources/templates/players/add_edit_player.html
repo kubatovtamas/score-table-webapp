@@ -3,6 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Add/Edit Player</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,10 +45,10 @@
                 </div>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/teams}">Teams</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#" th:href="@{/players}">Players</a>
             </li>
             <li class="nav-item">
@@ -65,23 +66,23 @@
 </nav>
 
 <div class="container my-5">
-    <h3>Add/Edit Team</h3>
+    <h3>Add/Edit Player</h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{/team/createTeam}" th:object="${team}" method="post">
+                <form action="#" th:action="@{/player/createPlayer}" th:object="${player}" method="post">
                     <div class="row">
 
                         <div class="form-group col-md-8">
-                            <label for="name" class="col-form-label">Team Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" th:placeholder="${team.getName()}"/>
+                            <label for="name" class="col-form-label">Player Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name" th:placeholder="${player.getName()}"/>
                         </div>
 
                         <div class="form-group col-md-8" th:if="${!existing}">
-                            <label for="league" class="col-form-label">In League</label>
-                            <select id="league" th:field="*{league}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select League</option>
-                                <option th:each="league : ${leagues}" th:value="${league.id}" th:text="${league.getName()}"></option>
+                            <label for="league" class="col-form-label">In Team</label>
+                            <select id="league" th:field="*{team}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Team</option>
+                                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
                             </select>
                         </div>
 
@@ -90,8 +91,7 @@
                         </div>
 
                         <input type="hidden" id="id" th:field="*{id}">
-                        <input type="hidden" id="players" th:field="*{players}">
-                        <input type="hidden" id="hidden_league" th:field="*{league}" th:if="${existing}">
+                        <input type="hidden" id="hidden_team" th:field="*{team}" th:if="${existing}">
                     </div>
                 </form>
             </div>

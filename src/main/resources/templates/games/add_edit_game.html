@@ -3,6 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Add/Edit Game</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,13 +45,13 @@
                 </div>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/teams}">Teams</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/players}">Players</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#" th:href="@{/games}">Games</a>
             </li>
             <li class="nav-item">
@@ -65,33 +66,58 @@
 </nav>
 
 <div class="container my-5">
-    <h3>Add/Edit Team</h3>
+    <h3>Add/Edit Game</h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{/team/createTeam}" th:object="${team}" method="post">
+                <form action="#" th:action="@{/game/createGame}" th:object="${game}" method="post">
                     <div class="row">
 
-                        <div class="form-group col-md-8">
-                            <label for="name" class="col-form-label">Team Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" th:placeholder="${team.getName()}"/>
-                        </div>
-
+                        <!--Home Team-->
                         <div class="form-group col-md-8" th:if="${!existing}">
-                            <label for="league" class="col-form-label">In League</label>
-                            <select id="league" th:field="*{league}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select League</option>
-                                <option th:each="league : ${leagues}" th:value="${league.id}" th:text="${league.getName()}"></option>
+                            <label for="homeTeam" class="col-form-label">Home Team</label>
+                            <select id="homeTeam" th:field="*{homeTeam}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Home Team</option>
+                                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
                             </select>
                         </div>
+
+                        <!--Away Team-->
+                        <div class="form-group col-md-8" th:if="${!existing}">
+                            <label for="awayTeam" class="col-form-label">Away Team</label>
+                            <select id="awayTeam" th:field="*{awayTeam}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Away Team</option>
+                                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
+                            </select>
+                        </div>
+
+                        <!--Num Home Goals-->
+                        <div class="form-group col-md-8">
+                            <label for="numHomeGoals" class="col-form-label">Home Score</label>
+                            <input type="number" step="1" th:field="*{numHomeGoals}" class="form-control" id="numHomeGoals" th:placeholder="${game.getNumHomeGoals()}"/>
+                        </div>
+
+                        <!--Num Home Goals-->
+                        <div class="form-group col-md-8">
+                            <label for="numAwayGoals" class="col-form-label">Away Score</label>
+                            <input type="number" step="1" th:field="*{numAwayGoals}" class="form-control" id="numAwayGoals" th:placeholder="${game.getNumAwayGoals()}"/>
+                        </div>
+
+                        <!--Date-->
+                        <div class="form-group col-md-8">
+                            <label for="date" class="col-form-label">Date</label>
+                            <input type="date" th:field="*{date}" class="form-control" id="date" th:value="${game.getDate()}"/>
+                        </div>
+
+
 
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-primary my-3" value=" Submit">
                         </div>
 
                         <input type="hidden" id="id" th:field="*{id}">
-                        <input type="hidden" id="players" th:field="*{players}">
-                        <input type="hidden" id="hidden_league" th:field="*{league}" th:if="${existing}">
+                        <input type="hidden" id="hidden_home_team" th:field="*{homeTeam}" th:if="${existing}">
+                        <input type="hidden" id="hidden_away_team" th:field="*{awayTeam}" th:if="${existing}">
                     </div>
                 </form>
             </div>

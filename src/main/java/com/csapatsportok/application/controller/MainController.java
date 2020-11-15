@@ -72,21 +72,8 @@ public class MainController {
 
 
 
-    @RequestMapping("/players")
-    public String allPlayers(Model model) {
-        List<Player> players = playerServ.getAllPlayers();
-        model.addAttribute("players", players);
 
-        return "players";
-    }
 
-    @RequestMapping("/matches")
-    public String allGames(Model model) {
-        List<MatchInfo> matchInfos = matchInfoService.getAllMatchInfo();
-        model.addAttribute("matches", matchInfos);
-
-        return "matches";
-    }
 
     @RequestMapping("/goals")
     public String allGoals(Model model) {
