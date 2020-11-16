@@ -64,22 +64,4 @@ public class MainController {
     public void setGoalDifferenceInfoService(GoalDifferenceInfoService goalDifferenceInfoService) {
         this.goalDifferenceInfoService = goalDifferenceInfoService;
     }
-
-
-
-
-
-
-
-
-
-
-
-    @RequestMapping("/goals")
-    public String allGoals(Model model) {
-        List<Goal> goals = goalServ.getAllGoals();
-        model.addAttribute("goals", goals);
-
-        return "goals";
-    }
 }

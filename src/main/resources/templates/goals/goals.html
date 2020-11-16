@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
-    <title>Players</title>
+    <title>Goals</title>
 </head>
 
 <body>
@@ -41,13 +41,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/teams}">Teams</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/players}">Players</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{/games}">Games</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#" th:href="@{/goals}">Goals</a>
             </li>
             <li class="nav-item">
@@ -64,35 +64,39 @@
         <div class="card-body">
             <div class="container my-5">
                 <p class="my-5 col-md-10 mx-auto">
-                    <a href="#" th:href="@{/player/edit}" class="btn btn-primary">
-                        <i class="fas fa-user-plus ml-2">Add Player</i></a>
+                    <a href="#" th:href="@{/goal/edit}" class="btn btn-primary">
+                        <i class="fas fa-user-plus ml-2">Add Goal</i></a>
                 </p>
                 <div class="col-md-10 mx-auto">
                     <table class="table table-striped table-responsive-md">
                         <thead>
                             <tr>
                                 <td>Player Name</td>
-                                <td>Team Name</td>
-                                <td>League Name</td>
+                                <td>For Team</td>
+                                <td>On Match</td>
+                                <td>Result</td>
+                                <td>Date</td>
                                 <td>Edit</td>
                                 <td>Delete</td>
                             </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="player : ${players}">
-                            <td th:text="${player.getName()}">Test</td>
-                            <td th:text="${player.getTeam().getName()}">Test</td>
-                            <td th:text="${player.getTeam().getLeague().getName()}">Test</td>
-                            <td>
-                                <a th:href="@{/player/edit/{id}(id=${player.id})}" class="btn btn-primary">
-                                    <i class="fas fa-user-edit ml-2"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a th:href="@{/player/delete/{id}(id=${player.id})}" class="btn btn-primary">
-                                    <i class="fas fa-user-times ml-2"></i>
-                                </a>
-                            </td>
+                            <tr th:each="goal : ${goals}">
+                                <td th:text="${goal.getPlayer().getName()}">TEAM</td>
+                                <td th:text="${goal.getPlayer().getTeam().getName()}">TEAM</td>
+                                <td th:text="${goal.getGame().getTeamsAndResult()}">TEAM</td>
+                                <td th:text="${goal.getGame().getResult()}">TEAM</td>
+                                <td th:text="${#dates.format(goal.getGame().getDate(), 'yyyy-MM-dd')}">TEAM</td>
+                                <td>
+                                    <a th:href="@{/goal/edit/{id}(id=${goal.id})}" class="btn btn-primary">
+                                        <i class="fas fa-user-edit ml-2"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/goal/delete/{id}(id=${goal.id})}" class="btn btn-primary">
+                                        <i class="fas fa-user-times ml-2"></i>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

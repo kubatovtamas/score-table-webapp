@@ -96,7 +96,7 @@ public class TableInfoRepository {
                     ) AS AWAY_RESULTS
                 ) AS TOTAL_RESULTS
                 GROUP BY TEAM
-                ORDER BY PTS, GD DESC;
+                ORDER BY PTS DESC, GD DESC;
                 """;
 
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("name", "%" + name + "%");

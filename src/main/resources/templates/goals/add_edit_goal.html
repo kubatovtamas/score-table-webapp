@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add/Edit Goal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ml-3">ScoreTable</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/}">Countries<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Leagues
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-item" th:each="league : ${leagues}">
+                        <a class="nav-link" th:href="@{/league/{name} (name = ${league.getName()})}" th:text="${league.getName()}">League Name</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item">
+                        <a class="nav-link" href="#" th:href="@{/leagues}">All Leagues</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/players}">Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/games}">Games</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" th:href="@{/goals}">Goals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <h3>Add/Edit Goal</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/goal/createGoal}" th:object="${goal}" method="post">
+                    <div class="row">
+
+                        <!--Game-->
+                        <div class="form-group col-md-8" th:if="${!existing}">
+                            <label for="game" class="col-form-label">On Game</label>
+                            <select id="game" th:field="*{game}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Game</option>
+                                <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.getTeamsAndResult()}"></option>
+                            </select>
+                        </div>
+
+                        <!--Team-->
+                        <div class="form-group col-md-8" th:if="${!existing}">
+                            <label for="team" class="col-form-label">On Game</label>
+                            <select id="team" th:field="*{team}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Team</option>
+                                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
+                            </select>
+                        </div>
+
+                        <!--Player-->
+                        <div class="form-group col-md-8">
+                            <label for="player" class="col-form-label">Player</label>
+                            <select id="player" th:field="*{player}" class="form-control selectpicker" data-live-search="true">
+                                <option value="0">Select Player</option>
+                                <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}"></option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary my-3" value=" Submit">
+                        </div>
+
+                        <input type="hidden" id="hidden_game" th:field="*{game}" th:if="${existing}">
+                        <input type="hidden" id="hidden_team" th:field="*{team}" th:if="${existing}">
+                        <input type="hidden" id="id" th:field="*{id}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

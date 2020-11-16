@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -17,14 +18,14 @@ public class Goal {
     private Long id;
 
     @OneToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private Player player;
 
     @OneToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private Team team;
 
     @OneToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private Game game;
 }

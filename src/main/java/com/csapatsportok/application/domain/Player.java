@@ -24,4 +24,8 @@ public class Player {
     public String toString() {
         return "Player(id=" + this.getId() + ", name=" + this.getName() + ")";
     }
+
+    public String getNameAndTeam() {
+        return name + " - " + (team == null ? "Free Agent" : team.getName());
+    }
 }

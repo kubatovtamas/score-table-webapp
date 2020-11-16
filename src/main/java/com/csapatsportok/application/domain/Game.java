@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -44,7 +45,7 @@ public class Game {
         return numHomeGoals + "-" + numAwayGoals;
     }
 
-    public String getTeams() {
-        return homeTeam.getName() + "-" + awayTeam.getName();
+    public String getTeamsAndResult() {
+        return homeTeam.getName() + "-" + awayTeam.getName() + ": " + getResult();
     }
 }
