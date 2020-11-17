@@ -76,17 +76,17 @@
                         <!--Game-->
                         <div class="form-group col-md-8" th:if="${!existing}">
                             <label for="game" class="col-form-label">On Game</label>
-                            <select id="game" th:field="*{game}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Game</option>
+                            <select id="game" th:field="*{game}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Game</option>
                                 <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.getTeamsAndResult()}"></option>
                             </select>
                         </div>
 
                         <!--Team-->
                         <div class="form-group col-md-8" th:if="${!existing}">
-                            <label for="team" class="col-form-label">On Game</label>
-                            <select id="team" th:field="*{team}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Team</option>
+                            <label for="team" class="col-form-label">For Team</label>
+                            <select id="team" th:field="*{team}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Team</option>
                                 <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
                             </select>
                         </div>
@@ -94,8 +94,8 @@
                         <!--Player-->
                         <div class="form-group col-md-8">
                             <label for="player" class="col-form-label">Player</label>
-                            <select id="player" th:field="*{player}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Player</option>
+                            <select id="player" th:field="*{player}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Player</option>
                                 <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}"></option>
                             </select>
                         </div>

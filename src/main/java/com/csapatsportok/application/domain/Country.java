@@ -26,7 +26,8 @@ public class Country {
     @NotBlank(message = "Name may not be blank")
     private String name;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = javax.persistence.CascadeType.REMOVE)
+    @OnDelete(action= OnDeleteAction.CASCADE)
     @JsonIgnoreProperties("country")
     private List<League> leagues;
 

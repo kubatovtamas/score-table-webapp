@@ -25,10 +25,12 @@ public class Game {
 
     @OneToOne
     @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Team homeTeam;
 
     @OneToOne
     @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Team awayTeam;
 
     @NotNull

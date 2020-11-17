@@ -1,7 +1,6 @@
 package com.csapatsportok.application.service;
 
-import com.csapatsportok.application.domain.Country;
-import com.csapatsportok.application.domain.League;
+import com.csapatsportok.application.domain.*;
 import com.csapatsportok.application.domain.League;
 import com.csapatsportok.application.repository.GoalRepository;
 import com.csapatsportok.application.repository.LeagueRepository;
@@ -20,6 +19,7 @@ public class LeagueService {
     private LeagueRepository leagueRepo;
     @Autowired
     public void setLeagueRepo(LeagueRepository leagueRepo) { this.leagueRepo = leagueRepo; }
+
 
     public League getLeagueByName(String name) throws RuntimeException {
         Optional<League> league = leagueRepo.findByName(name);
@@ -71,9 +71,14 @@ public class LeagueService {
     }
 
     public void deleteLeagueById(Long id) throws RuntimeException {
-        Optional<League> country = leagueRepo.findById(id);
+        Optional<League> league = leagueRepo.findById(id);
 
-        if(country.isPresent()) {
+        if(league.isPresent()) {
+            for (Team team : league.get().getTeams()) {
+                for (Player player : team.getPlayers()) {
+                    player.setTeam(null);
+                }
+            }
             leagueRepo.deleteById(id);
         } else {
             throw new RuntimeException("League with id: " + id + " not found");

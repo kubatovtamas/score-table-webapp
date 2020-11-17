@@ -19,13 +19,16 @@ public class Goal {
 
     @OneToOne
     @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Player player;
 
     @OneToOne
     @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Team team;
 
     @OneToOne
     @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Game game;
 }

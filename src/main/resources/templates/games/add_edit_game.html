@@ -76,8 +76,8 @@
                         <!--Home Team-->
                         <div class="form-group col-md-8" th:if="${!existing}">
                             <label for="homeTeam" class="col-form-label">Home Team</label>
-                            <select id="homeTeam" th:field="*{homeTeam}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Home Team</option>
+                            <select id="homeTeam" th:field="*{homeTeam}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Home Team</option>
                                 <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
                             </select>
                         </div>
@@ -85,8 +85,8 @@
                         <!--Away Team-->
                         <div class="form-group col-md-8" th:if="${!existing}">
                             <label for="awayTeam" class="col-form-label">Away Team</label>
-                            <select id="awayTeam" th:field="*{awayTeam}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Away Team</option>
+                            <select id="awayTeam" th:field="*{awayTeam}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Away Team</option>
                                 <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getName()}"></option>
                             </select>
                         </div>
@@ -94,19 +94,19 @@
                         <!--Num Home Goals-->
                         <div class="form-group col-md-8">
                             <label for="numHomeGoals" class="col-form-label">Home Score</label>
-                            <input type="number" step="1" th:field="*{numHomeGoals}" class="form-control" id="numHomeGoals" th:placeholder="${game.getNumHomeGoals()}"/>
+                            <input type="number" min="0" step="1" th:field="*{numHomeGoals}" class="form-control" id="numHomeGoals" th:placeholder="${game.getNumHomeGoals()}"/>
                         </div>
 
                         <!--Num Home Goals-->
                         <div class="form-group col-md-8">
                             <label for="numAwayGoals" class="col-form-label">Away Score</label>
-                            <input type="number" step="1" th:field="*{numAwayGoals}" class="form-control" id="numAwayGoals" th:placeholder="${game.getNumAwayGoals()}"/>
+                            <input type="number" min="0" step="1" th:field="*{numAwayGoals}" class="form-control" id="numAwayGoals" th:placeholder="${game.getNumAwayGoals()}"/>
                         </div>
 
                         <!--Date-->
                         <div class="form-group col-md-8">
                             <label for="date" class="col-form-label">Date</label>
-                            <input type="date" th:field="*{date}" class="form-control" id="date" th:value="${game.getDate()}"/>
+                            <input type="date" th:field="*{date}" class="form-control" id="date" th:value="${game.getDate()}" required/>
                         </div>
 
 

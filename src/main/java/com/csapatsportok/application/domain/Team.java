@@ -25,8 +25,9 @@ public class Team {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "league_id")
     @NotNull
-    @JsonIgnoreProperties("teams")
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private League league;
 
     @OneToMany(mappedBy = "team")

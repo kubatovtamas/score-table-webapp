@@ -25,12 +25,13 @@ public class League {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "country_id")
     @NotNull
-    @JsonIgnoreProperties("leagues")
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private Country country;
 
-    @OneToMany(mappedBy = "league")
-    @JsonIgnoreProperties("league")
+    @OneToMany(mappedBy = "league", cascade = javax.persistence.CascadeType.REMOVE)
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private List<Team> teams;
 
     public String toString() {

@@ -52,10 +52,12 @@ public class PlayerController {
             Player player = playerServ.getPlayerById(id.get());
             model.addAttribute("player", player);
             model.addAttribute("existing", true);
+            model.addAttribute("freeAgent", (player.getTeam() == null));
         } else {
             /* Add New */
             model.addAttribute("player", new Player());
             model.addAttribute("existing", false);
+            model.addAttribute("freeAgent", false);
         }
 
         return "players/add_edit_player";

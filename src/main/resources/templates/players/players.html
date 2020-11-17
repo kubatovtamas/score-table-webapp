@@ -81,8 +81,10 @@
                         <tbody>
                         <tr th:each="player : ${players}">
                             <td th:text="${player.getName()}">Test</td>
-                            <td th:text="${player.getTeam().getName()}">Test</td>
-                            <td th:text="${player.getTeam().getLeague().getName()}">Test</td>
+                            <td th:if="${player.getTeam() == null}">Free Agent</td>
+                            <td th:if="${player.getTeam() == null}">-</td>
+                            <td th:if="${player.getTeam()  != null}" th:text="${player.getTeam().getName()}">Test</td>
+                            <td th:if="${player.getTeam()  != null}" th:text="${player.getTeam().getLeague().getName()}">Test</td>
                             <td>
                                 <a th:href="@{/player/edit/{id}(id=${player.id})}" class="btn btn-primary">
                                     <i class="fas fa-user-edit ml-2"></i>

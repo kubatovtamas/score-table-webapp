@@ -1,6 +1,9 @@
 package com.csapatsportok.application.service;
 
 import com.csapatsportok.application.domain.Country;
+import com.csapatsportok.application.domain.League;
+import com.csapatsportok.application.domain.Player;
+import com.csapatsportok.application.domain.Team;
 import com.csapatsportok.application.repository.CountryRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,12 @@ public class CountryService {
     public void setCountryRepo(CountryRepository countryRepo) {
         this.countryRepo = countryRepo;
     }
+
+    private LeagueService leagueServ;
+    @Autowired
+    public void setLeagueService(LeagueService leagueServ) { this.leagueServ = leagueServ; }
+
+
 
     public int getMaxNumOfLeagues() {
         return countryRepo.findMaxNumberOfLeagues();
@@ -70,6 +79,13 @@ public class CountryService {
         Optional<Country> country = countryRepo.findById(id);
 
         if(country.isPresent()) {
+            for (League league : country.get().getLeagues()) {
+                for (Team team : league.getTeams()) {
+                    for (Player player : team.getPlayers()) {
+                        player.setTeam(null);
+                    }
+                }
+            }
             countryRepo.deleteById(id);
         } else {
             throw new RuntimeException("Country with id: " + id + " not found");

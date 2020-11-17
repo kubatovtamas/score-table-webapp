@@ -1,6 +1,7 @@
 package com.csapatsportok.application.service;
 
 import com.csapatsportok.application.domain.League;
+import com.csapatsportok.application.domain.Player;
 import com.csapatsportok.application.domain.Team;
 import com.csapatsportok.application.repository.PlayerRepository;
 import com.csapatsportok.application.repository.TeamRepository;
@@ -22,6 +23,8 @@ public class TeamService {
 
         this.teamRepo = teamRepo;
     }
+
+
 
     public List<Team> getTeamsByLeague(League league) {
         Optional<List<Team>> team = teamRepo.findAllByLeague(league);
@@ -74,6 +77,9 @@ public class TeamService {
         Optional<Team> team = teamRepo.findById(id);
 
         if(team.isPresent()) {
+            for (Player p : team.get().getPlayers()) {
+                p.setTeam(null);
+            }
             teamRepo.deleteById(id);
         } else {
             throw new RuntimeException("Team with id: " + id + " not found");

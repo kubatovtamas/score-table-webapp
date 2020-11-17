@@ -75,13 +75,13 @@
 
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">League Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" th:placeholder="${league.getName()}"/>
+                            <input type="text" th:field="*{name}" class="form-control" id="name" th:placeholder="${league.getName()}" required/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="country" class="col-form-label">In Country</label>
-                            <select id="country" th:field="*{country}" class="form-control selectpicker" data-live-search="true">
-                                <option value="0">Select Country</option>
+                            <select id="country" th:field="*{country}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Country</option>
                                 <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.getName()}"></option>
                             </select>
                         </div>
