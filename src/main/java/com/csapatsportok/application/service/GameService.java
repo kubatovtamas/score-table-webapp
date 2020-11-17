@@ -2,6 +2,7 @@ package com.csapatsportok.application.service;
 
 import com.csapatsportok.application.domain.Game;
 import com.csapatsportok.application.domain.Player;
+import com.csapatsportok.application.domain.Team;
 import com.csapatsportok.application.repository.CountryRepository;
 import com.csapatsportok.application.repository.GameRepository;
 import lombok.Data;
@@ -48,7 +49,7 @@ public class GameService {
     public void createOrUpdateGame(Game entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
-            entity = gameRepo.save(entity);
+            saveGame(entity);
         } else {
             /* Edit Existing Entity */
             Optional<Game> game = gameRepo.findById(entity.getId());
@@ -61,9 +62,9 @@ public class GameService {
                 newEntity.setNumAwayGoals(entity.getNumAwayGoals());
                 newEntity.setDate(entity.getDate());
 
-                newEntity = gameRepo.save(newEntity);
+                saveGame(newEntity);
             } else {
-                entity = gameRepo.save(entity);
+                saveGame(entity);
             }
         }
     }
@@ -75,6 +76,14 @@ public class GameService {
             gameRepo.deleteById(id);
         } else {
             throw new RuntimeException("Game with id: " + id + " not found");
+        }
+    }
+
+    private void saveGame(Game entity) throws RuntimeException {
+        try {
+            gameRepo.save(entity);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new RuntimeException("Duplicates not allowed for Home Team and Away Team. Two teams can only play two matches a season, each at home once.");
         }
     }
 }

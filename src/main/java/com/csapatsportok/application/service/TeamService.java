@@ -1,5 +1,6 @@
 package com.csapatsportok.application.service;
 
+import com.csapatsportok.application.domain.Country;
 import com.csapatsportok.application.domain.League;
 import com.csapatsportok.application.domain.Player;
 import com.csapatsportok.application.domain.Team;
@@ -55,7 +56,7 @@ public class TeamService {
     public void createOrUpdateTeam(Team entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
-            entity = teamRepo.save(entity);
+            saveTeam(entity);
         } else {
             /* Edit Existing Entity */
             Optional<Team> team = teamRepo.findById(entity.getId());
@@ -66,9 +67,9 @@ public class TeamService {
                 newEntity.setLeague(entity.getLeague());
                 newEntity.setPlayers(entity.getPlayers());
 
-                newEntity = teamRepo.save(newEntity);
+                saveTeam(newEntity);
             } else {
-                entity = teamRepo.save(entity);
+                saveTeam(entity);
             }
         }
     }
@@ -83,6 +84,14 @@ public class TeamService {
             teamRepo.deleteById(id);
         } else {
             throw new RuntimeException("Team with id: " + id + " not found");
+        }
+    }
+
+    private void saveTeam(Team entity) throws RuntimeException {
+        try {
+            teamRepo.save(entity);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new RuntimeException("Duplicates not allowed for Team Name");
         }
     }
 }

@@ -53,7 +53,7 @@ public class LeagueService {
     public void createOrUpdateLeague(League entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
-            entity = leagueRepo.save(entity);
+            saveLeague(entity);
         } else {
             /* Edit Existing Entity */
             Optional<League> country = leagueRepo.findById(entity.getId());
@@ -63,9 +63,10 @@ public class LeagueService {
                 newEntity.setCountry(entity.getCountry());
                 newEntity.setName(entity.getName());
                 newEntity.setTeams(entity.getTeams());
-                newEntity = leagueRepo.save(newEntity);
+
+                saveLeague(newEntity);
             } else {
-                entity = leagueRepo.save(entity);
+                saveLeague(entity);
             }
         }
     }
@@ -82,6 +83,14 @@ public class LeagueService {
             leagueRepo.deleteById(id);
         } else {
             throw new RuntimeException("League with id: " + id + " not found");
+        }
+    }
+
+    private void saveLeague(League entity) throws RuntimeException {
+        try {
+            leagueRepo.save(entity);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new RuntimeException("Duplicates not allowed for League Name");
         }
     }
 }

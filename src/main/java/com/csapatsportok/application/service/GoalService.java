@@ -2,7 +2,7 @@ package com.csapatsportok.application.service;
 
 import com.csapatsportok.application.domain.Game;
 import com.csapatsportok.application.domain.Goal;
-import com.csapatsportok.application.repository.GameRepository;
+import com.csapatsportok.application.domain.Team;
 import com.csapatsportok.application.repository.GoalRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,8 @@ public class GoalService {
     public void createOrUpdateGoal(Goal entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
-            entity = goalRepo.save(entity);
+            saveGoalAndIncreaseResult(entity);
+
         } else {
             /* Edit Existing Entity */
             Optional<Goal> goal = goalRepo.findById(entity.getId());
@@ -57,9 +58,9 @@ public class GoalService {
                 newEntity.setTeam(entity.getTeam());
                 newEntity.setGame(entity.getGame());
 
-                newEntity = goalRepo.save(newEntity);
+                goalRepo.save(newEntity);
             } else {
-                entity = goalRepo.save(entity);
+                goalRepo.save(entity);
             }
         }
     }
@@ -68,9 +69,33 @@ public class GoalService {
         Optional<Goal> goal = goalRepo.findById(id);
 
         if(goal.isPresent()) {
-            goalRepo.deleteById(id);
+            deleteGoalAndDecreaseResult(goal.get());
         } else {
             throw new RuntimeException("Goal with id: " + id + " not found");
         }
+    }
+
+    private void saveGoalAndIncreaseResult(Goal entity) {
+        Game onGame = entity.getGame();
+        Team forTeam = entity.getTeam();
+        if (onGame.getHomeTeam().equals(forTeam)) {
+            onGame.incNumHomeGoals();
+        } else {
+            onGame.incNumAwayGoals();
+        }
+
+        goalRepo.save(entity);
+    }
+
+    private void deleteGoalAndDecreaseResult(Goal entity) {
+        Game onGame = entity.getGame();
+        Team forTeam = entity.getTeam();
+        if (onGame.getHomeTeam().equals(forTeam)) {
+            onGame.decNumHomeGoals();
+        } else {
+            onGame.decNumAwayGoals();
+        }
+
+        goalRepo.deleteById(entity.getId());
     }
 }

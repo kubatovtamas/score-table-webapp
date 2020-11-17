@@ -66,6 +66,7 @@ public class CountryService {
                 Country newEntity = country.get();
                 newEntity.setName(entity.getName());
                 newEntity.setLeagues(entity.getLeagues());
+
                 saveCountry(newEntity);
             } else {
                 saveCountry(entity);
@@ -90,11 +91,11 @@ public class CountryService {
         }
     }
 
-    private void saveCountry(Country entity) throws RuntimeException{
+    private void saveCountry(Country entity) throws RuntimeException {
         try {
             countryRepo.save(entity);
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
-            throw new RuntimeException("Duplicates not allowed for country name");
+            throw new RuntimeException("Duplicates not allowed for Country Name");
         }
     }
 }

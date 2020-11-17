@@ -51,4 +51,20 @@ public class Game {
     public String getTeamsAndResult() {
         return homeTeam.getName() + "-" + awayTeam.getName() + ": " + getResult();
     }
+
+    public void incNumHomeGoals() {
+        setNumHomeGoals(numHomeGoals + 1);
+    }
+
+    public void decNumHomeGoals() {
+        setNumHomeGoals(numHomeGoals - 1);
+    }
+
+    public void incNumAwayGoals() {
+        setNumAwayGoals(numAwayGoals + 1);
+    }
+
+    public void decNumAwayGoals() {
+        setNumAwayGoals(numAwayGoals - 1);
+    }
 }

@@ -120,46 +120,51 @@
     homeSelect = document.getElementById('homeTeam');
     awaySelect = document.getElementById('awayTeam');
 
-    homeSelect.onchange = onHomeChange;
-    awaySelect.onchange = onAwayChange;
+    if (homeSelect != null && awaySelect != null) {
+        homeSelect.onchange = onHomeChange;
+        awaySelect.onchange = onAwayChange;
 
-    function onHomeChange() {
-        let homeText = homeSelect.options[homeSelect.selectedIndex].text;
-        let league = homeText.split('-')[0];
+        function onHomeChange() {
+            let homeText = homeSelect.options[homeSelect.selectedIndex].text;
+            let league = homeText.split('-')[0].trim();
+            let homeTeam = homeText.split('-')[1].trim();
 
-        for (let i = 0; i < awaySelect.length; i++) {
-            let text = awaySelect.options[i].text;
-            let value = awaySelect.options[i].value;
+            for (let i = 0; i < awaySelect.length; i++) {
+                let text = awaySelect.options[i].text;
+                let value = awaySelect.options[i].value;
 
-            if (text.includes(league)) {
-                $('#awayTeam').find('[value = value]').prop('disabled', false);
-                awaySelect.options[i].disabled = false;
-            } else {
-                $('#awayTeam').find('[value = value]').prop('disabled', true);
-                awaySelect.options[i].disabled = true;
+                if (text.includes(league) && !text.includes(homeTeam)) {
+                    $('#awayTeam').find('[value = value]').prop('disabled', false);
+                    awaySelect.options[i].disabled = false;
+                } else {
+                    $('#awayTeam').find('[value = value]').prop('disabled', true);
+                    awaySelect.options[i].disabled = true;
+                }
             }
+            $('.selectpicker').selectpicker('refresh');
         }
-        $('.selectpicker').selectpicker('refresh');
+
+        function onAwayChange() {
+            let awayText = awaySelect.options[awaySelect.selectedIndex].text;
+            let league = awayText.split('-')[0].trim();
+            let awayTeam = awayText.split('-')[1].trim();
+
+            for (let i = 0; i < homeSelect.length; i++) {
+                let text = homeSelect.options[i].text;
+                let value = homeSelect.options[i].value;
+
+                if (text.includes(league) && !text.includes(awayTeam)) {
+                    $('#homeTeam').find('[value = value]').prop('disabled', false);
+                    homeSelect.options[i].disabled = false;
+                } else {
+                    $('#homeTeam').find('[value = value]').prop('disabled', true);
+                    homeSelect.options[i].disabled = true;
+                }
+            }
+            $('.selectpicker').selectpicker('refresh');
+        }
     }
 
-    function onAwayChange() {
-        let awayText = awaySelect.options[awaySelect.selectedIndex].text;
-        let league = awayText.split('-')[0];
-
-        for (let i = 0; i < homeSelect.length; i++) {
-            let text = homeSelect.options[i].text;
-            let value = homeSelect.options[i].value;
-
-            if (text.includes(league)) {
-                $('#homeTeam').find('[value = value]').prop('disabled', false);
-                homeSelect.options[i].disabled = false;
-            } else {
-                $('#homeTeam').find('[value = value]').prop('disabled', true);
-                homeSelect.options[i].disabled = true;
-            }
-        }
-        $('.selectpicker').selectpicker('refresh');
-    }
 
 </script>
 </html>
