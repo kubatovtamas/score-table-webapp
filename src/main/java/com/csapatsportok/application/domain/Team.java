@@ -37,5 +37,9 @@ public class Team {
         return "Team(id=" + this.getId() + ", name=" + this.getName() + ")";
     }
 
+    public String getLeagueAndName() {
+        return league.getName() + " - " + name;
+    }
+
 
 }

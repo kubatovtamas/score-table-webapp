@@ -91,10 +91,19 @@
                             </select>
                         </div>
 
-                        <!--Player-->
-                        <div class="form-group col-md-8">
-                            <label for="player" class="col-form-label">Player</label>
-                            <select id="player" th:field="*{player}" class="form-control selectpicker" data-live-search="true" required>
+                        <!--Player If Existing Game-->
+                        <div class="form-group col-md-8" th:if="${existing}">
+                            <label for="player_existing" class="col-form-label">Player</label>
+                            <select id="player_existing" th:field="*{player}" class="form-control selectpicker" data-live-search="true" required>
+                                <option value="">Select Player</option>
+                                <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}" th:if="${player.getTeam().equals(goal.getTeam())}"></option>
+                            </select>
+                        </div>
+
+                        <!--Player If New Game-->
+                        <div class="form-group col-md-8" th:if="${!existing}">
+                            <label for="player_new" class="col-form-label">Player</label>
+                            <select id="player_new" th:field="*{player}" class="form-control selectpicker" data-live-search="true" required>
                                 <option value="">Select Player</option>
                                 <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}"></option>
                             </select>
@@ -116,5 +125,55 @@
     </div>
 </div>
 </body>
+
+<script>
+    playerSelect = document.getElementById('player_new');
+
+    if (playerSelect != null) {
+        gameSelect = document.getElementById('game');
+        teamSelect = document.getElementById('team');
+        playerSelect = document.getElementById('player_new');
+
+        gameSelect.onchange = onGameChange;
+        teamSelect.onchange = onTeamChange;
+
+        function onGameChange() {
+            let gameText = gameSelect.options[gameSelect.selectedIndex].text;
+            let homeTeam = gameText.split('-')[0];
+            let awayTeam = gameText.split('-')[1].split(':')[0];
+
+            for (let i = 0; i < teamSelect.length; i++) {
+                let text = teamSelect.options[i].text;
+                let value = teamSelect.options[i].value;
+                if (text.includes(homeTeam) || text.includes(awayTeam)) {
+                    $('#team').find('[value = value]').prop('disabled', false);
+                    teamSelect.options[i].disabled = false;
+                } else {
+                    $('#team').find('[value = value]').prop('disabled', true);
+                    teamSelect.options[i].disabled = true;
+                }
+            }
+            $('.selectpicker').selectpicker('refresh');
+        }
+
+        function onTeamChange() {
+            let teamText = teamSelect.options[teamSelect.selectedIndex].text;
+
+            for (let i = 0; i < playerSelect.length; i++) {
+                let text = playerSelect.options[i].text;
+                let value = playerSelect.options[i].value;
+
+                if (text.includes(teamText)) {
+                    $('#player_new').find('[value = value]').prop('disabled', false);
+                    playerSelect.options[i].disabled = false;
+                } else {
+                    $('#player_new').find('[value = value]').prop('disabled', true);
+                    playerSelect.options[i].disabled = true;
+                }
+            }
+            $('.selectpicker').selectpicker('refresh');
+        }
+    }
+</script>
 
 </html>
