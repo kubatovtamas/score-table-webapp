@@ -1,5 +1,6 @@
 package com.csapatsportok.application.controller;
 
+import com.csapatsportok.application.service.LeagueService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,16 @@ public class ErrorPageController implements ErrorController {
 
     private static final String ERROR_PATH = "/error";
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-    private ErrorAttributes errorAttributes;
 
+    private ErrorAttributes errorAttributes;
     @Autowired
     public void setErrorAttributes(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
     }
+
+    private LeagueService leagueServ;
+    @Autowired
+    public void setLeagueService(LeagueService leagueServ) { this.leagueServ = leagueServ; }
 
     @Override
     public String getErrorPath() {
@@ -32,23 +37,14 @@ public class ErrorPageController implements ErrorController {
 
     @RequestMapping(ERROR_PATH)
     public String error(Model model, HttpServletRequest request) {
+        model.addAttribute("leagues", leagueServ.getAllLeagues());
+
         ServletWebRequest servletWebRequest = new ServletWebRequest(request);
         Map<String, Object> error = this.errorAttributes.getErrorAttributes(servletWebRequest, true);
 
         model.addAttribute("status", error.get("status"));
         model.addAttribute("error", error.get("error"));
-
-        String message;
-        if (error.get("status").toString().equals("404")) { // If status code == 404 display specific error msg to user
-            message = "Not found: " + error.get("path");
-        } else {
-            message = error.get("message").toString();
-        }
-
-        model.addAttribute("message", message);
-        model.addAttribute("path", error.get("path"));
-
-        model.addAttribute("timestamp", error.get("timestamp"));
+        model.addAttribute("message", error.get("message").toString());
 
         // Reworking invalid urls and specifying the appropriate format
         String path = error.get("path").toString();
@@ -61,5 +57,11 @@ public class ErrorPageController implements ErrorController {
         LOG.error(error.get("path").toString());
 
         return "error/error";
+    }
+
+    @RequestMapping("/back")
+    public String back(HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
     }
 }

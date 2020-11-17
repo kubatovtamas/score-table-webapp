@@ -96,7 +96,7 @@
                             <label for="player_existing" class="col-form-label">Player</label>
                             <select id="player_existing" th:field="*{player}" class="form-control selectpicker" data-live-search="true" required>
                                 <option value="">Select Player</option>
-                                <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}" th:if="${player.getTeam().equals(goal.getTeam())}"></option>
+                                <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.getNameAndTeam()}" th:if="${goal.getGame().equals(player.getTeam())}"></option>
                             </select>
                         </div>
 

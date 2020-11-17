@@ -4,18 +4,89 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Score Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+    <title>Error</title>
 </head>
 
 <body>
 
-<ul>
-    <li><p th:text="${message}"></p></li>
-    <li><p th:text="${path}"></p></li>
-    <li><p th:text="${status}"></p></li>
-    <li><p th:text="${error}"></p></li>
-    <li><p th:text="${timestamp}"></p></li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ml-3">ScoreTable</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/}">Countries<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Leagues
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-item" th:each="league : ${leagues}">
+                        <a class="nav-link" th:href="@{/league/{name} (name = ${league.getName()})}" th:text="${league.getName()}">League Name</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item">
+                        <a class="nav-link" href="#" th:href="@{/leagues}">All Leagues</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/players}">Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/games}">Games</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/goals}">Goals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="container my-5">
+
+                <div class="col-md-10 mx-auto">
+                    <h2 class="mx-auto" th:text="${error}">
+                        error
+                    </h2>
+                    <h4 th:text="${status}">
+                        status
+                    </h4>
+                    <h4 th:text="${message}">
+                        message
+                    </h4>
+                    <a class="btn btn-primary" role="button" onclick="goBack()">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
+
+<script>
+    function goBack() {
+        window.history.go(-1);
+    }
+</script>
+
 </html>
