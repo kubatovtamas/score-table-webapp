@@ -56,7 +56,7 @@ public class CountryService {
     public void createOrUpdateCountry(Country entity) {
         if (entity.getId() == null) {
             /* Save New Entity */
-            entity = countryRepo.save(entity);
+            saveCountry(entity);
 
         } else {
             /* Edit Existing Entity */
@@ -66,11 +66,9 @@ public class CountryService {
                 Country newEntity = country.get();
                 newEntity.setName(entity.getName());
                 newEntity.setLeagues(entity.getLeagues());
-                newEntity = countryRepo.save(newEntity);
-
+                saveCountry(newEntity);
             } else {
-                entity = countryRepo.save(entity);
-
+                saveCountry(entity);
             }
         }
     }
@@ -89,6 +87,14 @@ public class CountryService {
             countryRepo.deleteById(id);
         } else {
             throw new RuntimeException("Country with id: " + id + " not found");
+        }
+    }
+
+    private void saveCountry(Country entity) throws RuntimeException{
+        try {
+            countryRepo.save(entity);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new RuntimeException("Duplicates not allowed for country name");
         }
     }
 }
