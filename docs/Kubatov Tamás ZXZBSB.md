@@ -1,13 +1,16 @@
 # Csapatsportok
 
->A kötelező program témája a csapatsportok. Kulcsszavai a 'csapatok', 'versenyzők', 'mérkőzések', 
->'pontszerzők/góllövők'. Az adatbázis futball meccsek adatait tárolja. 
->Segítségével egy olyan alkalmazás lesz megvalósítva, amely megjeleníti a tárolt országok, ligák, 
->csapatok, mérkőzések adatait, a játékosokhoz és a meccsekhez tartozó adatokkal, többek között 
->a meccsek gólszerzőit. Ezen felül módosítani, új adatot felvinni, a már meglévőket módosítani 
->is lehet grafikus felületen.
----
+> A projekt témája a csapatsportok. Az elkészített applikáció futball mérkőzésekkel kapcsolatos adatokat tartalmaz.  
+> A következő kulcsszavak mind implementálásra kerültek a programban: csapatok, játékosok, mérkőzések, góllövők. 
+> Ezen felül országokat is támogat a projekt, egy országon belül több ligát is tárolva. 
+> A program jelenleg egy szezonon belüli, belföldi mérkőzéseket tárol. Az alkalmazás egy webes felületen,
+> keresztül nyújt lehetőséget a felhasználónak a különböző adatok kilistázására, és űrlapokon 
+> adatok módosítására, törlésére, új adat felvitelére (az adatbázis integritásának megőrzése mellett). 
+> Jelenleg nincs autentikációhoz kötve az ilyen jellegű adatmódosítás, viszont a több szinten 
+> (adatbázis, backend, frontend) implementált integritás ellenőrzés miatt, nincs lehetőség az 
+> adatbázis integritását elrontani.  
 
+---
 
 #### EGYED-KAPCSOLAT MODELL
 
@@ -20,6 +23,8 @@
 > Kulcs: **félkövér**  
 > Külső kulcs: *dőlt*  
 
+##### Az adatokkal való munka megkönnyítése végett, minden entitásnak van egy egyedi azonosítója.
+
 Orszag (**orszag_id**, orszag_nev)  
 Bajnoksag (**bajn   oksag_id**, bajnoksag_nev, *orszag_id*)  
 Csapat (**csapat_id**, csapat_nev, *bajnoksag_id*)  
@@ -30,15 +35,9 @@ Gol (**gol_id**, *jatekos_id*, *merkozes_id*, *csapat_id*)
 
 #### NORMALIZÁLÁS
 
-1. Normálforma: A Mérkőzés összetett attribútuma helyettesítve lett részattribútumaival.
+1. Normálforma: A **Mérkőzés** összetett attribútuma helyettesítve lett részattribútumaival.
 2. Normálforma: Minden másodlagos attribútum teljesen függ a kulcstól.
-3. Normálforma: Az attribútumok között nincs tranzitív függés, kivéve a Mérkőzés esetében, 
-( {hazai_csapat_id, vendeg_csapat_id, datum} -> {hazai_golok_szama, vendeg_golok_szama} ) 
-itt indokoltnak találtam 2NF-ben hagyni a táblát, mert ezeket az adatokat mindig egyben kell 
-kezelni, és szükségtelen komplexitásnak láttam szétválasztani a táblát, hogy aztán minden 
-lekérdezésben össze kelljen őket kapcsolni.
-
-
+3. Normálforma: Az attribútumok között nincs tranzitív függés.
 
 #### ADATBÁZIS DIAGRAM
 ![DB-Schema](DB_SCHEMA_DIAGRAM.png "DB-Schema")
@@ -46,51 +45,80 @@ lekérdezésben össze kelljen őket kapcsolni.
 
 #### MEGVALÓSÍTÁSI KÖRNYEZET
 
-A program Java nyelven íródott, MySQL adatbázisra épülve, Spring Boot keretrendszerben.
-Webes alkalmazás, böngészőben használható, a SpringBoot által nyújtott TomCat szerveren fut.
-Ebből fakadóan a megjelenítés HTML/CSS. A dinamikus HTML kezelésre Thymeleaf-et, 
-a megjelenítéshez Bootstrap-et, az adatbázissal való kommunikációra 
-a triviálisabb lekérdezések esetén Hibernate-et, a bonyolultabb lekérdezések esetén JDBC-t 
-használtam, natív SQL parancsokkal.
-Az adatok generálására főleg mockaroo.com által nyújtott szolgáltatásokat vettem igénybe. 
-Ezen felül saját programrészeket is felhasználtam, ahol szükséges volt valamilyen bonyolultabb 
-logika által generálni adatot. 
-(Például a GOAL tábla gólszerző-csapat-meccs véletlenszerű, de helyes generálása) 
-Ezt a programba írt Java-SQL kóddal töltöttem fel in-memory adatbázisba,
-(H2, amit a végsőkig használtam, mielőtt a végleges MySQL DB-re migráltam) 
-onnan SQL dump-pal gyűjtöttem ki az INSERT INTO parancsokat.
-A data.sql fájlban találhatóak a kezdeti adatok.
-A táblákat a Java objectekből JPA-vel generáltam, minden konfigurációt a domain/-en belüli
-osztályokban, JPA annotációkkal végeztem. A végleges adatbázis szerkezet dumpja a 
-schema.sql-ben található.
-A program futtatása a scoretable.jar fájl indításával lehetséges.
-{**TODO**: actual command ide}```$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar```  
-A szerver a 8080 porton indul.
-{**TODO**: kapcsolódás sql-hez, egyéb setup dolgok}.
-
+A program a fejlesztés alatt H2 adatbázist használt a könnyebb tesztelhetőség végett, ez a jelenlegi 
+bemutató verzióban egy távoli, Herokun hosztolt MySQL adatbázisra lett cserélve. Alapja egy Spring Boot
+webapplikáció, Java nyelven, annak a 15-ös verziójával, TomCat webszerverrel. A frontend ennek fényében HTML/CSS. 
+A dinamikus adat megjelenítést, és form feldolgozást Thymeleaffel végeztem. Felhasznált könyvtárak még 
+a Bootstrap, JQuery, és egy Bootstrap-Select nevű JQuery plugin, ami a legördülő menükben való keresést 
+könnyíti meg. A frontenden végzett adat validáció a HTML oldalakban található, magában a formban tagenként és 
+JavaScript, illetve JQuery felhasználásával készült szkriptekként. Hibernate ORM fut a backenden, az adattáblák 
+konfigurációja ezért majdnem teljes egészében Java kódból, Hibernate annotációkkal történt. A triviális 
+lekérdezéseket a Spring Data által nyújtott CrudRepository interfacek oldják meg, ezek generálnak 
+végül SQL-t. Az összetett lekérdezésekre Spring JDBC-vel implementált, natív SQL lekérdezések lettek 
+használva. Az adatbázis feltöltése túlnyomórészt a mockaroo.com által nyújtott szolgáltatásokkal zajlott.
+A bonyolultabb logikát megkövetelő adatot végül a már feltöltött adatok segítségével, a programban 
+implementált kóddal generáltam, és töltöttem fel az adatbázisba. Ilyen például a Goal tábla, ahol 
+szükséges volt minden, normál eloszlást követő, de véletlenszerűen generált mérkőzés eredményhez 
+gólszerzőt társítani. Jelenlegi formájában az applikáció nem támogat öngól szerzést, csak a gólt szerző 
+csapatban játszó játékos nevéhez köthető a pontszerzés, így egy véletlenszerűen választott játékosához 
+van rendelve minden meccs minden csapatának minden gólja. A távoli adatbázison, ugyanúgy, mint az 
+in-memory, H2 adatbázison is, a sémák kialakítását a program a Hibernate-n keresztül végezte a 
+konfiguráció alapján. A sémák azoknak kialakításakor logolva lettek. A schema.sql tartalmazza ezeket. 
+A végső adatbázis feltöltése a fejlesztés alatt már kialakított adatbázisból dumpolt adatokkal történt. 
+A data.sql tartalmazza ezeket. 
+A program a `www.score-table-webapp.herokuapp.com` címen fut, a saját adatbázisával. 
+Azonos verzió futtatható (ami szintén ezen az oldalon futó adatbázisra kapcsolódik) a csomagolt 
+jar fájl futtatásával: ```java -jar target/myapplication-0.0.1-SNAPSHOT.jar```. 
+A szerver a 8080 porton indul, a `localhost:8080` URL-en érhető el ebben az esetben.
 
 #### A PROGRAM SZOLGÁLTATÁSAI
 
 ##### Adatbázisban lévő adatok kilistázása
-A főoldalon az adatbázisban szereplő országok, és azokban rendezett ligák találhatóak.
-A ligák egyikére kattintva részletesebb információkat kapunk róluk. Ezek a résztvevő 
-csapatok, a tabella jelenlegi állása, a lejátszott meccsek információi, góllövőlista, 
-és a legnagyobb arányú győzelmekről egy összesítő táblázat érdekességképpen. 
-A felső menüsorban található linkek mind egyre az összes liga, csapat, játékos, meccs, 
-és gól információt listázó oldalra vezetnek. Itt lehetőségünk van keresni az adathalmazban, 
-illetve azt különböző oszlopok szerint csoportosítani. Itt van lehetősége a belépett 
-felhasználónak a sorok melletti gombok használatával az adatok módosítására, illetve 
-törlésére. Nem megfelelő utasításokkal az adattáblák nem módosíthatóak, 
-az applikáció hibaüzenetet jelenít meg.
+A főoldal az országok listájához visz minket, ahol táblázatban szerepelnek a már felvitt 
+országok, illetve az azokban megrendezett bajnokságok. A bajnokságok linkek, részletes 
+információt nyújtó oldalra navigál minket. Ugyanez a funkció elérhető a felső navigációs 
+sávban, a Leagues legördülő menüben (illetve a többi nézet is innen érhető el). 
+Ez a legrészletesebb megjelenítést tartalmazó oldal. 
+Itt megtekeinthetjük a résztvevő csapatokat, a lejátszott mérkőzéseket, egy top 10-es 
+góllövőlistát, illetve a legnagyobb különbséggel zárult meccseket. Ezen felül természetesen 
+a bajnokság jelenlegi állását mutató tabella is itt szerepel, ahol lőtt gólók, kapott 
+gólok, gólkülönbség, lejátszott meccsek száma, és a gyűjtött pontok összege szerepel. 
+Az All Leagues fül a legördülő menü alján, illetve a Teams, Players, Games, Goals link a 
+navigációs sávban mind a saját adattáblához társított nézethez navigál, ahogy a Countries is.
 
-##### Admin felület
+##### Adatbázisban lévő adatok módosítása, törlése, új adat felvitele
+Az egy-egy specifikus bajnokság adatait tartalmazó nézeteken kívül mindenhol a megfelelő gombokkal 
+tud a felhasználó módosítani, törölni, vagy új adatot felvinni a megfelelő táblába. 
+Meglévő adat módosítása esetén csak az adat integritást el nem rontó műveletek hajthatók végre.
+Törlés esetén egy kivételével minden esetben a kapcsolódó adatok is törlésre kerülnek. 
+(például: egy ország törlésével törlődnek az országban rendezett bajnokságok, azokban a 
+bajnokságokban résztvevő csapatok, a köztük lezajlott mérkőzések, illetve azokon a mérkőzéseken 
+esett gólok is). Az egy kivétel a játékosokat tároló tábla. Egyedül itt nem veszti értelmét a 
+további tárolás, így a törölt csapatok játékosainak csapata automatikusan null értékre állítódik. 
+A nézetben ez Free Agent néven jelenik meg a Players fül alatt, a játékos Team oszlopában. 
+Ezeknek a játékosoknak lehetőségünk van új csapatot kiválasztani. Ha egy játékosnak van beállított csapata, 
+akkor azt módosítani nem tudjuk (Nincs átigazolási időszak, de szabadúszót igazolni lehet, 
+így abban az esetben módosítható). Új ország felvitelekor annak nincsenek tárolt bajnokságai, mint 
+ahogy új bajnokság létrehozásakor annak nincsenek mentett csapatai, csapatnak játékosai. Ezeket egymás 
+után kell felvinni, beállítani. Egy új mérkőzés létrehozásakor az automatikusan 0-0 eredménnyel tárolódik. 
+Ahhoz, hogy módosítsuk ezt, gólokat kell felvinni, a megfelelő meccset, csapatot, és játékos kiválasztva. 
+Gól törlése esetén az erdemény is változik, amit minden táblán nyomon követhetünk. Ezeknek a korlátozásoknak 
+hála nincs lehetőség érvénytelen adat felvitelére.
 
 
 
 
 #### NEMTRIVIÁLIS LEKÉRDEZÉSEK
+Az itt szereplő lekérdezések egy-egy példát mutatnak be, a programkódban 
+ezek szinte ugyanígy, de dinamikusan behelyettesíthető módon szerepelnek. 
+
 ```SQL
-/* 1. MECCS INFO, LIGA NÉV ALAPJÁN, DÁTUM SZERINT NÖVEKVŐ SORRENDBEN */  
+/* 
+
+    1. MECCS INFO, LIGA NÉV ALAPJÁN, DÁTUM SZERINT NÖVEKVŐ SORRENDBEN 
+    Implementálva: MatchInfoRepository. Nézet: specifikus bajnokság adatai 
+
+*/  
 
 SELECT
     HOME.NAME AS HOME_TEAM, 
@@ -127,8 +155,13 @@ ORDER BY G.DATE;
 
 
 
-/* 2. LIGA TÁBLA, LIGA NÉV ALAPJÁN: CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, LŐTT  
-GÓL, KAPOTT GÓL, GÓLKÜLÖNBSÉG, SZERZETT PONTOK, PONT SZERINT CSÖKKENŐ SORRENDBEN */
+/* 
+
+    2. BAJNOKSÁG TABELLE, BAJNOKSÁG NÉV ALAPJÁN: CSAPAT NÉV, LEJÁTSZOTT MECCSEK SZÁMA, 
+    LŐTT GÓL, KAPOTT GÓL, GÓLKÜLÖNBSÉG, SZERZETT PONTOK, PONT SZERINT CSÖKKENŐ SORRENDBEN 
+    Implementálva: TableInfoRepository. Nézet: specifikus bajnokság adatai 
+
+*/
 
 SELECT
     TEAM,
@@ -226,7 +259,12 @@ ORDER BY PTS DESC, GD DESC;
 
 
 
-/* 3. TOP 10 GÓLLÖVŐLISTA, LIGA NÉV ALAPJÁN */
+/* 
+
+    3. TOP 10 GÓLLÖVŐLISTA, LIGA NÉV ALAPJÁN 
+    Implementálva: ScorerInfoRepository. Nézet: specifikus bajnokság adatai 
+
+*/
 
 SELECT
     PLAYER.NAME AS PLAYER_NAME,
@@ -269,7 +307,12 @@ LIMIT 10;
 
 
 
-/* 4. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO, LIGA NÉV ALAPJÁN */
+/* 
+
+    4. TOP 10 LEGNAGYOBB ARANYÚ GYŐZELEMRŐL INFO, LIGA NÉV ALAPJÁN 
+    Implementálva: GoalDifferenceInfoRepository. Nézet: specifikus bajnokság adatai 
+
+*/
 
 SELECT
     HOME.NAME AS HOME_TEAM,
